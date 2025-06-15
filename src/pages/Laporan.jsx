@@ -6,7 +6,7 @@ import {
 import '../styles/Laporan.css'; // Pastikan path ini benar
 
 // Definisikan URL dasar API Anda
-const API_BASE_URL = 'http://localhost:3001/api'; // Pastikan ini sesuai dengan port backend Anda (misal: 3001)
+const API_BASE_URL = 'https://silogyexpowebsimanis-production.up.railway.app';// Pastikan ini sesuai dengan port backend Anda (misal: 3001)
 
 const LaporanLingkungan = () => {
   const [formData, setFormData] = useState({

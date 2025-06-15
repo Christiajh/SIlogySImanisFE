@@ -5,7 +5,7 @@ import "../styles/Forgot.css"; // Pastikan path ini benar
 // ⭐ Konfigurasi Base URL API Anda di sini ⭐
 // Jika backend Anda berjalan di port 3001, atur URL ini ke 'http://localhost:3001'.
 // Jika frontend dan backend dilayani dari domain/server yang sama, bisa tetap kosong atau '/'.
-const API_BASE_URL = 'http://localhost:3001'; // Sesuaikan ini dengan URL backend Anda
+const API_BASE_URL = 'https://silogyexpowebsimanis-production.up.railway.app';
 
 const securityQuestions = [
     'Nama hewan peliharaan pertama?',

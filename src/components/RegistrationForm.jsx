@@ -4,7 +4,8 @@ import { motion } from 'framer-motion';
 import { FaTimes, FaCalendarAlt, FaMapMarkerAlt } from 'react-icons/fa';
 import '../styles/Event.css'; // Path relatif yang benar ke styling
 
-const API_BASE_URL = 'https://your-railway-backend-url.railway.app'; // ⭐ Ganti dengan URL Railway Anda ⭐
+const API_BASE_URL = 'https://silogyexpowebsimanis-production.up.railway.app';
+
 
 const RegistrationForm = ({ event, onClose, onRegistrationSuccess }) => {
     const [name, setName] = useState('');

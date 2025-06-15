@@ -6,7 +6,7 @@ import { Eye, EyeOff, Leaf, Globe, Users, Shield, CheckCircle, AlertCircle } fro
 import "../styles/Register.css";
 
 // Mengganti placeholder dengan URL Railway yang benar
-const API_BASE_URL = 'https://silogyexpowebsimanis-production.up.railway.app'; // URL Railway Anda
+const API_BASE_URL = 'https://silogyexpowebsimanis-production.up.railway.app';
 
 const WargaBantuin = () => {
     const navigate = useNavigate();

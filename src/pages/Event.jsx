@@ -8,7 +8,7 @@ import DeleteEventForm from '../components/DeleteEventForm.jsx';
 import '../styles/Event.css'; // Pastikan path ini benar untuk styling
 
 // PERBAIKAN: Hardcode URL untuk testing. Di produksi, gunakan variabel lingkungan.
-const API_BASE_URL = 'http://localhost:3001/api';
+const API_BASE_URL = 'https://silogyexpowebsimanis-production.up.railway.app';
 
 const Event = () => {
     const [events, setEvents] = useState([]);

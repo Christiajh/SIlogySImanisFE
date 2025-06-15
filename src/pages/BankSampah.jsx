@@ -7,7 +7,7 @@ import {
 import '../styles/BankSampah.css'; // Impor CSS
 
 // Definisikan URL dasar API Anda
-const API_BASE_URL = 'http://localhost:3001/api'; // Pastikan ini sesuai dengan port backend Anda (misal: 3001)
+const API_BASE_URL = 'https://silogyexpowebsimanis-production.up.railway.app';// Pastikan ini sesuai dengan port backend Anda (misal: 3001)
 
 const BankSampah = () => {
   const [formData, setFormData] = useState({
