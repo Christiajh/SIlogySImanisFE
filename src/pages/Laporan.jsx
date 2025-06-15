@@ -7,7 +7,8 @@ import {
 import '../styles/Laporan.css';
 
 // ✅ Ubah BASE URL agar langsung mengarah ke /api
-const API_BASE_URL = 'https://silogyexpowebsimanis-production.up.railway.app/api';
+const API_BASE_URL = 'https://silogyexpowebsimanis-production.up.railway.app';
+
 
 
 const LaporanLingkungan = () => {
