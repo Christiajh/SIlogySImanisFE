@@ -7,7 +7,7 @@ import "../styles/Login.css";
 
 // ⭐ Konfigurasi Base URL API Anda di sini ⭐
 // Ini harus sesuai dengan port backend Anda (3001)
-const API_BASE_URL = 'http://localhost:3001'; 
+const API_BASE_URL = 'https://your-railway-backend-url.railway.app'; // ⭐ Ganti dengan URL Railway Anda ⭐ 
 
 const Login = () => {
   const navigate = useNavigate();

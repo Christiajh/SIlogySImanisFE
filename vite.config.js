@@ -2,11 +2,10 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     ViteImageOptimizer({
-      // Optional: Customize optimization settings
       png: { quality: 80 },
       jpeg: { quality: 80 },
       jpg: { quality: 80 },
@@ -14,12 +13,16 @@ export default defineConfig({
     }),
   ],
   server: {
-    
     port: 5173,
-    proxy: {
-      '/api': 'http://localhost:3001', 
-    },
+
+    // Hanya aktif saat development
+    proxy: mode === 'development' ? {
+      '/api': {
+        target: 'http://localhost:3001', // Jika kamu masih testing lokal backend
+        changeOrigin: true,
+        secure: false,
+      },
+    } : undefined,
   },
   base: '/',
-  
-});
+}));

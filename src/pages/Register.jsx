@@ -6,7 +6,7 @@ import { Eye, EyeOff, Leaf, Globe, Users, Shield, CheckCircle, AlertCircle } fro
 import "../styles/Register.css";
 
 // Konfigurasi Base URL API Anda di sini
-const API_BASE_URL = 'http://localhost:3001';
+const API_BASE_URL = 'https://your-railway-backend-url.railway.app'; // ⭐ Ganti dengan URL Railway Anda ⭐
 
 const WargaBantuin = () => {
     const navigate = useNavigate();

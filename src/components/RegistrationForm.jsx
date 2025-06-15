@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { FaTimes, FaCalendarAlt, FaMapMarkerAlt } from 'react-icons/fa';
 import '../styles/Event.css'; // Path relatif yang benar ke styling
 
-const API_BASE_URL = 'http://localhost:3001/api';
+const API_BASE_URL = 'https://your-railway-backend-url.railway.app'; // ⭐ Ganti dengan URL Railway Anda ⭐
 
 const RegistrationForm = ({ event, onClose, onRegistrationSuccess }) => {
     const [name, setName] = useState('');
