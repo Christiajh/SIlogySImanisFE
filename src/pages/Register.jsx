@@ -5,13 +5,13 @@ import { Eye, EyeOff, Leaf, Globe, Users, Shield, CheckCircle, AlertCircle } fro
 
 import "../styles/Register.css";
 
-// Konfigurasi Base URL API Anda di sini
-const API_BASE_URL = 'https://your-railway-backend-url.railway.app'; // ⭐ Ganti dengan URL Railway Anda ⭐
+// Mengganti placeholder dengan URL Railway yang benar
+const API_BASE_URL = 'https://silogyexpowebsimanis-production.up.railway.app'; // URL Railway Anda
 
 const WargaBantuin = () => {
     const navigate = useNavigate();
 
-    // ⭐ PERBAIKAN: Mengubah nama properti di formData menjadi snake_case ⭐
+    // Mengubah nama properti di formData menjadi snake_case sesuai dengan backend
     const [formData, setFormData] = useState({
         username: '',
         password: '',
@@ -28,7 +28,7 @@ const WargaBantuin = () => {
     const [error, setError] = useState(null);
     const dropdownRef = useRef(null);
 
-    // State for password validation
+    // State untuk validasi password
     const [passwordErrors, setPasswordErrors] = useState({});
 
     const provinsiIndonesia = [
@@ -50,6 +50,7 @@ const WargaBantuin = () => {
         'Nama guru favorit?',
     ];
 
+    // Fungsi untuk memvalidasi password berdasarkan kriteria
     const validatePassword = (password) => {
         const errors = {};
         if (password.length < 8) {
@@ -64,17 +65,18 @@ const WargaBantuin = () => {
         if (!/[0-9]/.test(password)) {
             errors.number = true;
         }
-        if (!/[^A-Za-z0-9]/.test(password)) {
+        if (!/[^A-Za-z0-9]/.test(password)) { // Memeriksa karakter simbol
             errors.symbol = true;
         }
         return errors;
     };
 
+    // Handler untuk perubahan input form
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({
             ...prev,
-            [name]: value // name atribut di JSX akan langsung cocok dengan properti formData
+            [name]: value // Nama atribut di JSX akan langsung cocok dengan properti formData
         }));
 
         if (name === 'password') {
@@ -82,6 +84,7 @@ const WargaBantuin = () => {
         }
     };
 
+    // Handler untuk memilih provinsi dari dropdown kustom
     const handleProvinsiSelect = (provinsi) => {
         setFormData(prev => ({
             ...prev,
@@ -90,6 +93,7 @@ const WargaBantuin = () => {
         setShowProvinsiDropdown(false);
     };
 
+    // Effect untuk menutup dropdown provinsi saat klik di luar
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -102,11 +106,13 @@ const WargaBantuin = () => {
         };
     }, []);
 
+    // Handler untuk submit form
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
         setError(null);
 
+        // Validasi password sebelum submit
         const currentPasswordErrors = validatePassword(formData.password);
         if (Object.keys(currentPasswordErrors).length > 0) {
             setPasswordErrors(currentPasswordErrors);
@@ -115,10 +121,10 @@ const WargaBantuin = () => {
             return;
         }
 
-        // ⭐ PERBAIKAN: Menambahkan .trim() untuk validasi string ⭐
+        // Validasi semua bidang tidak boleh kosong atau hanya spasi
         if (!formData.username.trim() || 
             !formData.daerah.trim() || 
-            !formData.umur || // Umur akan divalidasi sebagai angka
+            !formData.umur || 
             !formData.pertanyaan_keamanan.trim() || 
             !formData.jawaban_keamanan.trim()) 
         {
@@ -135,7 +141,6 @@ const WargaBantuin = () => {
             return;
         }
 
-
         try {
             // Mengirim formData langsung karena sekarang sudah cocok dengan nama field backend
             const response = await axios.post(`${API_BASE_URL}/api/register`, formData);
@@ -143,6 +148,7 @@ const WargaBantuin = () => {
             console.log('Registration successful:', response.data);
             setIsSubmitted(true);
 
+            // Navigasi ke halaman login setelah beberapa saat
             setTimeout(() => {
                 navigate('/login');
             }, 1500);
@@ -156,6 +162,7 @@ const WargaBantuin = () => {
         }
     };
 
+    // Data langkah-langkah progres
     const steps = [
         { icon: Users, title: "Identitas", desc: "Data pribadi Anda" },
         { icon: Globe, title: "Lokasi", desc: "Daerah tempat tinggal" },
@@ -339,7 +346,7 @@ const WargaBantuin = () => {
                             <div className="form-group full-width">
                                 <label htmlFor="pertanyaan_keamanan">Pertanyaan Keamanan</label>
                                 <div className="input-wrapper">
-                                    {/* ⭐ PERBAIKAN: name atribut sesuai dengan backend ⭐ */}
+                                    {/* Name atribut sesuai dengan backend */}
                                     <select
                                         id="pertanyaan_keamanan"
                                         name="pertanyaan_keamanan"
@@ -361,7 +368,7 @@ const WargaBantuin = () => {
                             <div className="form-group full-width">
                                 <label htmlFor="jawaban_keamanan">Jawaban Pertanyaan Keamanan</label>
                                 <div className="input-wrapper">
-                                    {/* ⭐ PERBAIKAN: name atribut sesuai dengan backend ⭐ */}
+                                    {/* Name atribut sesuai dengan backend */}
                                     <input
                                         type="text"
                                         id="jawaban_keamanan"
