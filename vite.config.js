@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
+// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
@@ -14,15 +15,22 @@ export default defineConfig(({ mode }) => ({
   ],
   server: {
     port: 5173,
-
-    // Hanya aktif saat development
     proxy: mode === 'development' ? {
       '/api': {
-        target: 'http://localhost:3001', // Jika kamu masih testing lokal backend
+        target: 'http://localhost:3001',
         changeOrigin: true,
         secure: false,
       },
     } : undefined,
   },
   base: '/',
+  build: {
+    outDir: 'dist',
+  },
+  // Tambahkan resolve fallback agar history mode berjalan saat development
+  resolve: {
+    alias: {
+      '@': '/src',
+    },
+  },
 }));
