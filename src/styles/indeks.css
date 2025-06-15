@@ -1,0 +1,80 @@
+/* Umum */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Section Hero dengan overlay gelap */
+.hero-section {
+  background-color: rgb(255, 255, 255);
+  background-blend-mode: darken;
+}
+
+/* Tombol "Donate Now" berwarna hijau */
+.btn-success {
+  background-color: #2e7d32;
+  border-color: #2e7d32;
+  color: #fff;
+}
+
+.btn-success:hover {
+  background-color: #1b5e20;
+  border-color: #1b5e20;
+  color: #fff;
+}
+
+/* Navbar Transparan */
+.navbar {
+  background-color: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(8px);
+}
+
+/* Teks navbar putih */
+.navbar-dark .nav-link,
+.navbar-dark .navbar-brand {
+  color: #ffffff;
+}
+
+/* Hover efek nav link */
+.navbar-dark .nav-link:hover {
+  color: #a5d6a7;
+}
+
+/* Dropdown Menu Styling */
+.navbar-dark .dropdown-menu {
+  background-color: rgba(0, 0, 0, 0.85);
+  border: none;
+}
+
+.navbar-dark .dropdown-menu .dropdown-item {
+  color: white;
+}
+
+.navbar-dark .dropdown-menu .dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #a5d6a7;
+}
+
+/* Tombol Donate tetap menonjol */
+.navbar .btn-success {
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 5px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 1rem;
+  }
+
+  .navbar-dark .nav-link {
+    color: #fff;
+  }
+
+  .navbar-dark .nav-link:hover {
+    color: #a5d6a7;
+  }
+}
+

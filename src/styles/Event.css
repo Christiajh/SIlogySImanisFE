@@ -1,0 +1,643 @@
+/* src/styles/Event.css */
+
+/* --- General Page Styling --- */
+.evt-page-container {
+    min-height: 100vh;
+    background: linear-gradient(to bottom right, #e0ffe0, #c8e0ff); /* Light green to light blue gradient */
+    padding: 3rem; /* Default for larger screens */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern, sans-serif font */
+    color: #333; /* Darker text color */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+}
+
+.evt-main-title {
+    font-size: 3.5rem; /* Default for larger screens */
+    font-weight: 800; /* Equivalent to font-extrabold */
+    text-align: center;
+    color: #1a4f3a; /* Darker green */
+    margin-bottom: 1.5rem; /* Reduced margin to make space for the buttons */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* Drop shadow */
+}
+
+/* --- Action Buttons Container --- */
+.evt-action-btns-wrap {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    justify-content: center;
+    gap: 1.5rem; /* Space between buttons */
+    margin-bottom: 3rem; /* Space below buttons */
+    width: 100%;
+    max-width: 800px; /* Limit the width of the button container */
+}
+
+.evt-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: #ffffff;
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex-grow: 1; /* Allow buttons to grow */
+    max-width: 250px; /* Limit individual button width on large screens */
+}
+
+.evt-add-btn {
+    background-color: #1a4f3a; /* Darker green */
+}
+
+.evt-add-btn:hover {
+    background-color: #163f2e; /* Even darker green */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.evt-delete-btn {
+    background-color: #dc2626; /* Red for delete */
+}
+
+.evt-delete-btn:hover {
+    background-color: #b91c1c; /* Darker red */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.evt-action-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+.evt-btn-icon {
+    font-size: 1.3rem;
+}
+
+/* --- Notification --- */
+.evt-app-notification {
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    margin: 0 auto 2rem auto;
+    max-width: 600px; /* Increased max-width for better message display */
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.evt-notification-success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+.evt-notification-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+
+.evt-notification-icon {
+    font-size: 1.25rem;
+}
+
+
+/* --- Loading State --- */
+.evt-loading-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.evt-loading-spinner {
+    width: 3rem;
+    height: 3rem;
+    border: 4px solid #e2e8f0;
+    border-top-color: #38a169;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* --- Error State --- */
+.evt-error-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 2rem auto;
+    max-width: 600px;
+    text-align: center;
+}
+
+.evt-error-message {
+    color: #e53e3e;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.evt-debug-info {
+    background-color: #f7fafc;
+    border: 1px dashed #e2e8f0;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    width: 100%;
+}
+
+.evt-debug-info h4 {
+    color: #4a5568;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.evt-debug-info p {
+    font-size: 0.9rem;
+    color: #718096;
+    margin-bottom: 0.25rem;
+    word-break: break-all; /* Ensure long URLs don't break layout */
+}
+
+.evt-debug-info a {
+    color: #4299e1;
+    text-decoration: underline;
+}
+
+.evt-error-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.evt-retry-button, .evt-test-button {
+    background-color: #48bb78;
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.evt-retry-button:hover, .evt-test-button:hover {
+    background-color: #38a169;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Event Grid --- */
+.evt-grid-display {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 2rem; /* Spacing between cards */
+    max-width: 1200px; /* Max width for the grid */
+    margin: 0 auto; /* Center the grid on the page */
+    padding: 0 1rem; /* Add some horizontal padding */
+}
+
+.evt-no-events-msg {
+    grid-column: 1 / -1; /* Span across all columns */
+    text-align: center;
+    padding: 3rem;
+    color: #718096;
+    font-size: 1.2rem;
+    background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* --- Event Card --- */
+.evt-event-card {
+    background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribute space vertically */
+    padding: 1.5rem; /* Padding inside the card, moved from content div */
+    aspect-ratio: 1 / 1.2; /* Make cards more rectangular/elegant */
+    min-height: 350px; /* Minimum height for consistency */
+    max-height: 420px; /* Maximum height to prevent stretching */
+}
+
+.evt-event-card.evt-event-full {
+    opacity: 0.7;
+    filter: grayscale(80%);
+    cursor: not-allowed;
+}
+
+.evt-event-card.evt-event-full .evt-register-btn {
+    background-color: #ccc;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.evt-event-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15), 0 6px 10px rgba(0, 0, 0, 0.08);
+}
+
+.evt-card-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensure content fills the card */
+}
+
+/* --- Event Card Elements --- */
+.evt-date-section,
+.evt-location-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    color: #28a745; /* Green color for date/location info */
+}
+
+.evt-location-section {
+    color: #555; /* Slightly less prominent for location */
+}
+
+.evt-card-icon {
+    margin-right: 0.75rem;
+    font-size: 1.5rem; /* Default icon size */
+    color: #28a745; /* Icon color */
+}
+
+.evt-location-icon {
+    font-size: 1.125rem; /* Smaller for location icon */
+}
+
+.evt-date-text {
+    font-size: 1.125rem; /* Default font size */
+    font-weight: 600; /* Equivalent to font-semibold */
+}
+
+.evt-card-title {
+    font-size: 1.8rem; /* Adjusted for better fit in a more persegi card */
+    font-weight: 700; /* Equivalent to font-bold */
+    color: #1a202c; /* Equivalent to gray-900 */
+    margin-bottom: 0.75rem; /* Increased margin */
+    transition: color 0.3s ease;
+    line-height: 1.2; /* Tighter line height for titles */
+}
+
+.evt-event-card:hover .evt-card-title {
+    color: #166534; /* Darker green on hover */
+}
+
+.evt-location-text {
+    font-size: 1rem; /* Adjusted for better fit */
+    color: #555; /* Equivalent to gray-600 */
+    margin-bottom: 0.5rem; /* Space after location */
+}
+
+.evt-description-text {
+    color: #4a5568; /* Equivalent to gray-700 */
+    font-size: 0.95rem; /* Slightly smaller for compactness */
+    line-height: 1.5; /* Adjusted for compactness */
+    flex-grow: 1; /* Allows description to take available space */
+    margin-bottom: 1rem; /* Space before progress */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limit description to 3 lines */
+    -webkit-box-orient: vertical;
+}
+
+/* --- Progress Info --- */
+.evt-progress-stats {
+    display: flex;
+    flex-direction: column; /* Stack on mobile */
+    align-items: flex-start; /* Align text left */
+    font-size: 0.875rem;
+    color: #718096;
+    margin-bottom: 1rem;
+}
+
+.evt-registered-count {
+    color: #166534;
+    font-weight: bold;
+    margin-bottom: 0.5rem; /* Space between text and bar */
+}
+
+.evt-progress-bar {
+    width: 100%; /* Full width on mobile */
+    height: 0.5rem;
+    border-radius: 9999px;
+    overflow: hidden;
+    background-color: #e2e8f0;
+    border: none;
+    appearance: none;
+}
+
+.evt-progress-bar::-webkit-progress-bar {
+    background-color: #e2e8f0;
+    border-radius: 9999px;
+}
+.evt-progress-bar::-webkit-progress-value {
+    background-color: #4CAF50;
+    border-radius: 9999px;
+    transition: width 0.3s ease-in-out;
+}
+.evt-progress-bar::-moz-progress-bar {
+    background-color: #4CAF50;
+    border-radius: 9999px;
+}
+
+/* --- Register Button --- */
+.evt-register-btn {
+    width: 100%;
+    background-color: #28a745;
+    color: #ffffff;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: auto; /* Push button to the bottom of the flex container */
+}
+
+.evt-btn-seedling-icon {
+    font-size: 1.2rem;
+}
+
+.evt-register-btn:hover {
+    background-color: #1e873a;
+    transform: translateY(-2px);
+}
+
+.evt-register-btn:active {
+    transform: translateY(1px);
+}
+
+/* --- Common Modal Styles (for Registration, Code Input, Add Event, Delete Event Forms) --- */
+.evt-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem; /* Reduced padding for smaller screens */
+    z-index: 1000; /* Higher z-index for modals */
+}
+
+.evt-modal-card {
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    padding: 2.5rem; /* Increased padding for more space */
+    width: 90%; /* Responsive width */
+    max-width: 480px; /* Specific max-width for a more square look */
+    position: relative;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    animation: fadeInScale 0.3s ease-out;
+    min-height: auto; /* Allow height to adjust */
+    max-height: 90vh; /* Prevent modal from exceeding viewport height */
+    overflow-y: auto; /* Enable scrolling if content overflows */
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.evt-modal-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: #718096;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: color 0.2s ease;
+    background: none;
+    border: none;
+    padding: 0.25rem;
+}
+
+.evt-modal-close-btn:hover {
+    color: #e53e3e;
+}
+
+.evt-modal-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #2f855a;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.evt-modal-message {
+    color: #4a5568;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.evt-code-input-field {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #f7fafc;
+    margin-bottom: 1rem;
+}
+
+.evt-code-input-field:focus {
+    outline: none;
+    border-color: #48bb78;
+    box-shadow: 0 0 0 3px rgba(72, 187, 120, 0.2);
+    background-color: white;
+}
+
+.evt-input-error {
+    border-color: #e53e3e;
+}
+
+.evt-error-msg-inline {
+    color: #e53e3e;
+    font-size: 0.875rem;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.evt-code-submit-btn {
+    width: 100%;
+    background-color: #38a169;
+    color: #ffffff;
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 0.5rem;
+}
+
+.evt-code-submit-btn:hover {
+    background-color: #2f855a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.evt-code-submit-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .evt-grid-display {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .evt-page-container {
+        padding: 2rem 1rem;
+    }
+
+    .evt-main-title {
+        font-size: 2.5rem;
+    }
+
+    .evt-action-btns-wrap {
+        flex-direction: column;
+        gap: 1rem;
+        max-width: 300px; /* Constrain button width more on smaller screens */
+    }
+
+    .evt-action-btn {
+        width: 100%;
+        max-width: unset;
+    }
+
+    .evt-event-card {
+        aspect-ratio: unset; /* Remove fixed aspect ratio for better flexibility */
+        min-height: unset;
+        max-height: unset;
+        height: auto; /* Allow height to adjust based on content */
+        padding: 1rem; /* Reduce padding inside cards */
+    }
+
+    .evt-card-title {
+        font-size: 1.5rem;
+    }
+
+    .evt-description-text {
+        font-size: 0.9rem;
+        -webkit-line-clamp: 4; 
+    }
+
+    .evt-modal-card {
+        padding: 2rem;
+        max-height: 85vh; /* Adjust max-height for very small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .evt-page-container {
+        padding: 1rem 0.5rem;
+    }
+
+    .evt-main-title {
+        font-size: 2rem;
+    }
+
+    .evt-grid-display {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+        gap: 1.5rem;
+        padding: 0 0.5rem;
+    }
+
+    .evt-event-card {
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08); /* Lighter shadow */
+    }
+
+    .evt-date-text, .evt-location-text {
+        font-size: 1rem;
+    }
+
+    .evt-card-icon {
+        font-size: 1.3rem;
+    }
+
+    .evt-modal-card {
+        padding: 1.5rem;
+        width: 95%;
+    }
+
+    .evt-modal-title {
+        font-size: 1.5rem;
+    }
+
+    .evt-modal-message {
+        font-size: 0.9rem;
+    }
+
+    .evt-code-input-field, .evt-code-submit-btn {
+        padding: 0.65rem 0.8rem;
+        font-size: 0.95rem;
+    }
+}

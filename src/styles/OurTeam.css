@@ -1,0 +1,401 @@
+/* OurTeam.css */
+
+/* Variabel Warna */
+:root {
+  --primary: #0f172a; /* Warna primer, dark blue */
+  --accent: #38bdf8;  /* Warna aksen, light blue */
+  --bg: #f8fafc;     /* Latar belakang halaman, light grey */
+  --text: #1e293b;    /* Warna teks utama, dark grey */
+  --gradient-primary: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); /* Gradasi untuk elemen gelap */
+  --gradient-accent: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);  /* Gradasi untuk aksen */
+  --glass: rgba(255, 255, 255, 0.8);      /* Warna kaca (putih transparan) */
+  --glass-border: rgba(255, 255, 255, 0.2); /* Border kaca */
+}
+
+/* Reset CSS Dasar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Gaya Global Halaman */
+.ot-halaman-tim-kami body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden; /* Mencegah scroll horizontal */
+}
+
+/* Header & Footer (jika ada) */
+.ot-halaman-tim-kami header, .ot-halaman-tim-kami footer {
+  background: var(--primary);
+  color: white;
+}
+
+.ot-halaman-tim-kami header {
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.ot-halaman-tim-kami nav a {
+  color: white;
+  margin: 0 0.75rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.ot-halaman-tim-kami nav a:hover {
+  color: var(--accent);
+}
+
+/* Bagian Hero (Paling Atas) */
+.ot-area-hero {
+  background: var(--gradient-primary); /* Latar belakang gradasi primer */
+  position: relative;
+  padding: 6rem 2rem;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+  /* Tambahkan efek 'grain' atau 'noise' ke hero background */
+  background-image: var(--gradient-primary),
+                    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="80" cy="40" r="0.8" fill="%23ffffff" opacity="0.08"/><circle cx="40" cy="80" r="1.2" fill="%23ffffff" opacity="0.06"/><circle cx="90" cy="10" r="0.6" fill="%23ffffff" opacity="0.1"/><circle cx="10" cy="90" r="0.9" fill="%23ffffff" opacity="0.07"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  background-size: cover, auto; /* Cover untuk gradasi, auto untuk grain */
+  background-blend-mode: overlay; /* Padukan gradasi dan grain */
+}
+
+/* Konten area hero langsung di dalam area-hero, tanpa card terpisah */
+.ot-konten-area-hero {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  /* Hapus styling card yang membuat kotak terpisah */
+  /* background, backdrop-filter, border, border-radius, padding, box-shadow dihapus di sini */
+  animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.ot-area-hero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #ffffff 0%, #0ea5e9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.3)); }
+  to { filter: drop-shadow(0 0 30px rgba(56, 189, 248, 0.5)); }
+}
+
+.ot-subjudul-area-hero {
+  font-size: 1.3rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+/* Konten Utama */
+.ot-konten-utama-area {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+/* Kartu Terapung (Glass Card) di bagian isi */
+.ot-bagian-konten-area {
+  margin-bottom: 4rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.ot-bagian-konten-area:nth-child(2) { animation-delay: 0.2s; }
+.ot-bagian-konten-area:nth-child(3) { animation-delay: 0.4s; }
+.ot-bagian-konten-area:nth-child(4) { animation-delay: 0.6s; }
+.ot-bagian-konten-area:nth-child(5) { animation-delay: 0.8s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ot-kartu-kaca-area { /* Ini adalah "card" di bagian isi */
+  background: var(--glass); /* Menggunakan warna kaca seperti sebelumnya */
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  color: var(--text); /* Warna teks kembali ke warna default */
+}
+
+.ot-kartu-kaca-area::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.ot-kartu-kaca-area:hover::before {
+  left: 100%;
+}
+
+.ot-kartu-kaca-area:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.ot-ikon-bagian-area {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+  color : #0f172a;
+}
+
+.ot-judul-bagian-area {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ot-konten-bagian-area {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #475569; /* Warna teks isi */
+}
+
+/* Bagian Tim */
+.ot-grid-tim-area {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.ot-kartu-tim-area {
+  background: var(--gradient-primary); /* Background gradasi primer */
+  color: white;
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.ot-kartu-tim-area::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, transparent, rgba(56, 189, 248, 0.3), transparent);
+  animation: putar 4s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ot-kartu-tim-area:hover::before {
+  opacity: 1;
+}
+
+@keyframes putar {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.ot-avatar-tim-area {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1.5rem;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.ot-kartu-tim-area:hover .ot-avatar-tim-area {
+  transform: scale(1.1);
+}
+
+.ot-nama-tim-area {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.ot-peran-tim-area {
+  color:  #0ea5e9;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.ot-deskripsi-tim-area {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.ot-tautan-linkedin-tim {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #0ea5e9;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.ot-tautan-linkedin-tim:hover {
+  color: white;
+}
+
+/* Tombol WhatsApp */
+.ot-tombol-whatsapp-area {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #075E54; /* Warna hijau tua seperti sebelumnya */
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.ot-tombol-whatsapp-area:hover {
+  background-color: #128C7E;
+}
+
+/* Footer (jika ada) */
+.ot-halaman-tim-kami footer {
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  margin-top: 4rem;
+  font-size: 0.9rem;
+}
+
+.ot-halaman-tim-kami footer div {
+  flex: 1;
+  min-width: 200px;
+}
+
+.ot-halaman-tim-kami footer h5 {
+  color: #cbd5e1;
+  margin-bottom: 1rem;
+}
+
+.ot-halaman-tim-kami footer a {
+  color: #cbd5e1;
+  display: block;
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.ot-halaman-tim-kami footer a:hover {
+  color: var(--accent);
+}
+
+/* Media Queries untuk Responsivitas */
+@media (max-width: 768px) {
+  .ot-area-hero {
+    padding: 3rem 1rem;
+  }
+  .ot-konten-area-hero { /* Tidak ada lagi styling card terpisah */
+    padding: 0; /* Hapus padding jika tidak diperlukan lagi */
+    max-width: 100%; /* Memastikan konten mengisi lebar */
+  }
+  .ot-area-hero h1 {
+    font-size: 2.5rem;
+  }
+  .ot-subjudul-area-hero {
+    font-size: 1.1rem;
+  }
+
+  .ot-konten-utama-area {
+    padding: 2rem 1rem;
+  }
+
+  .ot-kartu-kaca-area {
+    padding: 1.5rem;
+  }
+  .ot-judul-bagian-area {
+    font-size: 1.8rem;
+    flex-direction: column; /* Ikon dan teks bisa tumpuk */
+    align-items: flex-start;
+  }
+  .ot-ikon-bagian-area {
+    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+  }
+
+  .ot-grid-tim-area {
+    grid-template-columns: 1fr; /* Satu kolom untuk mobile */
+  }
+
+  .ot-halaman-tim-kami footer {
+    flex-direction: column;
+    text-align: center;
+  }
+  .ot-halaman-tim-kami footer div {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ot-area-hero h1 {
+    font-size: 2rem;
+  }
+  .ot-subjudul-area-hero {
+    font-size: 0.95rem;
+  }
+  .ot-kartu-kaca-area {
+    padding: 1rem;
+  }
+  .ot-judul-bagian-area {
+    font-size: 1.5rem;
+  }
+  .ot-konten-bagian-area, .ot-deskripsi-tim-area {
+    font-size: 0.9rem;
+  }
+}

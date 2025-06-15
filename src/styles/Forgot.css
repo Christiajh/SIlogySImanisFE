@@ -1,0 +1,875 @@
+/* Base Styles */
+:root {
+    --primary: #2e7d32;
+    --primary-light: #60ad5e;
+    --primary-dark: #005005;
+    --secondary: #8bc34a;
+    --accent: #ffc107;
+    --text: #333;
+    --text-light: #666;
+    --bg: #f5f5f5;
+    --card-bg: #fff;
+    --success: #4caf50;
+    --error: #f44336;
+    --font-main: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg);
+    font-family: var(--font-main);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* Container Styles */
+.wb-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: -12px 1px;
+    background-color: var(--bg);
+    position: relative;
+    overflow: hidden;
+
+    /* Latar belakang yang elegan dan menyatu */
+    background-image: 
+        radial-gradient(circle at top left, rgba(139, 195, 74, 0.08), transparent 40%),
+        radial-gradient(circle at bottom right, rgba(46, 125, 50, 0.08), transparent 40%);
+}
+
+
+/* Background Elements (Optional, based on original. Keeping for completeness) */
+/* Re-prefixed classes to avoid global conflicts and improve readability */
+.wb-bg-elements {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.wb-floating-leaf {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+    animation: wb-float 15s infinite ease-in-out;
+}
+
+.wb-floating-leaf.leaf-1 {
+    width: 80px;
+    height: 80px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%232e7d32"><path d="M17 8C8 10 5.9 16.8 4 18c1.8 1.1 4.3 1.8 7 1.8 2.8 0 5.3-.7 7-1.8-1.9-1.2-4-8-13-10z"/></svg>');
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.wb-floating-leaf.leaf-2 {
+    width: 60px;
+    height: 60px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%238bc34a"><path d="M12 3C6.5 3 2 7.5 2 13c0 2.4 1.1 4.6 3 6l-1 1v2h18v-2l-1-1c1.9-1.4 3-3.6 3-6 0-5.5-4.5-10-10-10zm0 16c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"/></svg>');
+    top: 25%;
+    right: 8%;
+    animation-delay: 1s;
+}
+
+.wb-floating-leaf.leaf-3 {
+    width: 100px;
+    height: 100px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2360ad5e"><path d="M12 3C6.5 3 2 7.5 2 13c0 2.4 1.1 4.6 3 6l-1 1v2h18v-2l-1-1c1.9-1.4 3-3.6 3-6 0-5.5-4.5-10-10-10zm0 16c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"/></svg>');
+    bottom: 15%;
+    left: 10%;
+    animation-delay: 2s;
+}
+
+.wb-floating-leaf.leaf-4 {
+    width: 50px;
+    height: 50px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%232e7d32"><path d="M17 8C8 10 5.9 16.8 4 18c1.8 1.1 4.3 1.8 7 1.8 2.8 0 5.3-.7 7-1.8-1.9-1.2-4-8-13-10z"/></svg>');
+    bottom: 25%;
+    right: 15%;
+    animation-delay: 3s;
+}
+
+.wb-floating-leaf.leaf-5 {
+    width: 70px;
+    height: 70px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%238bc34a"><path d="M12 3C6.5 3 2 7.5 2 13c0 2.4 1.1 4.6 3 6l-1 1v2h18v-2l-1-1c1.9-1.4 3-3.6 3-6 0-5.5-4.5-10-10-10zm0 16c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"/></svg>');
+    top: 15%;
+    right: 20%;
+    animation-delay: 4s;
+}
+
+.wb-floating-leaf.leaf-6 {
+    width: 90px;
+    height: 90px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2360ad5e"><path d="M17 8C8 10 5.9 16.8 4 18c1.8 1.1 4.3 1.8 7 1.8 2.8 0 5.3-.7 7-1.8-1.9-1.2-4-8-13-10z"/></svg>');
+    bottom: 10%;
+    right: 5%;
+    animation-delay: 5s;
+}
+
+.wb-earth-orbit {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border: 1px dashed rgba(46, 125, 50, 0.2);
+    border-radius: 50%;
+    top: -150px;
+    right: -150px;
+    animation: wb-spin 60s linear infinite;
+}
+
+.wb-earth-orbit-2 {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border: 1px dashed rgba(139, 195, 74, 0.2);
+    border-radius: 50%;
+    bottom: -250px;
+    left: -250px;
+    animation: wb-spin-reverse 80s linear infinite;
+}
+
+.new-password-group {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.new-password-label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333333;
+}
+
+.new-password-input {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.new-password-input:focus {
+  border-color: #00ffae;
+  outline: none;
+}
+
+.new-password-error {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #d93025;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
+@keyframes wb-float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+}
+
+@keyframes wb-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes wb-spin-reverse {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+/* Main Card Styles */
+.wb-card {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 1500px; /* Lebih lebar untuk desktop */
+    margin: 40px auto; /* Tengah di layar */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.06); /* Sedikit lebih tegas */
+    padding: 32px; /* Tambahan padding dalam */
+    transition: box-shadow 0.3s ease;
+}
+
+
+/* Header Section */
+.wb-header {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary)); /* Stronger gradient */
+    padding: 2rem;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 5px solid var(--secondary); /* Accent line */
+}
+
+.wb-header-content {
+    position: relative;
+    z-index: 1;
+}
+
+.wb-logo-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.wb-logo-icon {
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wb-leaf-logo {
+    color: var(--accent);
+}
+
+.wb-app-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.wb-app-subtitle {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    margin: 0;
+}
+
+/* Progress Section */
+.wb-progress-section {
+    padding: 1.5rem 2rem;
+    background-color: var(--card-bg);
+    border-bottom: 1px solid rgba(46, 125, 50, 0.1);
+}
+
+.wb-progress-steps {
+    display: flex;
+    justify-content: space-evenly; /* Adjusted for 2 steps */
+    align-items: center;
+    position: relative;
+    margin: 2rem 0;
+}
+
+.wb-progress-steps::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 10%; /* Adjust to start before first circle */
+    right: 10%; /* Adjust to end after last circle */
+    height: 2px;
+    background-color: #e0e0e0;
+    z-index: 0;
+}
+
+.wb-step-item {
+    display: flex;
+    align-items: center;
+    flex: 1; /* Allows even distribution */
+    position: relative;
+    justify-content: center;
+    padding: 0 10px;
+    text-align: center;
+}
+
+.wb-step-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    z-index: 1;
+    transition: all 0.3s ease;
+    border: 2px solid #e0e0e0;
+    margin: 0 auto 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Added subtle shadow */
+}
+
+.wb-step-circle.active {
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3); /* Enhanced shadow when active */
+}
+
+.wb-step-line {
+    position: absolute;
+    left: 50%;
+    right: -50%; /* Adjusted for 2 steps */
+    top: 50%;
+    height: 2px;
+    background-color: #e0e0e0;
+    transform: translateY(-50%);
+    z-index: 0;
+    transition: background-color 0.3s ease;
+}
+
+.wb-step-line.active {
+    background-color: var(--primary);
+}
+
+.wb-step-labels {
+    display: flex;
+    justify-content: space-evenly; /* Adjusted for 2 steps */
+    font-size: 0.85rem;
+    color: var(--text-light);
+    padding: 0 10px;
+}
+
+.wb-step-labels span {
+    font-weight: 600;
+    color: var(--primary-dark);
+    margin-bottom: 0.25rem;
+    flex: 1;
+    text-align: center;
+}
+
+
+/* Content Area */
+.wb-content {
+    padding: 2rem;
+    flex-grow: 1;
+}
+
+.wb-step-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.wb-step-header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.wb-step-icon-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+}
+
+.wb-step-icon {
+    font-size: 2.8rem; /* Slightly larger icon */
+    color: var(--primary-light);
+}
+
+.wb-step-title {
+    font-size: 1.8rem; /* Larger title */
+    color: var(--primary-dark);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.wb-step-description {
+    font-size: 1rem; /* Slightly larger description */
+    color: var(--text-light);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Input Group */
+.wb-input-group {
+    margin-bottom: 1.25rem;
+    position: relative;
+}
+
+.wb-input-label {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+    font-size: 0.95rem; /* Slightly larger label */
+}
+
+.wb-input-field, .wb-password-input, .wb-select-field {
+    width: 100%;
+    padding: 1rem 1.2rem; /* Increased padding */
+    border: 1px solid #ddd;
+    border-radius: 10px; /* More rounded corners */
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: white;
+    /* Added subtle inset shadow for depth */
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.wb-select-field {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.8rem; /* Space for the custom arrow */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+
+.wb-input-field:focus, .wb-password-input:focus, .wb-select-field:focus {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 4px rgba(139, 195, 74, 0.3); /* Stronger focus highlight */
+}
+
+.wb-input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.wb-input-with-icon .wb-input-field {
+    padding-left: 3rem; /* Space for the icon */
+}
+
+.wb-input-icon {
+    position: absolute;
+    left: 1rem;
+    color: var(--text-light);
+    font-size: 1.3rem; /* Larger icon */
+}
+
+.wb-error-text {
+    color: var(--error);
+    font-size: 0.9rem; /* Slightly larger error text */
+    margin-top: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 500;
+}
+.wb-error-text.wb-align-center {
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 1rem; /* More space for general errors */
+}
+
+.wb-error-text svg {
+    font-size: 1.1rem;
+}
+
+
+/* Buttons */
+.wb-primary-button {
+    width: 100%;
+    padding: 1.1rem 1.5rem; /* Increased padding */
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: white;
+    border: none;
+    border-radius: 12px; /* More rounded */
+    font-size: 1.15rem; /* Slightly larger text */
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    box-shadow: 0 5px 15px rgba(46, 125, 50, 0.2); /* Initial shadow */
+}
+
+.wb-primary-button:hover:not(:disabled) {
+    box-shadow: 0 8px 20px rgba(46, 125, 50, 0.4); /* Stronger hover shadow */
+    transform: translateY(-3px); /* More pronounced lift */
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+}
+
+.wb-primary-button:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+    box-shadow: none;
+    transform: none;
+}
+
+.wb-button-icon {
+    font-size: 1.4rem; /* Larger icon */
+}
+
+.wb-secondary-button {
+    padding: 0.9rem 1.3rem; /* Increased padding */
+    background-color: #f0f0f0;
+    color: var(--text);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+}
+
+.wb-secondary-button:hover {
+    background-color: #e0e0e0;
+    border-color: #ccc;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Subtle hover shadow */
+}
+
+/* Loading Spinner */
+.wb-loading-spinner {
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid white;
+    border-radius: 50%;
+    width: 24px; /* Larger spinner */
+    height: 24px;
+    animation: wb-spin 1s linear infinite;
+}
+
+/* Password Fields */
+.wb-password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.wb-password-input {
+    padding-right: 3.5rem; /* More space for the eye icon */
+}
+
+.wb-password-toggle {
+    position: absolute;
+    right: 1rem; /* Adjust position */
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-light);
+    transition: color 0.2s;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.wb-password-toggle:hover {
+    color: var(--primary);
+}
+
+.wb-eye-icon {
+    font-size: 1.3rem; /* Larger icon */
+}
+
+/* Password Requirements */
+.wb-password-requirements {
+    background-color: rgba(139, 195, 74, 0.1); /* Slightly more prominent background */
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem; /* Increased padding */
+    margin-top: -0.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(139, 195, 74, 0.15); /* Subtle border */
+}
+
+.wb-requirements-title {
+    font-weight: 700; /* Bolder title */
+    color: var(--primary-dark);
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+}
+
+.wb-requirements-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+}
+
+.wb-requirement-item {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-size: 0.9rem; /* Slightly larger text */
+}
+
+.wb-requirement-icon {
+    font-size: 1.2rem; /* Larger icon */
+}
+
+.wb-requirement-icon.valid {
+    color: var(--success);
+}
+
+.wb-requirement-icon.invalid {
+    color: var(--error);
+}
+
+.wb-requirement-text {
+    color: var(--text-light);
+}
+
+.wb-requirement-text.valid {
+    color: var(--primary-dark);
+    font-weight: 500;
+}
+
+/* Button Group */
+.wb-button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.wb-button-group .wb-secondary-button {
+    flex: 1;
+}
+
+.wb-button-group .wb-primary-button {
+    flex: 2;
+}
+
+/* Success Modal */
+.wb-success-modal {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* More prominent shadow */
+    width: 100%;
+    max-width: 480px; /* Slightly wider */
+    padding: 3.5rem 2.5rem; /* Increased padding */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.8rem; /* Increased gap */
+    border: 1px solid rgba(76, 175, 80, 0.1); /* Green border */
+}
+
+.wb-success-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.wb-success-icon {
+    font-size: 4.5rem; /* Larger icon */
+    color: var(--success);
+    margin-bottom: 0.5rem;
+}
+
+.wb-success-title {
+    font-size: 2rem; /* Larger title */
+    color: var(--primary-dark);
+    margin: 0;
+    font-weight: 700;
+}
+
+.wb-success-text {
+    font-size: 1.1rem; /* Larger text */
+    color: var(--text-light);
+}
+
+.wb-success-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 2rem; /* More space */
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.wb-leaf-icon {
+    font-size: 1.8rem; /* Larger leaf */
+    color: var(--secondary);
+}
+
+/* Footer */
+.wb-footer {
+    background-color: var(--primary-dark);
+    color: white;
+    padding: 1.2rem; /* Increased padding */
+    text-align: center;
+    font-size: 0.9rem; /* Slightly larger font */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); /* Subtle inner shadow */
+}
+
+.wb-footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+}
+
+.wb-footer-leaf {
+    color: var(--secondary);
+    font-size: 1.4rem; /* Larger leaf */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .wb-card {
+        padding: 2px;
+        margin: -22px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+        border-radius: 12px;
+    }
+
+    .wb-container {
+        padding: 20px 12px;
+        background-image: 
+            radial-gradient(circle at top left, rgba(139, 195, 74, 0.05), transparent 40%),
+            radial-gradient(circle at bottom right, rgba(46, 125, 50, 0.05), transparent 40%);
+    }
+
+    .wb-header {
+        padding: 1.5rem;
+    }
+
+    .wb-app-title {
+        font-size: 1.75rem;
+    }
+
+    .wb-app-subtitle {
+        font-size: 0.85rem;
+    }
+
+    .wb-progress-section {
+        padding: 1rem 1.5rem;
+    }
+
+    .wb-step-circle {
+        width: 36px; /* Slightly smaller */
+        height: 36px;
+        font-size: 0.85rem;
+    }
+    .wb-progress-steps::before {
+        left: 5%;
+        right: 5%;
+    }
+
+    .wb-step-labels {
+        font-size: 0.8rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .wb-step-labels span {
+        text-align: center;
+    }
+
+
+    .wb-content {
+        padding: 1.5rem;
+    }
+
+    .wb-step-title {
+        font-size: 1.5rem;
+    }
+
+    .wb-step-description {
+        font-size: 0.9rem;
+    }
+
+    .wb-input-field, .wb-password-input, .wb-select-field {
+        padding: 0.8rem 1rem;
+        font-size: 0.95rem;
+        border-radius: 8px; /* Slightly less rounded for mobile */
+    }
+    .wb-input-with-icon .wb-input-field {
+        padding-left: 2.8rem;
+    }
+    .wb-input-icon {
+        left: 0.8rem;
+        font-size: 1.2rem;
+    }
+    .wb-select-field {
+        padding-right: 2.5rem;
+    }
+
+
+    .wb-primary-button, .wb-secondary-button {
+        padding: 0.9rem 1.2rem;
+        font-size: 1.05rem;
+        border-radius: 10px;
+    }
+
+    .wb-button-group {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .wb-button-group .wb-primary-button,
+    .wb-button-group .wb-secondary-button {
+        width: 100%;
+    }
+
+    .wb-password-requirements {
+        padding: 1rem;
+        border-radius: 10px;
+    }
+    .wb-requirements-title {
+        font-size: 0.95rem;
+    }
+    .wb-requirement-item {
+        font-size: 0.8rem;
+    }
+    .wb-requirement-icon {
+        font-size: 1.1rem;
+    }
+
+    .wb-success-modal {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .wb-success-icon {
+        font-size: 3.5rem;
+    }
+
+    .wb-success-title {
+        font-size: 1.7rem;
+    }
+
+    .wb-success-text {
+        font-size: 1rem;
+    }
+    .wb-success-footer {
+        font-size: 0.9rem;
+    }
+    .wb-leaf-icon {
+        font-size: 1.6rem;
+    }
+
+    .wb-footer {
+        padding: 1rem;
+        font-size: 0.8rem;
+    }
+    .wb-footer-leaf {
+        font-size: 1.1rem;
+    }
+}

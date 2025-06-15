@@ -1,0 +1,154 @@
+/* --- Feature Section Styling (Existing CSS will go here) --- */
+
+/* Ini contoh dari CSS yang sudah ada atau yang mungkin Anda miliki */
+.sek_fitur_ajaib {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.judul_lingkungan_hebat {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2.5rem;
+    color: #333;
+}
+
+.wadah_gulir_ajaib {
+    overflow-x: auto;
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none;  /* For IE and Edge */
+}
+
+.wadah_gulir_ajaib::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+}
+
+.karusel_kartu_gila {
+    display: flex;
+    gap: 1.5rem;
+    padding-bottom: 1rem; /* Memberi ruang untuk scrollbar jika muncul */
+    min-width: fit-content; /* Memastikan div cukup lebar untuk semua kartu */
+}
+
+.kartu_fitur_unik {
+    flex: 0 0 auto; /* Mencegah kartu menyusut */
+    width: 280px; /* Lebar tetap untuk kartu */
+    border-radius: 1rem;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+    background-color: #ffffff;
+}
+
+.kartu_fitur_unik:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 76, 38, 0.2); /* Shadow yang lebih hijau */
+}
+
+.ikon_fitur_fantastis {
+    font-size: 3.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    line-height: 1; /* Menghilangkan spasi ekstra di sekitar ikon */
+}
+
+.judul_kartu_hijau {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: #1a6d3f; /* Warna hijau yang lebih gelap dari success */
+}
+
+.deskripsi_fitur_detail {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* --- CTA Section Styling (Unique CSS for CTA) --- */
+.cta-section-wrapper {
+    padding-top: 4rem; /* py-10 */
+    padding-bottom: 4rem; /* py-10 */
+    background: linear-gradient(to right, #476947, #406e42); /* from-emerald-500 to-green-600 */
+    color: #ffffff; /* text-white */
+    border-radius: 1rem; /* rounded-xl */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.15); /* shadow-2xl */
+    margin-left: auto; /* mx-auto */
+    margin-right: auto; /* mx-auto */
+    margin-top: 2rem; /* my-8 */
+    margin-bottom: 2rem; /* my-8 */
+    max-width: 72rem; /* max-w-6xl (1280px) */
+    text-align: center; /* text-center */
+    padding-left: 1rem; /* px-4 */
+    padding-right: 1rem; /* px-4 */
+}
+
+.cta-title {
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 800; /* font-extrabold */
+    margin-bottom: 1.5rem; /* mb-6 */
+    line-height: 1.2; /* Untuk kontrol baris */
+}
+
+.cta-description {
+    font-size: 1.25rem; /* text-xl */
+    margin-bottom: 2.5rem; /* mb-10 */
+    line-height: 1.6; /* leading-relaxed */
+    max-width: 48rem; /* max-w-3xl (768px) */
+    margin-left: auto; /* mx-auto */
+    margin-right: auto; /* mx-auto */
+}
+
+.cta-button {
+    background-color: #ffffff; /* bg-white */
+    color: #1a6d3f; /* text-green-700 (warna hijau gelap yang konsisten) */
+    font-weight: bold; /* font-bold */
+    padding: 1rem 2.5rem; /* py-4 px-10 */
+    border-radius: 9999px; /* rounded-full */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.318), 0 4px 6px rgba(0, 0, 0, 0.05); /* shadow-lg */
+    transition: all 0.3s ease; /* transition duration-300 ease-in-out */
+    font-size: 1.25rem; /* text-xl */
+    border: none;
+    cursor: pointer;
+    outline: none; /* focus:outline-none */
+}
+
+.cta-button:hover {
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.2), 0 8px 10px rgba(0, 0, 0, 0.1); /* hover:shadow-xl */
+    transform: translateY(-3px) scale(1.03); /* transform hover:scale-105 */
+}
+
+.cta-button:focus {
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.5); /* focus:ring-4 focus:ring-white focus:ring-opacity-50 */
+}
+
+
+/* Media Queries for Responsiveness */
+@media (min-width: 768px) { /* md: prefixes in Tailwind */
+    .cta-description {
+        font-size: 1.5rem; /* md:text-2xl */
+    }
+    .cta-section-wrapper {
+        margin-top: 3rem; /* md:my-12 */
+        margin-bottom: 3rem; /* md:my-12 */
+    }
+}
+
+@media (max-width: 767px) { /* Adjust for smaller screens */
+    .cta-section-wrapper {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        border-radius: 0.75rem;
+    }
+    .cta-title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    .cta-description {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    .cta-button {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
+}

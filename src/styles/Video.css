@@ -1,0 +1,351 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* Basic Reset & Body Styling */
+.wb-video-playlist-container {
+    font-family: 'Poppins', sans-serif;
+    padding: 40px 20px;
+    background-color: #ffffff; /* Light green-ish background */
+    color: #333;
+    line-height: 1.7;
+    min-height: 100vh;
+}
+
+/* Header Section */
+.wb-video-playlist-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.wb-video-playlist-header h1 {
+    color: #2c7744; /* Darker green */
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.wb-video-playlist-header .wb-subtitle {
+    color: #5a5a5a;
+    font-style: italic;
+    font-size: 1.3em;
+    font-weight: 300;
+}
+
+/* Overview Section */
+.wb-playlist-overview {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 30px;
+    background-color: #e6ffe6; /* Lighter green */
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    font-size: 1.2em;
+    color: #388e3c;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+}
+
+.wb-wargabuatin-highlight {
+    font-weight: 700;
+    color: #007bff;
+    text-decoration: underline;
+}
+
+/* Category Filter Buttons */
+.wb-category-filter {
+    text-align: center;
+    margin-bottom: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.wb-filter-btn {
+    background-color: #fff;
+    color: #4CAF50;
+    border: 2px solid #4CAF50;
+    padding: 12px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.wb-filter-btn:hover {
+    background-color: #e8f5e9;
+    color: #388e3c;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.wb-filter-btn.active {
+    background-color: #4CAF50;
+    color: #fff;
+    border-color: #4CAF50;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Playlists Grid */
+.wb-playlists-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.wb-playlist-card {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border: 1px solid #e0e0e0;
+    overflow: hidden; /* For rounded iframe */
+}
+
+.wb-playlist-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.wb-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.wb-card-icon {
+    font-size: 2.8em;
+    color: #2c7744;
+    background-color: #e6ffe6;
+    border-radius: 50%;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.wb-playlist-title {
+    color: #333;
+    font-size: 1.8em;
+    font-weight: 700;
+    margin: 0; /* Reset margin */
+}
+
+.wb-playlist-category {
+    color: #777;
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.wb-category-label {
+    font-weight: 700;
+    color: #28a745;
+}
+
+.wb-playlist-description {
+    color: #555;
+    font-size: 1em;
+    margin-bottom: 25px;
+    min-height: 60px; /* Ensure consistent height for description */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wb-video-embed-container {
+    width: 100%;
+    max-width: 600px; /* Increased max-width for better viewing */
+    margin-bottom: 0; /* Adjusted margin */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.wb-video-embed-container iframe {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9; /* Standard YouTube aspect ratio */
+    border: none;
+}
+
+.wb-no-videos-message {
+    grid-column: 1 / -1; /* Center message across all columns */
+    text-align: center;
+    font-size: 1.3em;
+    color: #888;
+    padding: 50px 0;
+    background-color: #fdfdfd;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* Call to Action Section */
+.wb-call-to-action.elegant-cta {
+    text-align: center;
+    padding: 60px;
+    background-color: #d4edda; /* Deeper light green */
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    max-width: 1100px;
+    margin: 60px auto 40px auto;
+}
+
+.wb-cta-title {
+    color: #2c7744;
+    font-size: 2.8em;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.wb-cta-text {
+    color: #555;
+    font-size: 1.3em;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.wb-cta-button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.wb-cta-button:hover {
+    background-color: #388e3c;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .wb-video-playlist-header h1 {
+        font-size: 3em;
+    }
+    .wb-playlist-card {
+        padding: 25px;
+    }
+    .wb-playlist-title {
+        font-size: 1.6em;
+    }
+    .wb-cta-title {
+        font-size: 2.2em;
+    }
+}
+
+@media (max-width: 768px) {
+    .wb-video-playlist-container {
+        padding: 20px 15px;
+    }
+    .wb-video-playlist-header h1 {
+        font-size: 2.5em;
+    }
+    .wb-video-playlist-header .wb-subtitle {
+        font-size: 1.1em;
+    }
+    .wb-playlist-overview {
+        font-size: 1em;
+        padding: 20px;
+    }
+    .wb-category-filter {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .wb-filter-btn {
+        width: 80%;
+        max-width: 300px;
+        margin: auto;
+    }
+    .wb-playlists-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .wb-playlist-card {
+        padding: 20px;
+    }
+    .wb-card-icon {
+        font-size: 2.5em;
+        padding: 12px;
+    }
+    .wb-playlist-title {
+        font-size: 1.4em;
+    }
+    .wb-playlist-description {
+        font-size: 0.95em;
+        min-height: unset; /* Remove fixed height on small screens */
+    }
+    .wb-video-embed-container {
+        border-radius: 8px;
+    }
+    .wb-call-to-action.elegant-cta {
+        padding: 40px 20px;
+    }
+    .wb-cta-title {
+        font-size: 1.8em;
+    }
+    .wb-cta-text {
+        font-size: 1.1em;
+    }
+    .wb-cta-button {
+        padding: 12px 25px;
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .wb-video-playlist-header h1 {
+        font-size: 2em;
+    }
+    .wb-video-playlist-header .wb-subtitle {
+        font-size: 0.9em;
+    }
+    .wb-playlist-overview {
+        font-size: 0.95em;
+    }
+    .wb-filter-btn {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+    .wb-playlist-card {
+        padding: 15px;
+    }
+    .wb-card-icon {
+        font-size: 2em;
+        padding: 10px;
+    }
+    .wb-playlist-title {
+        font-size: 1.2em;
+    }
+    .wb-playlist-description {
+        font-size: 0.9em;
+    }
+    .wb-cta-title {
+        font-size: 1.5em;
+    }
+    .wb-cta-text {
+        font-size: 1em;
+    }
+    .wb-cta-button {
+        font-size: 1em;
+    }
+}

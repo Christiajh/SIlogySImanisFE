@@ -1,0 +1,648 @@
+/* Variabel untuk theming yang konsisten */
+:root {
+  --main-dark-blue: #001F3F; /* Dark Navy Blue */
+  --accent-blue: #007bff; /* Bright Blue untuk aksen */
+  --navy-light: #A7C7E7; /* Warna navy light baru */
+  --pure-white: #FFFFFF;
+  --text-primary-dark: #333333;
+  --text-secondary-grey: #666666;
+  --text-inverse-light: #F0F0F0;
+  --default-card-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  --hover-card-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  --border-light-navy: rgba(0, 31, 63, 0.1); /* Navy lebih terang untuk border */
+}
+
+/* Reset & global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary-dark);
+  background-color: #F8F9FA; /* Background halaman yang sangat terang */
+  margin: 0;
+  padding: 0;
+}
+
+/* Container utama hanya untuk konten tengah, hero section berada di luarnya (atau diatur khusus) */
+.main-content-wrapper {
+  max-width: 1200px; /* Batasi lebar konten utama */
+  margin: auto; /* Tengah secara horizontal */
+  padding: 2rem; /* Tambahkan padding agar konten tidak menempel ke sisi */
+}
+
+/* Style Bagian Umum */
+.content-section-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--main-dark-blue);
+  text-align: center;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.05rem;
+}
+
+.text-color-white {
+  color: var(--pure-white) !important;
+}
+
+/* Bagian Hero Banner */
+.hero-banner-section {
+  text-align: center;
+  padding: 6rem 2rem; /* Meningkatkan tinggi */
+  background: linear-gradient(135deg, #111721 0%, #010e2f 100%);
+  border-radius: 0;
+  /* Sesuaikan margin-top negatif untuk menggeser ke atas */
+  margin-top: -40px; /* Geser ke atas 30px */
+  margin-bottom: 3rem;
+  box-shadow: var(--default-card-shadow);
+  position: relative; /* Penting untuk pseudo-elemen kilauan */
+  overflow: hidden; /* Penting agar kilauan tidak keluar batas */
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  box-sizing: border-box;
+  display: flex; /* Gunakan flexbox untuk pemosisian vertikal */
+  flex-direction: column;
+  justify-content: center; /* Tengahkan konten secara vertikal */
+  align-items: center; /* Tengahkan konten secara horizontal */
+}
+
+/* Animasi Kilauan Matahari */
+.hero-banner-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.1) 0%, /* Kilauan yang lebih halus */
+    rgba(255, 255, 255, 0.05) 20%,
+    transparent 60%
+  );
+  transform: rotate(45deg);
+  animation: sparkle-shine 5s infinite linear; /* Animasi berulang */
+  opacity: 0.8;
+  pointer-events: none; /* Pastikan tidak mengganggu interaksi mouse */
+}
+
+@keyframes sparkle-shine {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+.main-heading-title {
+  font-size: 3.8rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffffff, #a7c7e7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 15px;
+  animation: slideDown 1s ease-out;
+  z-index: 1; /* Pastikan teks di atas kilauan */
+  position: relative;
+}
+
+.hero-sub-text {
+  font-size: 1.5rem;
+  color: var(--text-inverse-light);
+  margin-bottom: 30px;
+  animation: slideUp 1s ease-out 0.3s both;
+  z-index: 1; /* Pastikan teks di atas kilauan */
+  position: relative;
+}
+
+/* Konten lainnya agar tetap dalam batas max-width dan di tengah */
+.platform-workflow-area,
+.platform-features-grid,
+.video-demonstration-section,
+/* .platform-impact-overview, */ /* Removed this section */
+.environmental-vision-section, /* Added new section */
+.main-call-to-action-area {
+  padding: 60px 40px;
+  margin: 40px auto;
+  max-width: 1200px;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+
+/* Area Alur Kerja Platform */
+.platform-workflow-area {
+  background: var(--pure-white);
+  border: 1px solid var(--border-light-navy);
+  position: relative;
+  overflow: hidden;
+}
+
+.process-journey-flow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.process-journey-step {
+  flex: 1 1 220px;
+  background: linear-gradient(to bottom right, var(--navy-light), var(--pure-white));
+  border: 2px solid var(--main-dark-blue);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.process-journey-step::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom right, rgba(0, 31, 63, 0.05), rgba(255, 255, 255, 0));
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.process-journey-step:hover::before {
+  opacity: 1;
+}
+
+.process-journey-step:hover {
+  border-color: var(--accent-blue);
+  transform: translateY(-15px);
+  box-shadow: var(--hover-card-shadow);
+}
+
+.step-icon-container {
+  font-size: 2.2rem;
+  color: var(--main-dark-blue);
+  margin-bottom: 0.8rem;
+  position: relative;
+  display: inline-block;
+  background-color: var(--pure-white);
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.step-order-indicator {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  background: var(--main-dark-blue);
+  color: var(--pure-white);
+  font-weight: bold;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.step-card-title {
+  font-size: 1.3rem;
+  margin-bottom: .7rem;
+  color: var(--main-dark-blue);
+  font-weight: 600;
+}
+
+.step-card-description {
+  font-size: 1rem;
+  color: var(--text-secondary-grey);
+}
+
+.process-flow-arrow {
+  font-size: 3rem;
+  color: var(--main-dark-blue);
+  align-self: center;
+  margin: 0 1rem;
+  animation: bounceArrow 1.5s infinite ease-in-out;
+  display: none;
+}
+
+/* Grid Fitur Platform */
+.platform-features-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.feature-highlight-card {
+  flex: 1 1 300px;
+  background: linear-gradient(to top left, var(--navy-light), var(--pure-white));
+  border: 1px solid var(--border-light-navy);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.4s ease;
+  box-shadow: var(--default-card-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-highlight-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top left, rgba(0, 31, 63, 0.05), rgba(255, 255, 255, 0));
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.feature-highlight-card:hover::before {
+  opacity: 1;
+}
+
+.feature-highlight-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--hover-card-shadow);
+  border-color: var(--accent-blue);
+}
+
+.feature-card-icon {
+  font-size: 2.5rem;
+  color: var(--main-dark-blue);
+  margin-bottom: 1.2rem;
+  background-color: var(--pure-white);
+  border-radius: 50%;
+  padding: 12px;
+  display: inline-block;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.feature-card-title {
+  font-size: 1.6rem;
+  margin-bottom: 0.8rem;
+  color: var(--main-dark-blue);
+  font-weight: 600;
+}
+
+.feature-card-description {
+  font-size: 1.05rem;
+  color: var(--text-secondary-grey);
+}
+
+/* Bagian Demonstrasi Video */
+.video-demonstration-section {
+  background: var(--main-dark-blue);
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  box-shadow: var(--default-card-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.video-demonstration-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.05), transparent 70%);
+  z-index: 0;
+}
+
+.video-intro-paragraph {
+  font-size: 1.3rem;
+  color: var(--text-inverse-light);
+  margin-bottom: 40px;
+}
+
+.video-player-frame {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  padding: 70px 40px;
+  margin: 30px auto;
+  max-width: 800px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--pure-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.video-player-frame:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.01);
+}
+
+.video-play-button {
+  width: 80px;
+  height: 80px;
+  background: var(--pure-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: var(--main-dark-blue);
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.video-play-button:hover {
+  transform: scale(1.1);
+}
+
+.video-frame-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.video-frame-duration {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+/* New Section: Environmental Vision */
+.environmental-vision-section {
+  margin-bottom: 4rem;
+  text-align: center;
+  background-color: var(--pure-white);
+  border: 1px solid var(--border-light-navy);
+}
+
+.vision-intro-paragraph {
+  color: var(--text-secondary-grey);
+  font-size: 1.3rem;
+  margin-bottom: 2.5rem;
+}
+
+.environmental-vision-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.environmental-vision-card {
+  background: linear-gradient(to top, var(--navy-light), var(--pure-white));
+  border: 1px solid var(--main-dark-blue);
+  padding: 2rem;
+  border-radius: 20px;
+  flex: 1 1 280px; /* Adjust flex basis for better responsiveness */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.environmental-vision-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.vision-card-icon {
+  font-size: 2.5rem;
+  color: var(--main-dark-blue);
+  margin-bottom: 1rem;
+}
+
+.vision-card-title {
+  font-size: 1.6rem;
+  color: var(--main-dark-blue);
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+}
+
+.vision-card-description {
+  font-size: 1rem;
+  color: var(--text-secondary-grey);
+}
+
+
+/* Area Ajakan Bertindak Utama (CTA) */
+.main-call-to-action-area {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: linear-gradient(to right, var(--main-dark-blue), var(--accent-blue));
+  border-radius: 20px;
+  box-shadow: var(--default-card-shadow);
+  color: var(--pure-white);
+}
+
+.cta-main-headline {
+  margin-bottom: 15px;
+  font-size: 2.8rem;
+  font-weight: 700;
+}
+
+.cta-support-text {
+  opacity: 0.9;
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+
+.cta-action-button {
+  background-color: var(--pure-white);
+  color: var(--main-dark-blue);
+  font-size: 1.2rem;
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta-action-button:hover {
+  background-color: var(--accent-blue);
+  color: var(--pure-white);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Animasi */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceArrow {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+}
+
+/* Desain Responsif */
+@media (min-width: 768px) {
+  .process-flow-arrow {
+    display: block;
+  }
+  .process-journey-flow {
+    flex-wrap: nowrap;
+  }
+}
+
+@media (max-width: 1024px) {
+  .main-heading-title {
+    font-size: 3rem;
+  }
+  .content-section-title {
+    font-size: 2.2rem;
+  }
+  .video-frame-title {
+    font-size: 1.5rem;
+  }
+  .cta-main-headline {
+    font-size: 2.2rem;
+  }
+  .cta-support-text {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content-wrapper {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  /* Hero section di mobile tetap full-width dan tinggi */
+  .hero-banner-section {
+    padding: 4rem 1rem; /* Sesuaikan padding untuk mobile, tetap tinggi */
+    margin-top: -20px; /* Geser ke atas sedikit di mobile juga */
+  }
+  .main-heading-title {
+    font-size: 2.5rem;
+  }
+  .hero-sub-text {
+    font-size: 1.2rem;
+  }
+  .content-section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  .platform-workflow-area, .platform-features-grid, .video-demonstration-section, .environmental-vision-section, .main-call-to-action-area {
+    padding: 1.5rem;
+  }
+  .process-journey-flow {
+    flex-direction: column;
+    align-items: center;
+  }
+  .process-journey-step {
+    flex: none;
+    width: 90%;
+    max-width: 400px;
+  }
+  .process-flow-arrow {
+    display: block;
+    transform: rotate(90deg);
+    margin: 1rem 0;
+  }
+  .feature-highlight-card, .environmental-vision-card { /* Apply to new card as well */
+    flex: none;
+    width: 90%;
+    max-width: 400px;
+  }
+  /* Removed .impact-metrics-display as section is removed */
+  /* .impact-metrics-display {
+    flex-direction: column;
+    align-items: center;
+  }
+  .metric-data-unit {
+    flex: none;
+    width: 90%;
+    max-width: 300px;
+  }
+  .impact-count {
+    font-size: 2.5rem;
+  } */
+  .video-play-button {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-heading-title {
+    font-size: 2rem;
+  }
+  .hero-sub-text {
+    font-size: 1rem;
+  }
+  .content-section-title {
+    font-size: 1.8rem;
+  }
+  .process-journey-step, .feature-highlight-card, .environmental-vision-card { /* Apply to new card */
+    padding: 1rem;
+    width: 100%;
+  }
+  .step-card-title, .feature-card-title, .vision-card-title { /* Apply to new card title */
+    font-size: 1.3rem;
+  }
+  .step-card-description, .feature-card-description, .vision-card-description { /* Apply to new card description */
+    font-size: 0.9rem;
+  }
+  .video-frame-title {
+    font-size: 1.3rem;
+  }
+  .video-player-frame {
+    padding: 50px 20px;
+  }
+  .cta-main-headline {
+    font-size: 1.8rem;
+  }
+  .cta-support-text {
+    font-size: 1rem;
+  }
+  .cta-action-button {
+    font-size: 1rem;
+    padding: 0.8rem 2rem;
+  }
+}

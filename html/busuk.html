@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Berita Terbaru Indonesia</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    #news-list {
+      margin-top: 20px;
+    }
+    .news {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .news h3 {
+      margin: 0;
+    }
+    .news a {
+      color: #3498db;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>📰 Berita Terbaru dari Indonesia 🇮🇩</h1>
+  <div id="news-list">Memuat berita...</div>
+
+  <script>
+    async function getNews() {
+      try {
+        const res = await fetch('http://localhost:3000/news');
+        const data = await res.json();
+
+        const newsContainer = document.getElementById('news-list');
+        newsContainer.innerHTML = '';
+
+        if (data.articles && data.articles.length > 0) {
+          data.articles.forEach(article => {
+            const div = document.createElement('div');
+            div.className = 'news';
+            div.innerHTML = `
+              <h3>${article.title}</h3>
+              <p>${article.description || 'Tidak ada deskripsi.'}</p>
+              <a href="${article.url}" target="_blank">Baca selengkapnya</a>
+            `;
+            newsContainer.appendChild(div);
+          });
+        } else {
+          newsContainer.textContent = 'Tidak ada berita ditemukan.';
+        }
+
+      } catch (error) {
+        document.getElementById('news-list').textContent = 'Gagal memuat berita.';
+        console.error(error);
+      }
+    }
+
+    getNews();
+  </script>
+</body>
+</html>

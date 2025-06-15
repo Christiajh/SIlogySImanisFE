@@ -1,0 +1,385 @@
+/* frontend/src/styles/navbar.css */
+
+/* --- START: CSS provided by user --- */
+
+/* Reset for ul/li */
+.celestial-ribbon ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar base */
+.celestial-ribbon {
+  background-color: #001F3F; /* Dark Navy Blue */
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  font-family: 'Poppins', sans-serif; /* Modern font choice */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Deeper shadow */
+  transition: background-color 0.3s ease;
+}
+
+.celestial-ribbon:hover {
+  background-color: #002D59; /* Slightly darker on hover for subtle interaction */
+}
+
+.starlight-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem; /* Increased padding */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Brand / Logo */
+.galaxy-brand {
+  color: #E0FFFF; /* Light Cyan for brand */
+  font-weight: 700;
+  font-size: 1.8rem; /* Larger brand text */
+  text-decoration: none;
+  letter-spacing: 0.08em; /* More distinct letter spacing */
+  user-select: none;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
+  transition: color 0.3s ease;
+  margin-left: -170px; /* Adjust this value as needed */
+}
+
+.galaxy-brand:hover {
+  color: #B0E0E6; /* Lighter cyan on hover */
+}
+
+/* Menu Toggler for mobile */
+.nebula-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #E0E7FF; /* Off-white for icon */
+  display: none; /* Hidden by default on desktop */
+  padding: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.nebula-toggle:hover {
+  color: #90CAF9; /* Lighter blue on hover */
+}
+
+.constellation-icon {
+  width: 28px; /* Slightly larger icon */
+  height: 28px;
+}
+
+/* Menu base */
+.cosmic-menu {
+  display: flex;
+  align-items: center;
+}
+
+.stellar-path {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* Increased gap between main menu items */
+}
+
+.celestial-point {
+  position: relative;
+  cursor: pointer;
+}
+
+.cosmic-link {
+  color: #ADD8E6; /* Light Blue for menu links */
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.6rem 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  user-select: none;
+  transition: color 0.3s ease, transform 0.2s ease-out;
+}
+
+.cosmic-link:hover,
+.cosmic-link:focus {
+  color: #90CAF9; /* Lighter blue on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+  outline: none;
+}
+
+/* Dropdown arrow */
+.comet-arrow {
+  font-size: 0.7rem; /* Slightly larger arrow */
+  margin-left: 0.3rem;
+  transition: transform 0.3s ease;
+  user-select: none;
+  color: #ADD8E6;
+}
+
+.comet-arrow.orbit-rotate {
+  transform: rotate(180deg);
+}
+
+/* Submenu - card style with shadow & rounded corners */
+.galaxy-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 240px; /* Wider dropdown */
+  background-color: #2C3E50; /* Darker blue-grey for submenu */
+  border-radius: 12px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); /* More pronounced shadow */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px); /* Deeper initial drop */
+  transition: opacity 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0.3s;
+  z-index: 1000;
+  user-select: none;
+  pointer-events: none;
+  padding: 0.75rem 0; /* More padding */
+}
+
+/* Show submenu if active with fade+slide animation */
+.galaxy-dropdown.show-galaxy {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Submenu items */
+.planet-link {
+  padding: 0 1.2rem; /* More horizontal padding */
+}
+
+.stardust-link {
+  display: flex;
+  align-items: center;
+  color: #F0F8FF; /* Alice Blue for submenu links */
+  padding: 0.6rem 0;
+  text-decoration: none;
+  font-weight: 400;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease-out;
+  border-radius: 8px; /* More rounded */
+  user-select: none;
+}
+
+.stardust-link:hover,
+.stardust-link:focus {
+  background-color: #0766b3; /* Darker blue on hover */
+  color: #FFFFFF; /* White on hover */
+  transform: translateX(5px); /* Slight slide on hover */
+  outline: none;
+}
+
+/* User Icon Specific Styles */
+.voyager-profile {
+  position: relative;
+  margin-left: 1rem; /* Space from other menu items */
+}
+
+.user-orb-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.constellation-icon-large {
+  width: 50px; /* Larger icon */
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #6A5ACD; /* Medium Slate Blue border */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out, border-color 0.3s ease;
+}
+
+.constellation-icon-large:hover {
+  transform: scale(1.1); /* More pronounced enlarge on hover */
+  border-color: #8A2BE2; /* Blue Violet on hover */
+}
+
+/* User Card Notification */
+.explorer-welcome-card {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #FFFFFF;
+  border: 1px solid #C0C0C0; /* Silver border */
+  border-radius: 12px; /* More rounded corners */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+  padding: 25px; /* More padding */
+  min-width: 280px; /* Wider card */
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* More space */
+  animation: fadeInPop 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); /* Enhanced animation */
+  transform-origin: top right;
+  opacity: 0; /* Initially hidden */
+  visibility: hidden; /* Initially hidden */
+  pointer-events: none; /* Initially not interactive */
+}
+
+/* Show user card when it's active */
+.celestial-point.voyager-profile .explorer-welcome-card {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.explorer-welcome-card h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: #333;
+  font-size: 1.3em; /* Larger heading */
+  border-bottom: 1px solid #EEE; /* Subtle separator */
+  padding-bottom: 10px;
+}
+
+.explorer-welcome-card p {
+  margin-bottom: 20px;
+  color: #555;
+  line-height: 1.6; /* Better readability */
+}
+
+.explorer-welcome-card button {
+  background-color: #4A90E2; /* Blue button */
+  color: white;
+  border: none;
+  border-radius: 8px; /* More rounded button */
+  padding: 12px 20px; /* More padding */
+  cursor: pointer;
+  font-size: 1.1em; /* Larger text */
+  transition: background-color 0.3s ease, transform 0.2s ease-out;
+  align-self: flex-end; /* Align button to the right */
+}
+
+.explorer-welcome-card button:hover {
+  background-color: #357ABD; /* Darker blue on hover */
+  transform: translateY(-2px); /* Slight lift */
+}
+
+/* Optional: Fade-in animation */
+@keyframes fadeInPop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 960px) { /* Adjusted breakpoint for wider mobile support */
+  .starlight-container {
+    padding: 0.75rem 1rem;
+  }
+
+  .galaxy-brand {
+    font-size: 1.6rem;
+    margin-left: 0; /* Reset margin on smaller screens */
+  }
+
+  .nebula-toggle {
+    display: block;
+  }
+
+  .cosmic-menu {
+    flex-direction: column;
+    width: 100%;
+    background-color: #2C3E50; /* Match submenu background */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out; /* Smoother transition */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    border-radius: 0 0 15px 15px; /* Rounded bottom corners */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  .cosmic-menu.menu-unfurled {
+    max-height: 700px; /* Large enough to show all menu items */
+    padding-bottom: 1rem; /* Add padding to the bottom when open */
+  }
+
+  .stellar-path {
+    flex-direction: column;
+    gap: 0.2rem; /* Reduced gap */
+    width: 100%;
+    align-items: flex-start; /* Align menu items to the left */
+  }
+
+  .celestial-point {
+    width: 100%;
+    text-align: left; /* Align text left */
+    padding: 0.5rem 0; /* Vertical padding for items */
+  }
+
+  .cosmic-link {
+    padding: 0.8rem 1.5rem; /* More padding for mobile links */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.05em; /* Slightly larger text */
+  }
+
+  /* Submenu styles on mobile */
+  .galaxy-dropdown {
+    position: relative; /* Change to relative positioning */
+    background-color: #2C3E50; /* Keep the dark background */
+    box-shadow: none; /* No shadow for nested dropdown */
+    border-radius: 0; /* No border radius */
+    padding-left: 2rem; /* Indent submenu items */
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    max-height: 0; /* Hidden by default */
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+  }
+
+  .galaxy-dropdown.show-galaxy {
+    max-height: 400px; /* Show all submenu items */
+  }
+
+  .planet-link {
+    padding: 0; /* Remove padding from list item */
+  }
+
+  .stardust-link {
+    padding: 0.6rem 1rem; /* Adjust padding for mobile submenu links */
+  }
+
+  .voyager-profile {
+    width: 100%;
+    text-align: left;
+    margin-left: 0; /* Remove left margin */
+    padding: 0.5rem 1.5rem; /* Match other menu item padding */
+  }
+
+  .user-orb-toggle {
+    justify-content: flex-start; /* Align user icon to the left */
+  }
+
+  .explorer-welcome-card {
+    position: fixed; /* Use fixed position for better mobile overlay */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the card */
+    max-width: 90%; /* Constrain width */
+    width: auto; /* Allow content to dictate width up to max */
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    z-index: 10000; /* Ensure it's on top */
+  }
+}
+
+/* --- END: CSS provided by user --- */

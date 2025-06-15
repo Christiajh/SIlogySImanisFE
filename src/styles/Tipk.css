@@ -1,0 +1,1012 @@
+/* Tipk.css */
+
+/* General Page Styling */
+.green-tips-page-container {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f0f4f8;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.green-tips-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);
+    color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.green-tips-title {
+    font-size: 2.8rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.green-tips-subtitle {
+    font-size: 1.4rem;
+    font-weight: 200;
+    opacity: 0.9;
+}
+
+/* Tabs Styling */
+.green-tips-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    background-color: #e2e6ea;
+    border-radius: 10px;
+    padding: 8px;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.green-tab-button {
+    background-color: transparent;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #555;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.green-tab-button:hover {
+    color: #28a745;
+}
+
+.green-tab-button.active {
+    background-color: #28a745;
+    color: white;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Content Sections */
+.green-tips-content {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Article Section */
+.green-article-section {
+    display: flex;
+    justify-content: center;
+}
+
+.green-article-card {
+    background-color: #fdfdfd;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+}
+
+.green-article-title {
+    font-size: 2rem;
+    color: #1a4f3a;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.green-article-meta {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 25px;
+    color: #777;
+    font-size: 0.95rem;
+}
+
+.green-meta-item {
+    display: flex;
+    align-items: center;
+}
+
+.green-meta-icon {
+    margin-right: 8px;
+    color: #28a745;
+}
+
+.green-article-content {
+    margin-bottom: 30px;
+}
+
+.green-article-content p {
+    margin-bottom: 15px;
+    font-size: 1.05rem;
+    color: #444;
+}
+
+.green-step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    background-color: #e6ffe6;
+    padding: 15px 20px;
+    border-radius: 10px;
+    border-left: 5px solid #28a745;
+}
+
+.green-step-number {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #28a745;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.green-step-content h3 {
+    font-size: 1.3rem;
+    color: #1a4f3a;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.green-step-content p {
+    font-size: 0.95rem;
+    color: #333;
+    margin-bottom: 0;
+}
+
+.green-article-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+
+
+.green-share-button i {
+    margin-right: 8px;
+}
+
+.green-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.green-tag {
+    background-color: #e9f5ee;
+    color: #28a745;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Resources Section */
+.green-resources-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.green-resource-card {
+    background-color: #fdfdfd;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column; /* Mengatur konten di dalam card agar vertikal */
+}
+
+.green-resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.green-resource-image {
+    width: 100%;
+    height: 200px; /* Tinggi gambar agar seragam */
+    overflow: hidden;
+}
+
+.green-resource-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Memastikan gambar mengisi area tanpa terdistorsi */
+    transition: transform 0.3s ease;
+}
+
+.green-resource-card:hover .green-resource-image img {
+    transform: scale(1.05); /* Efek zoom in pada gambar saat hover */
+}
+
+.green-resource-content {
+    padding: 20px 25px;
+    flex-grow: 1; /* Memastikan konten mengisi sisa ruang */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Menempatkan tombol di bagian bawah */
+}
+
+.green-resource-content h3 {
+    font-size: 1.4rem;
+    color: #1a4f3a;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.green-resource-content p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.green-download-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    align-self: flex-start; /* Memastikan tombol di kiri bawah */
+    display: flex; /* Untuk ikon dan teks */
+    align-items: center;
+    gap: 8px;
+}
+
+.green-download-button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+/* Technology Section */
+.green-technology-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+
+.green-tech-card {
+    background-color: #fdfdfd;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.green-tech-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.green-tech-icon {
+    font-size: 3rem;
+    color: #28a745;
+    margin-bottom: 20px;
+    background-color: #e9f5ee;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.2);
+}
+
+.green-tech-card h3 {
+    font-size: 1.5rem;
+    color: #1a4f3a;
+    margin-bottom: 10px;
+}
+
+.green-tech-card p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 25px;
+    flex-grow: 1; /* Memastikan paragraf mengisi ruang yang tersedia */
+}
+
+.green-tech-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex; /* Untuk ikon dan teks */
+    align-items: center;
+    gap: 8px;
+}
+
+.green-tech-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Modal Styling */
+.green-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.green-modal-content {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 700px;
+    position: relative;
+    animation: slideIn 0.3s ease-out;
+    max-height: 90vh; /* Batasi tinggi modal */
+    overflow-y: auto; /* Aktifkan scroll jika konten terlalu panjang */
+}
+
+/* Carbon Calculator Modal Specific Styles */
+._carbon-modal {
+    max-width: 800px; /* Slightly wider for the calculator */
+}
+
+.green-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.8rem; /* Ukuran icon X */
+    color: #aaa;
+    cursor: pointer;
+    padding: 5px; /* Area klik yang lebih besar */
+    border-radius: 50%; /* Bentuk lingkaran */
+    transition: color 0.2s ease, background-color 0.2s ease;
+    display: flex; /* Untuk menengahkan ikon */
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Ukuran tombol X */
+    height: 40px; /* Ukuran tombol X */
+}
+
+.green-modal-close:hover {
+    color: #666;
+    background-color: #f0f0f0;
+}
+
+.green-modal-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #1a4f3a;
+    margin-bottom: 20px;
+}
+
+/* Carbon Calculator Header */
+._carbon-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+._carbon-icon {
+    font-size: 3.5rem;
+    color: #28a745;
+    margin-bottom: 15px;
+}
+
+._modal-title-centered {
+    font-size: 2.2rem;
+    color: #1a4f3a;
+    margin-bottom: 10px;
+}
+
+._carbon-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+/* Carbon Calculator Form */
+._carbon-calculator-form form {
+    margin-bottom: 30px;
+}
+
+._form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+._form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+._form-group label {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 8px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+._form-group label i {
+    color: #28a745;
+}
+
+._form-group input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+._form-group input:focus {
+    outline: none;
+    border-color: #28a745;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2);
+}
+
+/* Carbon Calculator Buttons */
+._button-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+._calculate-button,
+._reset-button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+._calculate-button {
+    background-color: #28a745;
+    color: white;
+}
+
+._calculate-button:hover:not(:disabled) {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+._calculate-button:disabled {
+    background-color: #90ee90; /* Light green when disabled */
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+._reset-button {
+    background-color: #6c757d;
+    color: white;
+}
+
+._reset-button:hover:not(:disabled) {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+._reset-button:disabled {
+    background-color: #aeb4b9; /* Light gray when disabled */
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+
+/* Carbon Calculator Result */
+._carbon-result {
+    border-top: 1px solid #eee;
+    padding-top: 30px;
+    text-align: center;
+}
+
+._result-header h4 {
+    font-size: 1.6rem;
+    color: #1a4f3a;
+    margin-bottom: 25px;
+}
+
+._carbon-footprint {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+._footprint-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    width: fit-content;
+    margin: 0 auto;
+    border: 2px solid; /* Border will change color based on status */
+}
+
+._footprint-visual._footprint-visual.excellent { border-color: #28a745; }
+._footprint-visual._footprint-visual.good { border-color: #ffc107; } /* Orange for good, often seen as yellow */
+._footprint-visual._footprint-visual.average { border-color: #fd7e14; } /* Darker orange */
+._footprint-visual._footprint-visual.high { border-color: #dc3545; } /* Red for high */
+
+
+._footprint-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #28a745;
+}
+
+._footprint-data {
+    margin-bottom: 15px;
+}
+
+._footprint-value {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #1a4f3a;
+    display: block;
+    line-height: 1;
+}
+
+._footprint-unit {
+    font-size: 1.1rem;
+    color: #777;
+}
+
+._status-badge {
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    margin-top: 10px;
+}
+
+._status-badge.excellent { background-color: #28a745; }
+._status-badge.good { background-color: #ffc107; }
+._status-badge.average { background-color: #fd7e14; }
+._status-badge.high { background-color: #dc3545; }
+
+._footprint-comparison {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+._comparison-item {
+    background-color: #e9f5ee;
+    padding: 10px 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+._comparison-label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #1a4f3a;
+}
+
+._comparison-value {
+    font-weight: 700;
+    color: #333;
+}
+
+._carbon-breakdown {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+._carbon-breakdown h5 {
+    font-size: 1.3rem;
+    color: #1a4f3a;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+._breakdown-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+._breakdown-item {
+    background-color: #f0f8f0;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #d4edda;
+}
+
+._breakdown-item i {
+    font-size: 1.8rem;
+    color: #28a745;
+    margin-bottom: 10px;
+}
+
+._breakdown-item span {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+._breakdown-item strong {
+    font-size: 1.1rem;
+    color: #1a4f3a;
+}
+
+._breakdown-item.reduction i {
+    color: #dc3545; /* Warna merah untuk pengurangan */
+}
+
+._carbon-tips {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+._carbon-tips h5 {
+    font-size: 1.3rem;
+    color: #1a4f3a;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+._carbon-tips h5 i {
+    color: #ffc107; /* Warna kuning untuk ikon tips */
+}
+
+._carbon-tips ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+._carbon-tips li {
+    background-color: #e6ffe6;
+    border-left: 4px solid #28a745;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+._carbon-tips li strong {
+    color: #1a4f3a; /* Warna lebih gelap untuk teks bold */
+}
+
+/* Action Buttons for Result */
+._action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+._share-result-button,
+._save-result-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+._share-result-button {
+    background-color: #17a2b8; /* Info blue */
+    color: white;
+}
+
+._share-result-button:hover {
+    background-color: #138496;
+    transform: translateY(-2px);
+}
+
+._save-result-button {
+    background-color: #6f42c1; /* Purple */
+    color: white;
+}
+
+._save-result-button:hover {
+    background-color: #5b36a1;
+    transform: translateY(-2px);
+}
+
+/* Digital Solution Modal Specific Styles */
+.green-tech-modal {
+    max-width: 900px;
+}
+
+.green-modal-description {
+    font-size: 1.1rem;
+    color: #555;
+    text-align: center;
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.green-tech-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.green-feature {
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
+}
+
+.green-feature-icon {
+    font-size: 2.5rem;
+    color: #28a745;
+    margin-bottom: 15px;
+}
+
+.green-feature h4 {
+    font-size: 1.4rem;
+    color: #1a4f3a;
+    margin-bottom: 10px;
+}
+
+.green-feature p {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 0;
+}
+
+.green-tech-form {
+    background-color: #f0f8f0;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #d4edda;
+}
+
+.green-tech-form h3 {
+    font-size: 1.8rem;
+    color: #1a4f3a;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.green-tech-form p {
+    font-size: 1rem;
+    color: #555;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.green-form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.green-form-group label {
+    display: block;
+    font-size: 0.95rem;
+    color: #333;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.green-form-group input,
+.green-form-group select,
+.green-form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box; /* Penting untuk padding agar tidak menambah lebar */
+}
+
+.green-form-group input:focus,
+.green-form-group select:focus,
+.green-form-group textarea:focus {
+    outline: none;
+    border-color: #28a745;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2);
+}
+
+.green-form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.green-submit-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.green-submit-button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .green-tips-title {
+        font-size: 2rem;
+    }
+
+    .green-tips-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .green-tips-tabs {
+        flex-direction: column;
+        padding: 5px;
+    }
+
+    .green-tab-button {
+        padding: 10px 15px;
+        font-size: 1rem;
+    }
+
+    .green-article-card,
+    .green-modal-content {
+        padding: 20px;
+    }
+
+    .green-article-title {
+        font-size: 1.6rem;
+    }
+
+    .green-article-meta {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .green-step {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .green-step-number {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .green-article-footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .green-resources-section,
+    .green-technology-section,
+    ._form-grid,
+    .green-tech-features,
+    ._breakdown-grid {
+        grid-template-columns: 1fr;
+    }
+
+    ._button-group {
+        flex-direction: column;
+    }
+
+    ._carbon-footprint {
+        padding: 15px;
+    }
+
+    ._footprint-value {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .green-tips-page-container {
+        padding: 10px;
+    }
+
+    .green-tips-header {
+        padding: 25px 15px;
+    }
+
+    .green-tips-title {
+        font-size: 1.8rem;
+    }
+
+    .green-tips-subtitle {
+        font-size: 1rem;
+    }
+
+    .green-tips-content {
+        padding: 15px;
+    }
+
+    .green-modal-content {
+        padding: 15px;
+    }
+}

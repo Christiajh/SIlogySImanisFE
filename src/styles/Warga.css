@@ -1,0 +1,387 @@
+/* --- General Styling --- */
+.warga-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+  padding: 4rem 2rem;
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1a3a30;
+  position: relative;
+  overflow: hidden;
+}
+
+.warga-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(34, 197, 94, 0.03)" d="M30,10 L50,30 L70,10 L90,30 L90,70 L70,90 L50,70 L30,90 L10,70 L10,30 Z" /></svg>');
+  background-size: 30px 30px;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+/* --- Header Section --- */
+.warga-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.warga-subtitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2e7d5a;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.warga-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #145239;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.warga-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #22c55e, #166534);
+  border-radius: 2px;
+}
+
+.warga-divider {
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(34, 197, 94, 0.3), rgba(34, 197, 94, 0.8), rgba(34, 197, 94, 0.3));
+  margin: 1.5rem auto;
+  border-radius: 1px;
+}
+
+.warga-description {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #3a5a50;
+}
+
+/* --- Testimonials Section --- */
+.warga-testimonials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 3rem 0;
+  z-index: 1;
+}
+
+.warga-testimonial-container {
+  width: 100%;
+  max-width: 900px;
+  overflow: hidden;
+  position: relative;
+  height: 400px;
+}
+
+.warga-testimonial {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.7s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.7s ease;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(100%);
+}
+
+.warga-testimonial.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.warga-testimonial-container.animating .warga-testimonial:not(.active) {
+  opacity: 0.5;
+}
+
+.warga-quote-container {
+  position: relative;
+  padding: 0 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.warga-quote-icon {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: -25px;
+  left: -10px;
+  color: rgba(34, 197, 94, 0.2);
+  z-index: 0;
+}
+
+.warga-quote {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  color: #2d4a42;
+  position: relative;
+  z-index: 1;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.warga-person-info {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.warga-avatar-container {
+  position: relative;
+  margin-right: 1.5rem;
+}
+
+.warga-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: relative;
+  z-index: 2;
+  border: 3px solid white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.warga-avatar-bg {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #22c55e, #166534);
+  top: -5px;
+  left: -5px;
+  z-index: 1;
+  animation: rotate 6s linear infinite;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.warga-person-details {
+  text-align: left;
+}
+
+.warga-person-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #145239;
+  margin-bottom: 0.25rem;
+}
+
+.warga-person-role {
+  font-size: 1rem;
+  color: #5a7a6e;
+  margin-bottom: 0.75rem;
+}
+
+.warga-initiative {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #22c55e;
+  font-weight: 600;
+}
+
+.warga-leaf-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+/* --- Navigation Buttons --- */
+.warga-nav-button {
+  background: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  z-index: 2;
+  color: #22c55e;
+  margin: 0 1rem;
+}
+
+.warga-nav-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  color: #166534;
+}
+
+.warga-nav-button.prev {
+  margin-right: 2rem;
+}
+
+.warga-nav-button.next {
+  margin-left: 2rem;
+}
+
+/* --- Indicators --- */
+.warga-indicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  z-index: 1;
+  position: relative;
+}
+
+.warga-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(34, 197, 94, 0.3);
+  margin: 0 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  padding: 0;
+}
+
+.warga-indicator.active {
+  background-color: #22c55e;
+  transform: scale(1.2);
+}
+
+.warga-indicator:hover:not(.active) {
+  background-color: rgba(34, 197, 94, 0.6);
+}
+
+/* --- CTA Section --- */
+.warga-cta {
+  text-align: center;
+  margin-top: 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.warga-cta-text {
+  font-size: 1.2rem;
+  color: #3a5a50;
+  margin-bottom: 1.5rem;
+}
+
+.warga-cta-button {
+  background: linear-gradient(135deg, #22c55e, #166534);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  box-shadow: 0 5px 15px rgba(34, 197, 94, 0.4);
+}
+
+.warga-cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(34, 197, 94, 0.5);
+}
+
+.warga-cta-button:active {
+  transform: translateY(1px);
+}
+
+.warga-arrow-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+}
+
+.warga-cta-button:hover .warga-arrow-icon {
+  transform: translateX(5px);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .warga-container {
+    padding: 3rem 1rem;
+  }
+  
+  .warga-title {
+    font-size: 2.2rem;
+  }
+  
+  .warga-testimonial-container {
+    height: 500px;
+  }
+  
+  .warga-quote {
+    font-size: 1.2rem;
+  }
+  
+  .warga-nav-button {
+    width: 40px;
+    height: 40px;
+    margin: 0 0.5rem;
+  }
+  
+  .warga-person-info {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .warga-avatar-container {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .warga-title {
+    font-size: 1.8rem;
+  }
+  
+  .warga-testimonial {
+    padding: 1.5rem;
+  }
+  
+  .warga-quote {
+    font-size: 1.1rem;
+  }
+  
+  .warga-cta-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+}

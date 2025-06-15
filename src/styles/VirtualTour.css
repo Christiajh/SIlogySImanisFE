@@ -1,0 +1,836 @@
+/* Global styles & variables */
+:root {
+    --primary-navy: #0A192F; /* More prominent navy for card backgrounds */
+    --dark-navy: #001F3F; /* Original primary blue dark */
+    --secondary-blue: #003366;
+    --accent-blue: #0066CC;
+    --text-light: #B8C5D1; /* Converted from original var(--text-light) */
+    --text-dark: #4A5568;
+    --white: #FFFFFF;
+    /* Card gradient now more consistently using primary-navy */
+    --card-gradient: linear-gradient(135deg, var(--primary-navy) 0%, #0A192FEE 50%, var(--primary-navy) 100%); /* Adjusted alpha to hex */
+    --timeline-gradient: linear-gradient(135deg, var(--primary-navy) 0%, #0A192FE6 30%, #0A192FCC 60%, var(--primary-navy) 100%); /* Adjusted alpha to hex */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #FFFFFF;
+    color: #000000;
+    min-height: 100vh;
+    overflow-x: hidden; /* Mencegah scroll horizontal */
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 20% 80%, #001F3F4D 0%, transparent 50%), /* Adjusted alpha to hex */
+        radial-gradient(circle at 80% 20%, #00336633 0%, transparent 50%), /* Adjusted alpha to hex */
+        radial-gradient(circle at 40% 40%, #1A23321A 0%, transparent 50%); /* Adjusted alpha to hex */
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Page Container - Remove padding at container level */
+.about-page-container {
+    padding: 0; /* Pastikan tidak ada padding di sini agar hero bisa full width */
+}
+
+/* Header & Footer (if applicable, define your actual header/footer elements here) */
+.about-page-container header,
+.about-page-container footer {
+    background: var(--dark-navy);
+    color: var(--white);
+    padding: 20px;
+    text-align: center;
+}
+
+.about-page-container nav a:hover {
+    color: var(--accent-blue);
+}
+
+/* Hero Section - Full Width */
+.hero-section {
+    text-align: center;
+    padding: 100px 20px 80px; /* Padding vertikal dan sedikit horizontal untuk responsivitas */
+    background: linear-gradient(135deg,
+        #000000E6 0%, /* Adjusted alpha to hex */
+        #001F3FE1 25%, /* Adjusted alpha to hex */
+        #002854CC 50%, /* Adjusted alpha to hex */
+        #003366BF 75%, /* Adjusted alpha to hex */
+        #1A2332B3 100%); /* Adjusted alpha to hex */
+    border-radius: 0; /* Hapus border-radius agar full width */
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    border: none; /* Hapus border agar full width */
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background:
+        radial-gradient(circle, #FFFFFF08 1px, transparent 1px), /* Adjusted alpha to hex */
+        linear-gradient(45deg, transparent 40%, #001F3F1A 50%, transparent 60%); /* Adjusted alpha to hex */
+    background-size: 60px 60px, 200px 200px;
+    animation: galaxyFloat 25s infinite linear;
+    opacity: 0.7;
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg,
+            transparent,
+            #0066CC1A, /* Adjusted alpha to hex */
+            transparent,
+            #001F3F1A); /* Adjusted alpha to hex */
+    animation: shimmer 3s ease-in-out infinite alternate;
+}
+
+@keyframes galaxyFloat {
+    0% { transform: translate(-60px, -60px) rotate(0deg); }
+    100% { transform: translate(-60px, -60px) rotate(360deg); }
+}
+
+@keyframes shimmer {
+    0% { opacity: 0.3; }
+    100% { opacity: 0.7; }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px; /* Batasi lebar konten hero agar tidak terlalu lebar */
+    margin: 0 auto; /* Pusatkan konten hero */
+    padding: 0 20px; /* Beri padding horizontal di dalam hero-content */
+}
+
+.hero-main-title {
+    font-size: 4rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #FFFFFF 0%, #E8EAED 30%, #001F3F 70%, #FFFFFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 25px;
+    text-shadow: 0 0 30px #001F3F80; /* Adjusted alpha to hex */
+    animation: titleGlow 2s ease-in-out infinite alternate;
+    letter-spacing: -2px;
+}
+
+@keyframes titleGlow {
+    0% { filter: drop-shadow(0 0 10px #001F3F4D); } /* Adjusted alpha to hex */
+    100% { filter: drop-shadow(0 0 20px #001F3F99); } /* Adjusted alpha to hex */
+}
+
+.hero-sub-title {
+    font-size: 1.4rem;
+    color: var(--text-light);
+    margin-bottom: 40px;
+    font-weight: 300;
+    animation: subtitleFade 1s ease-out 0.5s both;
+}
+
+@keyframes subtitleFade {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Wrapper Baru untuk Konten Utama */
+.main-content-wrapper {
+    max-width: 1200px; /* Batasi lebar konten utama */
+    margin: 0 auto; /* Pusatkan konten utama */
+    padding: 0 20px; /* Beri padding horizontal agar konten tidak menempel tepi */
+}
+
+/* Content Grid - Kembali ke ukuran aslinya dengan perubahan warna */
+.main-content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin: 40px 0; /* Tetap dengan margin asli */
+}
+
+/* Info Card - Warna biru navy elegan, bentuk dan ukuran tetap */
+.info-card {
+    background: var(--card-gradient); /* Warna biru navy yang elegan */
+    padding: 45px; /* Ukuran padding tetap */
+    border-radius: 25px; /* Bentuk tetap */
+    border: 1px solid #FFFFFF1A; /* Adjusted alpha to hex */
+    backdrop-filter: blur(15px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    transform: perspective(1000px) rotateX(0deg);
+    box-shadow: 0 10px 30px #0000004D; /* Adjusted alpha to hex */
+}
+
+.info-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg,
+            #0066CC1A 0%, /* Adjusted alpha to hex */
+            transparent 50%,
+            #0066CC0D 100%); /* Adjusted alpha to hex */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.info-card:hover::before {
+    opacity: 1;
+}
+
+.info-card:hover {
+    transform: translateY(-15px) scale(1.02) perspective(1000px) rotateX(5deg);
+    border-color: #0066CC4D; /* Adjusted alpha to hex */
+    box-shadow:
+        0 30px 60px #001F3F80, /* Adjusted alpha to hex */
+        0 0 0 1px #0066CC33, /* Adjusted alpha to hex */
+        inset 0 1px 0 #FFFFFF1A; /* Adjusted alpha to hex */
+}
+
+.card-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg,
+            var(--dark-navy) 0%,
+            var(--secondary-blue) 25%,
+            var(--accent-blue) 50%,
+            var(--dark-navy) 100%);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+    box-shadow:
+        0 10px 25px #001F3F66, /* Adjusted alpha to hex */
+        inset 0 1px 0 #FFFFFF33; /* Adjusted alpha to hex */
+    position: relative;
+    z-index: 2;
+}
+
+.card-title {
+    font-size: 1.9rem;
+    background: linear-gradient(135deg, #FFFFFF 0%, #E8EAED 50%, #B8C5D1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+}
+
+.card-text {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    position: relative;
+    z-index: 2;
+}
+
+/* Timeline Section - Bentuk dan ukuran tetap, warna biru navy elegan */
+.history-timeline {
+    background: var(--timeline-gradient); /* Warna biru navy yang elegan */
+    padding: 60px; /* Ukuran padding tetap */
+    border-radius: 30px; /* Bentuk tetap */
+    margin: 40px 0; /* Tetap dengan margin asli */
+    border: 1px solid #FFFFFF1A; /* Adjusted alpha to hex */
+    backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px #0000004D; /* Adjusted alpha to hex */
+}
+
+.history-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg,
+            transparent,
+            #001F3F1A, /* Adjusted alpha to hex */
+            transparent);
+    animation: timelineShimmer 4s ease-in-out infinite;
+}
+
+@keyframes timelineShimmer {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.6; }
+}
+
+.timeline-heading {
+    font-size: 2.8rem;
+    background: linear-gradient(135deg, #FFFFFF 0%, #E8EAED 30%, #001F3F 70%, #FFFFFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 35px;
+    position: relative;
+    z-index: 2;
+    align-items: flex-start;
+}
+
+.timeline-year-box {
+    background: linear-gradient(135deg,
+            var(--dark-navy) 0%,
+            var(--secondary-blue) 25%,
+            var(--accent-blue) 50%,
+            #002854 100%);
+    color: var(--white);
+    padding: 18px 25px;
+    border-radius: 20px;
+    font-weight: 700;
+    min-width: 120px;
+    text-align: center;
+    margin-right: 35px;
+    box-shadow:
+        0 10px 25px #001F3F66, /* Adjusted alpha to hex */
+        inset 0 1px 0 #FFFFFF33; /* Adjusted alpha to hex */
+    flex-shrink: 0;
+}
+
+.timeline-description {
+    flex: 1;
+    padding: 18px 0;
+}
+
+.timeline-description h3 {
+    background: linear-gradient(135deg, #FFFFFF 0%, #E8EAED 50%, #B8C5D1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.timeline-description p {
+    color: var(--text-light);
+    line-height: 1.7;
+}
+
+/* Stats Section - Bentuk dan ukuran tetap, warna biru navy elegan */
+.impact-stats-section {
+    background: var(--timeline-gradient); /* Warna biru navy yang elegan */
+    padding: 80px 60px; /* Ukuran padding tetap */
+    border-radius: 30px; /* Bentuk tetap */
+    margin: 40px 0; /* Tetap dengan margin asli */
+    text-align: center;
+    border: 1px solid #FFFFFF1A; /* Adjusted alpha to hex */
+    backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px #0000004D; /* Adjusted alpha to hex */
+}
+
+.impact-stats-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, #0066CC1A 0%, transparent 70%); /* Adjusted alpha to hex */
+    animation: statsGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes statsGlow {
+    0% { opacity: 0.3; }
+    100% { opacity: 0.8; }
+}
+
+.stats-heading {
+    background: linear-gradient(135deg, #FFFFFF 0%, #E8EAED 30%, #001F3F 70%, #FFFFFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2.8rem;
+    margin-bottom: 25px;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+}
+
+.stats-subheading {
+    color: var(--text-light);
+    font-size: 1.3rem;
+    position: relative;
+    z-index: 2;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 50px;
+    margin-top: 50px;
+    position: relative;
+    z-index: 2;
+}
+
+.stat-item {
+    color: #FFFFFF;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 20px;
+    border-radius: 20px;
+    background: #FFFFFF0D; /* Adjusted alpha to hex */
+    backdrop-filter: blur(10px);
+}
+
+.stat-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px #0066CC4D; /* Adjusted alpha to hex */
+}
+
+.stat-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    display: block;
+    background: linear-gradient(135deg, #FFFFFF 0%, #3399FF 50%, #FFFFFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px #3399FF66; /* Adjusted alpha to hex */
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    color: #DDE7F0; /* lembut, terang namun tidak terlalu putih */
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* Call to Action Section - Bentuk dan ukuran tetap */
+.call-to-action-section {
+    background: linear-gradient(135deg,
+        #A0A0A6F2 0%,    /* Adjusted alpha to hex */
+        #E8EAEDF5 25%,    /* Adjusted alpha to hex */
+        #001F631A 50%,    /* Adjusted alpha to hex */
+        #FFFFFFF2 100%); /* Adjusted alpha to hex */
+    padding: 60px;
+    border-radius: 30px;
+    text-align: center;
+    margin: 40px 0;
+    border: 1px solid #001F6333; /* Adjusted alpha to hex */
+    backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px #0000001A; /* Adjusted alpha to hex */
+}
+
+.call-to-action-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg,
+            transparent,
+            #001F3F0D, /* Adjusted alpha to hex */
+            transparent);
+    animation: ctaShimmer 3s ease-in-out infinite;
+}
+
+@keyframes ctaShimmer {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.7; }
+}
+
+.cta-heading {
+    background: linear-gradient(135deg, #0A192F 0%, #3E5F7D 50%, #0A192F 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+}
+
+.cta-subheading {
+    color: var(--text-dark);
+    font-size: 1.2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.cta-button {
+    background: linear-gradient(135deg,
+            var(--dark-navy) 0%,
+            var(--secondary-blue) 25%,
+            var(--accent-blue) 50%,
+            #002854 75%,
+            var(--dark-navy) 100%);
+    color: #FFFFFF;
+    padding: 18px 50px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-top: 25px;
+    position: relative;
+    z-index: 2;
+    box-shadow:
+        0 15px 35px #001F3F66, /* Adjusted alpha to hex */
+        inset 0 1px 0 #FFFFFF33; /* Adjusted alpha to hex */
+}
+
+.cta-button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow:
+        0 25px 50px #001F3F99, /* Adjusted alpha to hex */
+        inset 0 1px 0 #FFFFFF4D; /* Adjusted alpha to hex */
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .about-page-container {
+        padding: 0;
+    }
+
+    .hero-section {
+        padding: 80px 15px 60px;
+    }
+
+    .hero-main-title {
+        font-size: 3.5rem;
+    }
+
+    .hero-sub-title {
+        font-size: 1.2rem;
+    }
+
+    .main-content-wrapper {
+        padding: 0 15px; /* Sesuaikan padding wrapper untuk layar kecil */
+    }
+
+    .main-content-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+    }
+
+    .info-card {
+        padding: 35px;
+    }
+
+    .card-title {
+        font-size: 1.7rem;
+    }
+
+    .card-text {
+        font-size: 1rem;
+    }
+
+    .history-timeline {
+        padding: 50px;
+    }
+
+    .timeline-heading {
+        font-size: 2.5rem;
+    }
+
+    .timeline-year-box {
+        min-width: 100px;
+        margin-right: 25px;
+    }
+
+    .timeline-description h3 {
+        font-size: 1.3rem;
+    }
+
+    .impact-stats-section {
+        padding: 70px 50px;
+    }
+
+    .stats-heading {
+        font-size: 2.5rem;
+    }
+
+    .stats-subheading {
+        font-size: 1.1rem;
+    }
+
+    .stat-number {
+        font-size: 3rem;
+    }
+
+    .stat-label {
+        font-size: 1.1rem;
+    }
+
+    .call-to-action-section {
+        padding: 50px;
+    }
+
+    .cta-heading {
+        font-size: 2.2rem;
+    }
+
+    .cta-subheading {
+        font-size: 1.1rem;
+    }
+
+    .cta-button {
+        padding: 15px 40px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 80px 10px 60px;
+    }
+
+    .hero-main-title {
+        font-size: 2.8rem;
+    }
+
+    .hero-sub-title {
+        font-size: 1.1rem;
+    }
+
+    .main-content-wrapper {
+        padding: 0 10px; /* Sesuaikan padding wrapper untuk layar kecil */
+    }
+
+    .main-content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .info-card {
+        padding: 30px;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+    }
+
+    .card-text {
+        font-size: 0.95rem;
+    }
+
+    .history-timeline {
+        padding: 40px;
+    }
+
+    .timeline-heading {
+        font-size: 2.2rem;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .timeline-year-box {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .timeline-description h3 {
+        font-size: 1.2rem;
+    }
+
+    .timeline-description p {
+        font-size: 0.9rem;
+    }
+
+    .impact-stats-section {
+        padding: 60px 40px;
+    }
+
+    .stats-heading {
+        font-size: 2.2rem;
+    }
+
+    .stats-subheading {
+        font-size: 1rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+    }
+
+    .stat-label {
+        font-size: 1rem;
+    }
+
+    .call-to-action-section {
+        padding: 40px;
+    }
+
+    .cta-heading {
+        font-size: 2rem;
+    }
+
+    .cta-subheading {
+        font-size: 1rem;
+    }
+
+    .cta-button {
+        padding: 12px 30px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-page-container {
+        padding: 0;
+    }
+
+    .hero-section {
+        padding: 60px 10px 40px;
+    }
+
+    .hero-main-title {
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+    }
+
+    .hero-sub-title {
+        font-size: 0.95rem;
+        margin-bottom: 25px;
+    }
+
+    .hero-content {
+        padding: 0 10px;
+    }
+
+    .main-content-wrapper {
+        padding: 0 10px; /* Sesuaikan padding wrapper untuk layar kecil */
+    }
+
+    .info-card {
+        padding: 25px;
+    }
+
+    .card-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .card-title {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+
+    .card-text {
+        font-size: 0.85rem;
+    }
+
+    .history-timeline {
+        padding: 30px;
+    }
+
+    .timeline-heading {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+    }
+
+    .timeline-year-box {
+        padding: 12px 20px;
+        min-width: 90px;
+        font-size: 0.9rem;
+    }
+
+    .timeline-description h3 {
+        font-size: 1.1rem;
+    }
+
+    .timeline-description p {
+        font-size: 0.8rem;
+    }
+
+    .impact-stats-section {
+        padding: 40px 20px;
+    }
+
+    .stats-heading {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+
+    .stats-subheading {
+        font-size: 0.9rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .stat-number {
+        font-size: 2.2rem;
+    }
+
+    .stat-label {
+        font-size: 0.9rem;
+    }
+
+    .call-to-action-section {
+        padding: 30px;
+    }
+
+    .cta-heading {
+        font-size: 1.8rem;
+    }
+
+    .cta-subheading {
+        font-size: 0.9rem;
+    }
+
+    .cta-button {
+        padding: 10px 25px;
+        font-size: 1rem;
+    }
+}

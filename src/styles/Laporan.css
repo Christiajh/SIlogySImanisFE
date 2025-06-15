@@ -1,0 +1,907 @@
+/* --- General Page Styling (Keep existing) --- */
+.laporan-lingkungan-page-container {
+    min-height: 100vh;
+    background: linear-gradient(to bottom right, #ffffff, #e6ffe6); /* Consistent background */
+    padding: 3rem 1.5rem; /* Responsive padding */
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3.5rem; /* Space between sections */
+}
+
+/* --- Hero Section (Keep existing) --- */
+.laporan-lingkungan-hero {
+    width: 100%;
+    max-width: 1200px;
+    background: linear-gradient(135deg, #28a745, #1a4f3a); /* Green gradient */
+    color: #ffffff;
+    padding: 4rem 2rem;
+    border-radius: 1.5rem;
+    text-align: center;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.laporan-lingkungan-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    letter-spacing: -0.05em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.laporan-lingkungan-hero .hero-icon {
+    font-size: 3rem;
+    color: #d4edda;
+}
+
+.laporan-lingkungan-hero p {
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Innovation Theme Box (reused from Bank Sampah) (Keep existing) --- */
+.innovation-theme-box {
+    background-color: #e0ffe0; /* Lighter green */
+    border: 2px solid #81c784;
+    border-radius: 1.25rem;
+    padding: 2.5rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    width: 100%;
+    max-width: 900px;
+}
+
+.innovation-theme-box h3 {
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: #166534;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.innovation-theme-box p {
+    font-size: 1.2rem;
+    color: #388e3c;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.innovation-theme-box p.theme-description {
+    font-size: 1rem;
+    color: #4a5568;
+    margin-top: 1rem;
+    font-weight: 400;
+}
+
+.innovation-theme-box .theme-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    font-size: 2.5rem;
+    color: #28a745;
+    margin-bottom: 1.5rem;
+}
+
+/* --- Section Titles & Descriptions (Keep existing) --- */
+.section-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #1a4f3a;
+    text-align: center;
+    margin-bottom: 0.8rem;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+.section-description {
+    font-size: 1.15rem;
+    color: #555;
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+/* --- Report Form Section (Keep existing) --- */
+.report-form-section {
+    width: 100%;
+    max-width: 900px;
+    padding: 3rem;
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 1px solid #d4edda;
+}
+
+.form-card {
+    width: 100%;
+    max-width: 600px; /* Max width for the form itself */
+}
+
+.environment-report-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.form-group {
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1.05rem;
+    color: #374151;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.environment-report-form input[type="text"],
+.environment-report-form textarea {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.8rem;
+    font-size: 1rem;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.environment-report-form input:focus,
+.environment-report-form textarea:focus {
+    outline: none;
+    border-color: #22c55e;
+    box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+    background-color: #ffffff;
+}
+
+.environment-report-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.coordinates-display {
+    background-color: #f0fdf4;
+    border: 1px solid #d4edda;
+    border-radius: 0.8rem;
+    padding: 1rem 1.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.95rem;
+    color: #4a5568;
+    font-weight: 500;
+}
+
+.environment-report-form input[type="file"] {
+    padding: 0.8rem 0;
+    font-size: 0.95rem;
+}
+
+.photo-preview-container {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #f0fdf4;
+    border-radius: 0.8rem;
+    border: 1px dashed #a5d6a7;
+    text-align: center;
+}
+
+.photo-preview-container p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+.photo-preview {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.6rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.submit-report-btn {
+    background-color: #28a745;
+    color: #ffffff;
+    padding: 1.2rem 2rem;
+    border-radius: 0.8rem;
+    font-size: 1.35rem;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.submit-report-btn:hover:not(:disabled) {
+    background-color: #1e873a;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+.submit-report-btn:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.submit-report-btn:disabled {
+    background-color: #a5d6a7;
+    cursor: not-allowed;
+    opacity: 0.8;
+    box-shadow: none;
+}
+
+.submit-report-btn .spin-icon {
+    animation: spin 1.5s linear infinite;
+}
+
+/* --- Submit Message/Notification (Keep existing) --- */
+.submit-message {
+    padding: 1rem 1.5rem;
+    border-radius: 0.8rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.submit-message.success {
+    background-color: #e8f5e9;
+    color: #28a745;
+    border: 1px solid #81c784;
+}
+
+.submit-message.error {
+    background-color: #ffebee;
+    color: #dc3545;
+    border: 1px solid #ef9a9a;
+}
+
+.submit-message .message-icon {
+    font-size: 1.5rem;
+}
+
+/* --- Map Reports Section (Keep existing) --- */
+.map-reports-section {
+    width: 100%;
+    max-width: 1200px;
+    padding: 2.5rem;
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+    border: 1px solid #d4edda;
+}
+
+.map-container-wrapper {
+    height: 500px; /* Fixed height for the map */
+    width: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-bottom: 3rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.interactive-map {
+    height: 100%;
+    width: 100%;
+}
+
+/* Leaflet Popup Styling (Keep existing) */
+.leaflet-popup-content-wrapper {
+    border-radius: 0.8rem;
+    padding: 0;
+}
+
+.leaflet-popup-content {
+    margin: 0;
+}
+
+.report-popup-content {
+    padding: 1rem 1.2rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.report-popup-content h4 {
+    font-size: 1.2rem;
+    color: #1a4f3a;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.report-popup-content p {
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.report-popup-content p strong {
+    color: #28a745;
+}
+
+.report-popup-content a {
+    color: #28a745;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+.report-popup-content a:hover {
+    text-decoration: underline;
+}
+
+.report-popup-content .popup-date {
+    font-size: 0.8rem;
+    color: #777;
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+/* Custom Marker Icon (if using icon_pin_kerusakan.png) (Keep existing) */
+.leaflet-marker-icon[src*="icon_pin_kerusakan.png"] {
+    filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.5)); /* Optional shadow for custom icon */
+}
+
+/* --- Reports List Section (Modified) --- */
+.reports-list-section {
+    width: 100%;
+    max-width: 1200px; /* Increased max-width for wider display */
+    padding: 2.5rem;
+    background-color: #ffffff; /* White background for the section */
+    border-radius: 1.5rem;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+    border: 1px solid #d4edda;
+    margin-top: 3.5rem; /* Ensure good spacing from previous section */
+}
+
+.reports-list-section .list-title {
+    font-size: 2.5rem; /* Slightly larger title */
+    font-weight: 700;
+    color: #1a4f3a;
+    text-align: center;
+    margin-bottom: 2.5rem; /* More space below title */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.05);
+}
+
+
+.reports-list-grid {
+    display: grid;
+    /* Responsive Grid:
+       Starts with 1 column for small screens,
+       2 columns for medium,
+       3 columns for large.
+       Uses minmax to ensure flexibility. */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem; /* Increased gap for better spacing between cards */
+    justify-content: center; /* Center items in the grid */
+    align-items: stretch; /* Make cards stretch to same height */
+}
+
+.report-item-card {
+    background-color: #fdfdfd; /* Off-white for subtle contrast */
+    border-radius: 1rem;
+    padding: 1.8rem; /* Increased padding */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08); /* More pronounced shadow */
+    transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+    cursor: pointer;
+    border: 1px solid #e0e0e0; /* Subtle border */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes date to bottom */
+    gap: 0.8rem; /* Space between card elements */
+    overflow: hidden; /* Ensures nothing spills out of rounded corners */
+}
+
+.report-item-card:hover {
+    transform: translateY(-5px) scale(1.01); /* Lift and slightly scale */
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+    border-color: #28a745; /* Highlight border on hover */
+}
+
+.report-item-card h4 {
+    font-size: 1.35rem; /* Slightly larger heading */
+    font-weight: 700; /* Bolder */
+    color: #1a4f3a; /* Darker green */
+    margin-bottom: 0.8rem; /* More space below title */
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    line-height: 1.3;
+}
+
+.report-item-card h4 .fa-map-marker-alt {
+    color: #28a745; /* Green icon */
+    font-size: 1.5rem; /* Larger icon */
+}
+
+.report-item-card p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 0.7rem; /* Space below paragraphs */
+    flex-grow: 1; /* Allows description to take up available space */
+}
+
+.report-item-card p strong {
+    color: #388e3c; /* Darker green for strong text */
+    font-weight: 600;
+}
+
+.report-item-photo {
+    width: calc(100% + 3.6rem); /* Span full width including padding */
+    margin-left: -1.8rem; /* Offset for full width */
+    margin-right: -1.8rem; /* Offset for full width */
+    max-height: 180px; /* Increased max height for photos */
+    object-fit: cover;
+    border-radius: 1rem 1rem 0 0; /* Only top corners rounded, if image is at the very top */
+    margin-top: -1.8rem; /* Pull photo to the very top edge */
+    margin-bottom: 1.2rem; /* Space below photo */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Subtle shadow for image */
+}
+
+.report-item-card .report-detail {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem; /* Add some padding above */
+    border-top: 1px solid #eee; /* Subtle separator */
+}
+
+.report-item-card .report-date {
+    font-size: 0.85rem; /* Slightly larger date font */
+    color: #888; /* Softer color */
+    margin-top: 1rem; /* More space from details */
+    font-style: normal; /* Remove italic */
+    text-align: right; /* Align date to the right */
+    display: block; /* Ensure it takes full width */
+}
+
+
+/* --- Animations (Keep existing) --- */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- Media Queries for Responsiveness (Modified where necessary) --- */
+
+/* Extra Small Devices (Smartphones portrait, < 576px) */
+@media (max-width: 575.98px) {
+    .laporan-lingkungan-page-container {
+        padding: 1.5rem 0.8rem;
+        gap: 2rem;
+    }
+
+    .laporan-lingkungan-hero {
+        padding: 2.5rem 1rem;
+        border-radius: 1rem;
+    }
+
+    .laporan-lingkungan-hero h1 {
+        font-size: 2.5rem;
+        gap: 0.7rem;
+    }
+    .laporan-lingkungan-hero .hero-icon {
+        font-size: 2.2rem;
+    }
+
+    .laporan-lingkungan-hero p {
+        font-size: 1.1rem;
+    }
+
+    .innovation-theme-box {
+        padding: 1.8rem;
+        border-radius: 1rem;
+        margin-bottom: 2rem;
+    }
+    .innovation-theme-box h3 {
+        font-size: 1.6rem;
+    }
+    .innovation-theme-box p {
+        font-size: 1rem;
+    }
+    .innovation-theme-box .theme-icons {
+        font-size: 2rem;
+        gap: 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        gap: 0.6rem;
+    }
+    .section-description {
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+    }
+
+    .report-form-section,
+    .map-reports-section {
+        padding: 1.8rem 1.2rem;
+        border-radius: 1rem;
+    }
+
+    .environment-report-form {
+        gap: 1.2rem;
+    }
+    .form-group label {
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+    }
+    .environment-report-form input[type="text"],
+    .environment-report-form textarea {
+        padding: 0.8rem 1rem;
+        font-size: 0.95rem;
+        border-radius: 0.6rem;
+    }
+    .environment-report-form textarea {
+        min-height: 80px;
+    }
+    .coordinates-display {
+        font-size: 0.85rem;
+        padding: 0.8rem 1rem;
+        gap: 0.8rem;
+    }
+    .environment-report-form input[type="file"] {
+        font-size: 0.85rem;
+    }
+    .photo-preview-container {
+        padding: 0.8rem;
+    }
+    .photo-preview-container p {
+        font-size: 0.8rem;
+    }
+    .submit-report-btn {
+        padding: 1rem 1.5rem;
+        font-size: 1.15rem;
+        gap: 0.8rem;
+        margin-top: 1.5rem;
+        border-radius: 0.6rem;
+    }
+    .submit-report-btn .spin-icon {
+        font-size: 1.2rem;
+    }
+
+    .submit-message {
+        font-size: 0.95rem;
+        padding: 0.8rem 1.2rem;
+        gap: 0.8rem;
+        border-radius: 0.6rem;
+        margin-bottom: 1.5rem;
+    }
+    .submit-message .message-icon {
+        font-size: 1.3rem;
+    }
+
+    .map-container-wrapper {
+        height: 300px;
+        margin-bottom: 2rem;
+        border-radius: 0.8rem;
+    }
+
+    .reports-list-section {
+        padding: 1.5rem; /* Adjusted padding */
+        border-radius: 1rem;
+        margin-top: 2rem;
+    }
+    .reports-list-section .list-title {
+        font-size: 1.8rem; /* Adjusted title size */
+        margin-bottom: 1.5rem;
+    }
+    .reports-list-grid {
+        grid-template-columns: 1fr; /* Single column on small screens */
+        gap: 1.5rem;
+    }
+    .report-item-card {
+        padding: 1.2rem;
+        border-radius: 0.8rem;
+        gap: 0.6rem;
+    }
+    .report-item-card h4 {
+        font-size: 1.15rem; /* Adjusted card title size */
+        gap: 0.5rem;
+    }
+    .report-item-card p {
+        font-size: 0.9rem;
+    }
+    .report-item-photo {
+        max-height: 100px; /* Adjusted photo height */
+        margin-top: -1.2rem; /* Adjust offset for padding */
+        margin-left: -1.2rem;
+        margin-right: -1.2rem;
+        border-radius: 0.8rem 0.8rem 0 0;
+    }
+    .report-item-card .report-date {
+        font-size: 0.75rem;
+    }
+}
+
+/* Small Devices (Tablets, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .laporan-lingkungan-page-container {
+        padding: 2.5rem 1.5rem;
+        gap: 3rem;
+    }
+
+    .laporan-lingkungan-hero {
+        padding: 3.5rem 1.5rem;
+        border-radius: 1.2rem;
+    }
+    .laporan-lingkungan-hero h1 {
+        font-size: 3rem;
+        gap: 0.8rem;
+    }
+    .laporan-lingkungan-hero .hero-icon {
+        font-size: 2.8rem;
+    }
+    .laporan-lingkungan-hero p {
+        font-size: 1.2rem;
+    }
+
+    .innovation-theme-box {
+        padding: 2rem;
+        border-radius: 1rem;
+    }
+    .innovation-theme-box h3 {
+        font-size: 1.8rem;
+    }
+    .innovation-theme-box p {
+        font-size: 1.1rem;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+    .section-description {
+        font-size: 1rem;
+    }
+
+    .report-form-section,
+    .map-reports-section {
+        padding: 2.2rem;
+        border-radius: 1.2rem;
+    }
+
+    .map-container-wrapper {
+        height: 400px;
+        margin-bottom: 2.5rem;
+    }
+
+    .reports-list-section {
+        padding: 2rem; /* Adjusted padding */
+        border-radius: 1.2rem;
+        margin-top: 2.5rem;
+    }
+    .reports-list-section .list-title {
+        font-size: 2.2rem; /* Adjusted title size */
+        margin-bottom: 2rem;
+    }
+    .reports-list-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 2 columns on tablets */
+        gap: 1.8rem;
+    }
+    .report-item-card {
+        padding: 1.5rem; /* Adjusted padding */
+        gap: 0.7rem;
+    }
+    .report-item-card h4 {
+        font-size: 1.25rem; /* Adjusted card title size */
+    }
+    .report-item-card p {
+        font-size: 0.9rem;
+    }
+    .report-item-photo {
+        max-height: 120px; /* Adjusted photo height */
+        margin-top: -1.5rem; /* Adjust offset for padding */
+        margin-left: -1.5rem;
+        margin-right: -1.5rem;
+        border-radius: 1rem 1rem 0 0;
+    }
+    .report-item-card .report-date {
+        font-size: 0.8rem;
+    }
+}
+
+/* Medium Devices (Desktops, 768px and up) */
+@media (min-width: 768px) {
+    .laporan-lingkungan-page-container {
+        padding: 4rem 2rem;
+        gap: 4rem;
+    }
+
+    .laporan-lingkungan-hero {
+        padding: 5rem 3rem;
+    }
+    .laporan-lingkungan-hero h1 {
+        font-size: 4rem;
+    }
+    .laporan-lingkungan-hero .hero-icon {
+        font-size: 3.5rem;
+    }
+    .laporan-lingkungan-hero p {
+        font-size: 1.6rem;
+    }
+
+    .innovation-theme-box {
+        padding: 3rem;
+    }
+    .innovation-theme-box h3 {
+        font-size: 2.4rem;
+    }
+    .innovation-theme-box p {
+        font-size: 1.2rem;
+    }
+
+    .section-title {
+        font-size: 3.2rem;
+    }
+    .section-description {
+        font-size: 1.2rem;
+    }
+
+    .report-form-section,
+    .map-reports-section {
+        padding: 3rem;
+    }
+
+    .map-container-wrapper {
+        height: 500px;
+        margin-bottom: 3rem;
+    }
+
+    .reports-list-section {
+        padding: 3rem; /* Adjusted padding */
+        margin-top: 3.5rem;
+    }
+    .reports-list-section .list-title {
+        font-size: 2.5rem; /* Adjusted title size */
+        margin-bottom: 2.5rem;
+    }
+    .reports-list-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Min 300px per column */
+        gap: 2rem; /* Increased gap */
+    }
+    .report-item-card {
+        padding: 1.8rem; /* Adjusted padding */
+        gap: 0.8rem;
+    }
+    .report-item-card h4 {
+        font-size: 1.35rem; /* Adjusted card title size */
+    }
+    .report-item-card p {
+        font-size: 0.95rem;
+    }
+    .report-item-photo {
+        max-height: 150px; /* Adjusted photo height */
+        margin-top: -1.8rem; /* Adjust offset for padding */
+        margin-left: -1.8rem;
+        margin-right: -1.8rem;
+        border-radius: 1rem 1rem 0 0;
+    }
+    .report-item-card .report-date {
+        font-size: 0.85rem;
+    }
+}
+
+/* Large Devices (Large Desktops, 1024px and up) */
+@media (min-width: 1024px) {
+    .laporan-lingkungan-page-container {
+        padding: 5rem 3rem;
+        gap: 5rem;
+    }
+
+    .laporan-lingkungan-hero h1 {
+        font-size: 4.5rem;
+    }
+    .laporan-lingkungan-hero .hero-icon {
+        font-size: 4rem;
+    }
+    .laporan-lingkungan-hero p {
+        font-size: 1.8rem;
+    }
+
+    .innovation-theme-box h3 {
+        font-size: 2.8rem;
+    }
+
+    .section-title {
+        font-size: 3.5rem;
+    }
+
+    .reports-list-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Min 320px for larger screens */
+        gap: 2.5rem; /* Even larger gap */
+    }
+    .report-item-card {
+        padding: 2rem; /* Larger padding */
+        gap: 1rem;
+    }
+    .report-item-card h4 {
+        font-size: 1.45rem;
+    }
+    .report-item-card p {
+        font-size: 1rem;
+    }
+    .report-item-photo {
+        max-height: 180px; /* Even larger photo height */
+        margin-top: -2rem; /* Adjust offset for padding */
+        margin-left: -2rem;
+        margin-right: -2rem;
+    }
+}
+
+/* Extra Large Devices (1440px and up) */
+@media (min-width: 1440px) {
+    .laporan-lingkungan-page-container {
+        padding: 6rem 4rem;
+    }
+    .laporan-lingkungan-hero,
+    .innovation-theme-box,
+    .report-form-section,
+    .map-reports-section {
+        max-width: 1400px;
+    }
+    .map-container-wrapper {
+        height: 600px;
+    }
+    .reports-list-grid {
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); /* Even larger min for very large screens */
+        gap: 3rem; /* Max gap */
+    }
+    .report-item-card {
+        padding: 2.2rem;
+    }
+    .report-item-photo {
+        max-height: 200px;
+        margin-top: -2.2rem;
+        margin-left: -2.2rem;
+        margin-right: -2.2rem;
+    }
+}

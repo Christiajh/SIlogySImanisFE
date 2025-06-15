@@ -1,0 +1,821 @@
+/* VisiMisiPage.css */
+
+:root {
+  --primary-dark: #0f172a;
+  --accent-blue: #38bdf8;
+  --background-light: #f8fafc;
+  --text-dark: #1e293b;
+  --card-background: #ffffff;
+  --shadow-base: rgba(0,0,0,0.1);
+  --gradient-bg: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  --digital-vibrant-blue: #0ea5e9;
+  --digital-vibrant-purple: #8b5cf6;
+  --digital-vibrant-green: #10b981;
+  --neon-glow-effect: 0 0 20px rgba(56, 189, 248, 0.3);
+}
+
+/* Global Reset & Body Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--background-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden; /* Prevent horizontal scroll due to animations */
+  position: relative; /* Needed for pseudo-element positioning */
+}
+
+/* Animated Background Effect */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 60%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+  z-index: -1; /* Send it to the back */
+  animation: backgroundFloat 20s ease-in-out infinite;
+}
+
+@keyframes backgroundFloat {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(30px, -30px) rotate(1deg); }
+  66% { transform: translate(-20px, 20px) rotate(-1deg); }
+}
+
+
+/* --- Hero Section --- */
+.hero-section {
+  background: var(--gradient-bg);
+  color: white;
+  padding: 6rem 1.5rem; /* Adjusted for mobile responsiveness */
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  border-bottom-left-radius: 50px; /* Modern, soft edge */
+  border-bottom-right-radius: 50px; /* Modern, soft edge */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+}
+
+/* Hero Section Decorative Scan Effect */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    linear-gradient(45deg, transparent 48%, rgba(56, 189, 248, 0.1) 49%, rgba(56, 189, 248, 0.1) 51%, transparent 52%),
+    linear-gradient(-45deg, transparent 48%, rgba(139, 92, 246, 0.1) 49%, rgba(139, 92, 246, 0.1) 51%, transparent 52%);
+  animation: scanEffect 4s ease-in-out infinite;
+  z-index: 1; /* Below content, above background */
+}
+
+@keyframes scanEffect {
+  0%, 100% { transform: translateX(-100%) translateY(-100%); }
+  50% { transform: translateX(100%) translateY(100%); }
+}
+
+/* Hero Section Content Wrapper */
+.hero-content-wrapper {
+  position: relative;
+  z-index: 2; /* Ensure content is above decorative effects */
+  max-width: 900px;
+  margin: 0 auto; /* Center content */
+}
+
+.hero-section h1 {
+  font-size: 3rem; /* Adjusted for mobile, will scale up */
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, #ffffff, var(--accent-blue), var(--digital-vibrant-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: var(--neon-glow-effect); /* Subtle glow */
+  animation: textPulse 3s ease-in-out infinite;
+  font-weight: 800; /* Extra bold */
+}
+
+@keyframes textPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); } /* Subtle scaling effect */
+}
+
+.hero-tagline {
+  font-size: 1.3rem; /* Adjusted for mobile */
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  background: linear-gradient(45deg, #cbd5e1, var(--digital-vibrant-green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 500;
+}
+
+/* Key Pillars Grid (formerly era-timeline) */
+.key-pillars-grid {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem; /* Adjusted for mobile */
+  margin-top: 2rem;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+}
+
+.pillar-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.8rem 1.8rem; /* Adjusted for mobile */
+  border-radius: 30px; /* Pill shape */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  animation: slideInFromBottom 0.8s ease-out; /* Entry animation */
+  font-weight: 500;
+  white-space: nowrap; /* Prevent text wrapping inside item */
+}
+
+.pillar-item:hover {
+  transform: translateY(-8px); /* Lift effect on hover */
+  box-shadow: var(--neon-glow-effect);
+}
+
+@keyframes slideInFromBottom {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Main Content Area --- */
+.main-content-area {
+  padding: 3rem 1.5rem; /* Adjusted for mobile */
+  max-width: 1400px;
+  margin: auto; /* Center the main content */
+}
+
+/* Main Card Container for Visi & Misi content */
+.vision-mission-card {
+  background: #ffffff;
+  border-radius: 30px;
+  overflow: hidden; /* Important for border-top effect */
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.1),
+    0 0 0 1px rgba(56, 189, 248, 0.1); /* Subtle outline */
+  position: relative;
+  backdrop-filter: blur(20px); /* More blur for a stronger effect */
+  border: 1px solid rgba(255, 255, 255, 0.8); /* Very subtle white border */
+}
+
+/* Animated Rainbow Border at the top of the card */
+.vision-mission-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px; /* Visible border */
+  background: linear-gradient(90deg, #0ea5e9), #8b5cf6, #10b981;
+  animation: rainbowBorder 3s linear infinite;
+}
+
+@keyframes rainbowBorder {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Section Header (inside the card) */
+.section-header-top {
+  background: var(--gradient-bg);
+  color: white;
+  padding: 3rem 1.5rem; /* Adjusted for mobile */
+  text-align: center;
+  position: relative;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1); /* Separator line */
+}
+
+.section-title-main {
+  font-size: 2rem; /* Adjusted for mobile */
+  font-weight: bold;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.section-subtitle-description {
+  font-size: 1.1rem; /* Adjusted for mobile */
+  opacity: 0.9;
+  margin-bottom: 2rem;
+  max-width: 700px; /* Constrain width for readability */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Eco Solutions Showcase (formerly languages-showcase) */
+.eco-solutions-showcase {
+  display: flex;
+  justify-content: center;
+  gap: 1rem; /* Adjusted for mobile */
+  flex-wrap: wrap; /* Allow cards to wrap */
+  margin-top: 2rem;
+}
+
+.solution-card {
+  background: rgba(255, 255, 255, 0.15); /* Slightly more opaque for better contrast */
+  padding: 1rem; /* Adjusted for mobile */
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  text-align: center;
+  min-width: 100px; /* Smaller min-width for more cards per row on mobile */
+  color: white; /* Ensure text is visible on dark background */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  flex: 1 1 auto; /* Allow flexible sizing */
+  max-width: 180px; /* Control max width on larger screens */
+}
+
+.solution-card:hover {
+  transform: translateY(-12px) scale(1.07); /* More dynamic hover */
+  box-shadow: var(--neon-glow-effect), 0 0 30px rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.solution-icon {
+  font-size: 1.8rem; /* Adjusted for mobile */
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* --- Content Breakdown Grid (Misi & Fokus Utama) --- */
+.content-breakdown-grid {
+  padding: 3rem 1.5rem; /* Adjusted for mobile */
+  display: grid;
+  grid-template-columns: 1fr; /* Stacked on mobile by default */
+  gap: 2rem; /* Adjusted for mobile */
+  margin-bottom: 3rem;
+}
+
+.content-panel {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+  padding: 2rem;
+  border-radius: 20px;
+  border: 1px solid rgba(56, 189, 248, 0.1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Softer shadow */
+}
+
+/* Decorative top border for content panels */
+.content-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px; /* Thicker border */
+  background: linear-gradient(90deg, var(--accent-blue), var(--digital-vibrant-purple));
+  animation: borderHighlight 2s ease-in-out infinite alternate;
+}
+
+@keyframes borderHighlight {
+  from { transform: scaleX(0); opacity: 0; }
+  to { transform: scaleX(1); opacity: 1; }
+}
+
+.panel-title {
+  font-size: 1.6rem; /* Adjusted for mobile */
+  font-weight: bold;
+  margin-bottom: 1.5rem; /* Increased spacing */
+  display: flex;
+  align-items: center;
+  gap: 0.8rem; /* Increased spacing */
+  color: var(--primary-dark);
+  text-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.mission-list {
+  list-style: none;
+  padding: 0;
+}
+
+.mission-item {
+  padding: 1.2rem; /* Slightly larger padding */
+  margin-bottom: 1rem;
+  background: white;
+  border-radius: 15px; /* Softer corners */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08); /* More pronounced shadow */
+  transition: all 0.3s ease;
+  border-left: 5px solid var(--accent-blue); /* Thicker accent border */
+}
+
+.mission-item:hover {
+  transform: translateX(15px) scale(1.02); /* More dynamic hover */
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15), var(--neon-glow-effect);
+  background: #f0f8ff; /* Subtle background change */
+}
+
+.mission-name {
+  font-weight: bold;
+  color: var(--primary-dark);
+  margin-bottom: 0.4rem; /* Adjusted spacing */
+  font-size: 1.1rem;
+}
+
+.mission-description {
+  font-size: 0.95rem; /* Slightly larger text */
+  color: #64748b;
+}
+
+/* --- Interactive Code Demo Section --- */
+.interactive-code-demo {
+  background: var(--primary-dark);
+  color: white;
+  padding: 2.5rem; /* Adjusted for mobile */
+  border-radius: 20px; /* Softer corners */
+  margin: 2rem 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+/* Code demo shimmer effect */
+.interactive-code-demo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  animation: codeShimmer 2s infinite;
+}
+
+@keyframes codeShimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.demo-header {
+  font-size: 1.4rem; /* Adjusted for mobile */
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-weight: 600;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.code-display-window {
+  background: #1e293b;
+  border-radius: 12px; /* Softer corners */
+  padding: 1.5rem; /* Adjusted for mobile */
+  font-family: 'Fira Code', 'Courier New', monospace; /* Fira Code for a modern look */
+  position: relative;
+  margin: 1rem 0;
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.5); /* Inner shadow for depth */
+}
+
+.code-window-controls {
+  display: flex;
+  gap: 0.6rem; /* Adjusted spacing */
+  margin-bottom: 1.2rem; /* Adjusted spacing */
+}
+
+.control-dot {
+  width: 14px; /* Slightly larger dots */
+  height: 14px;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+.dot-red { background: #ef4444; }
+.dot-yellow { background: #f59e0b; }
+.dot-green { background: #10b981; }
+
+.code-content-block {
+  color: #e2e8f0;
+  line-height: 1.7; /* Increased line height for readability */
+  font-size: 0.95rem;
+}
+
+.code-keyword { color: #5eead4; font-weight: bold;} /* Teal for keywords */
+.code-comment { color: #94a3b8; font-style: italic; } /* Lighter grey for comments */
+
+/* --- Strategic Timeline Section --- */
+.strategic-timeline-section {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(56, 189, 248, 0.05) 100%);
+  padding: 2.5rem; /* Adjusted for mobile */
+  border-radius: 20px;
+  margin: 2rem 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.timeline-section-title {
+  text-align: center;
+  font-size: 2rem; /* Adjusted for mobile */
+  margin-bottom: 2.5rem; /* Increased spacing */
+  color: var(--primary-dark);
+  font-weight: 700;
+  position: relative;
+}
+
+/* Underline for the timeline title */
+.timeline-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--digital-vibrant-green), var(--digital-vibrant-blue));
+  border-radius: 2px;
+}
+
+.timeline-events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem; /* Increased spacing */
+}
+
+.timeline-event-item {
+  display: flex;
+  align-items: flex-start; /* Align items to the top */
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08); /* Stronger shadow */
+  transition: all 0.3s ease;
+  border-left: 5px solid var(--digital-vibrant-green); /* Green accent */
+}
+
+.timeline-event-item:hover {
+  transform: scale(1.01) translateY(-3px); /* Subtle lift */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15), 0 0 15px rgba(16, 185, 129, 0.2);
+}
+
+.event-year-badge {
+  background: var(--digital-vibrant-green); /* Green badge */
+  color: white;
+  padding: 0.6rem 1.2rem; /* Adjusted padding */
+  border-radius: 25px;
+  font-weight: bold;
+  min-width: 90px; /* Ensure consistent width */
+  text-align: center;
+  flex-shrink: 0; /* Prevent shrinking on small screens */
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+}
+
+.event-details {
+  flex: 1;
+}
+
+.event-title-text {
+  font-weight: bold;
+  color: var(--primary-dark);
+  margin-bottom: 0.4rem;
+  font-size: 1.1rem;
+}
+
+/* --- Impact Statistics Grid --- */
+.impact-statistics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* More flexible for mobile */
+  gap: 1.5rem; /* Adjusted for mobile */
+  margin: 3rem 0;
+  padding: 0 1.5rem; /* Add padding for small screens */
+}
+
+.statistic-card {
+  background: #0f1f47;
+  padding: 1.8rem; /* Adjusted for mobile */
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top accent border for statistic cards */
+.statistic-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px; /* Thicker top border */
+  background: linear-gradient(90deg, #0ea5e9, #8b5cf6);
+}
+
+.statistic-card:hover {
+  transform: translateY(-8px) scale(1.02); /* More dynamic lift */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.566), var(--neon-glow-effect);
+}
+
+.statistic-number {
+  font-size: 2.8rem; /* Larger numbers */
+  font-weight: bold;
+  color: #ffff;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+}
+
+.statistic-label {
+  color: #ffff;
+  font-weight: 600; /* Bolder label */
+  font-size: 0.95rem;
+}
+
+/* --- Responsive Adjustments (Media Queries) --- */
+
+/* Tablet and Smaller Desktop */
+@media (max-width: 992px) {
+  .hero-section h1 {
+    font-size: 2.8rem;
+  }
+  .section-title-main {
+    font-size: 1.9rem;
+  }
+}
+
+
+/* Mobile Devices (<= 768px) */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 4rem 1rem; /* Reduced padding */
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+  }
+
+  .hero-section h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-tagline {
+    font-size: 1.2rem;
+  }
+
+  .key-pillars-grid {
+    flex-direction: column; /* Stack pillars vertically */
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .pillar-item {
+    width: 90%; /* Make them take more width */
+    max-width: 300px; /* Limit max width for readability */
+    padding: 0.7rem 1.5rem;
+  }
+
+  .main-content-area {
+    padding: 2rem 1rem; /* Reduced padding */
+  }
+
+  .vision-mission-card {
+    border-radius: 20px; /* Slightly smaller border radius */
+  }
+
+  .section-header-top {
+    padding: 2.5rem 1rem;
+  }
+
+  .section-title-main {
+    font-size: 1.8rem;
+    flex-direction: column; /* Stack title and icons for small screens */
+    gap: 0.5rem;
+  }
+
+  .section-subtitle-description {
+    font-size: 1rem;
+  }
+
+  .eco-solutions-showcase {
+    gap: 0.8rem;
+    justify-content: center; /* Center cards */
+  }
+
+  .solution-card {
+    min-width: 90px; /* Allow smaller cards */
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    max-width: 48%; /* Aim for two cards per row */
+  }
+
+  .solution-icon {
+    font-size: 1.5rem;
+  }
+
+  .content-breakdown-grid {
+    grid-template-columns: 1fr; /* Stack all content panels */
+    gap: 1.5rem;
+    padding: 2rem 1rem;
+  }
+
+  .content-panel {
+    padding: 1.8rem;
+    border-radius: 15px;
+  }
+
+  .panel-title {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .mission-item {
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    border-left: 4px solid var(--accent-blue); /* Adjust border thickness */
+  }
+
+  .mission-name {
+    font-size: 1rem;
+  }
+
+  .interactive-code-demo {
+    padding: 2rem 1.5rem;
+    border-radius: 15px;
+  }
+
+  .demo-header {
+    font-size: 1.2rem;
+  }
+
+  .code-display-window {
+    padding: 1rem;
+    font-size: 0.85rem;
+  }
+
+  .control-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .strategic-timeline-section {
+    padding: 2rem 1.5rem;
+    border-radius: 15px;
+  }
+
+  .timeline-section-title {
+    font-size: 1.6rem;
+  }
+
+  .timeline-events-list {
+    gap: 1.2rem;
+  }
+
+  .timeline-event-item {
+    flex-direction: column; /* Stack year and content */
+    align-items: center;
+    text-align: center;
+    padding: 1.2rem;
+    border-left: none; /* Remove left border for stacked layout */
+    border-top: 5px solid var(--digital-vibrant-green); /* Add top border for distinction */
+  }
+
+  .event-year-badge {
+    margin-bottom: 0.8rem;
+  }
+
+  .impact-statistics-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* More flexible for mobile */
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  .statistic-card {
+    padding: 1.5rem;
+    border-radius: 15px;
+  }
+
+  .statistic-number {
+    font-size: 2.2rem;
+  }
+
+  .statistic-label {
+    font-size: 0.85rem;
+  }
+}
+
+/* Very Small Mobile Devices (<= 480px) */
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 3rem 0.8rem;
+  }
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+  .hero-tagline {
+    font-size: 0.95rem;
+  }
+
+  .main-content-area {
+    padding: 1.5rem 0.8rem;
+  }
+
+  .section-header-top {
+    padding: 2rem 0.8rem;
+  }
+  .section-title-main {
+    font-size: 1.5rem;
+  }
+  .section-subtitle-description {
+    font-size: 0.9rem;
+  }
+
+  .eco-solutions-showcase {
+    gap: 0.6rem;
+  }
+  .solution-card {
+    min-width: unset; /* Allow cards to shrink further */
+    flex: 1 1 48%; /* Ensure 2 cards per row, with gap */
+    max-width: 49%; /* Account for gap */
+    padding: 0.7rem;
+    font-size: 0.8rem;
+  }
+  .solution-icon {
+    font-size: 1.3rem;
+  }
+
+  .content-breakdown-grid {
+    padding: 1.5rem 0.8rem;
+    gap: 1rem;
+  }
+
+  .content-panel {
+    padding: 1.5rem;
+  }
+  .panel-title {
+    font-size: 1.3rem;
+  }
+  .mission-item {
+    font-size: 0.85rem;
+    padding: 0.8rem;
+  }
+  .mission-name {
+    font-size: 0.95rem;
+  }
+
+  .interactive-code-demo {
+    padding: 1.5rem 1rem;
+  }
+  .demo-header {
+    font-size: 1.1rem;
+  }
+  .code-display-window {
+    font-size: 0.75rem;
+    padding: 0.8rem;
+  }
+  .control-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .strategic-timeline-section {
+    padding: 1.5rem 1rem;
+  }
+  .timeline-section-title {
+    font-size: 1.4rem;
+  }
+  .timeline-event-item {
+    padding: 1rem;
+    gap: 0.8rem;
+  }
+  .event-year-badge {
+    padding: 0.5rem 0.8rem;
+    min-width: 70px;
+  }
+  .event-title-text {
+    font-size: 1rem;
+  }
+  .event-details div:last-child {
+    font-size: 0.85rem;
+  }
+
+  .impact-statistics-grid {
+    grid-template-columns: 1fr; /* Stack all cards vertically */
+    gap: 0.8rem;
+    padding: 0 0.8rem;
+  }
+  .statistic-card {
+    padding: 1.2rem;
+  }
+  .statistic-number {
+    font-size: 2rem;
+  }
+  .statistic-label {
+    font-size: 0.8rem;
+  }
+}

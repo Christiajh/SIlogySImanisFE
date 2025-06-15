@@ -1,0 +1,379 @@
+/* Relawan.css */
+
+/* --- General Styling --- */
+.relawan-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+  padding: 4rem 2rem;
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1a4f3a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.relawan-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  max-width: 800px;
+}
+
+.relawan-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #166534;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.relawan-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #48bb78, #38a169);
+  border-radius: 2px;
+}
+
+.relawan-subtitle {
+  font-size: 1.25rem;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+/* --- Testimonial Carousel --- */
+.testimonial-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.nav-button {
+  background: #ffffff;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.nav-button svg {
+  width: 24px;
+  height: 24px;
+  fill: #38a169;
+}
+
+.nav-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  background: #38a169;
+}
+
+.nav-button:hover svg {
+  fill: white;
+}
+
+.prev-button {
+  margin-right: -25px;
+}
+
+.next-button {
+  margin-left: -25px;
+}
+
+/* --- Testimonial Card --- */
+.testimonial-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 700px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.testimonial-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(90deg, #48bb78, #38a169);
+}
+
+.testimonial-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.testimonial-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 2;
+}
+
+.avatar-decoration {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #48bb78, #38a169);
+  z-index: 1;
+  animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.testimonial-content {
+  text-align: center;
+  width: 100%;
+}
+
+.testimonial-name {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1a4f3a;
+  margin-bottom: 0.5rem;
+}
+
+.testimonial-role {
+  font-size: 1rem;
+  color: #4a5568;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  position: relative;
+  display: inline-block;
+}
+
+.testimonial-role::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: #48bb78;
+}
+
+.testimonial-message {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #4a5568;
+  margin-bottom: 1.5rem;
+  position: relative;
+  max-height: 120px;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.testimonial-message.expanded {
+  max-height: 500px;
+}
+
+.testimonial-message::before {
+  content: '"';
+  font-size: 4rem;
+  color: rgba(72, 187, 120, 0.1);
+  position: absolute;
+  top: -20px;
+  left: -10px;
+  font-family: serif;
+  line-height: 1;
+}
+
+.testimonial-message::after {
+  content: '"';
+  font-size: 4rem;
+  color: rgba(72, 187, 120, 0.1);
+  position: absolute;
+  bottom: -40px;
+  right: -10px;
+  font-family: serif;
+  line-height: 1;
+}
+
+.read-more-button {
+  background: none;
+  border: none;
+  color: #38a169;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.read-more-button:hover {
+  color: #2f855a;
+  text-decoration: underline;
+}
+
+.read-more-button::after {
+  content: '→';
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.read-more-button:hover::after {
+  transform: translateX(3px);
+}
+
+/* --- Indicators --- */
+.testimonial-indicators {
+  display: flex;
+  gap: 12px;
+  margin: 2rem 0;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #cbd5e0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.indicator.active {
+  background: #38a169;
+  transform: scale(1.2);
+}
+
+/* --- CTA Section --- */
+.relawan-cta {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.relawan-cta p {
+  font-size: 1.25rem;
+  color: #4a5568;
+  margin-bottom: 1.5rem;
+}
+
+.join-button {
+  background: linear-gradient(135deg, #48bb78, #38a169);
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(72, 187, 120, 0.3);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.join-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(72, 187, 120, 0.4);
+}
+
+.join-button:active {
+  transform: translateY(1px);
+}
+
+.join-button::before {
+  content: '+';
+  margin-right: 8px;
+  font-size: 1.2rem;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .relawan-container {
+    padding: 3rem 1.5rem;
+  }
+  
+  .relawan-title {
+    font-size: 2.25rem;
+  }
+  
+  .relawan-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .testimonial-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .nav-button {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .nav-button svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .testimonial-name {
+    font-size: 1.5rem;
+  }
+  
+  .testimonial-message {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .relawan-container {
+    padding: 2rem 1rem;
+  }
+  
+  .testimonial-card {
+    padding: 1.5rem 1rem;
+  }
+  
+  .testimonial-avatar {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .testimonial-name {
+    font-size: 1.3rem;
+  }
+}

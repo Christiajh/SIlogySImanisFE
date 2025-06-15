@@ -1,0 +1,154 @@
+/* hero.css */
+
+.sek-hero-8d2x9j {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.vid-wrap-p7q0m1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.vid-bg-n4s5t6 {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.overlay-dark-w1e2r3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Darker overlay for better text contrast */
+  z-index: 1;
+}
+
+/* Z-index untuk konten */
+.z-1 {
+  z-index: 2;
+  position: relative;
+}
+
+/* Warna teks hijau khusus */
+.text-green-override {
+  color: #198754 !important;
+}
+
+/* Warna teks terang */
+.text-light {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Gaya tombol */
+.btn-mulai-z6x7c8 {
+  background-color: #28a745;
+  border-color: #28a745;
+  color: white; /* Pastikan warna teks tombol putih */
+}
+
+.btn-mulai-z6x7c8:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Penyesuaian Responsif untuk Layar Besar (Desktop) --- */
+.judul-besar-f0g1h2 {
+  font-size: 3.5rem; /* Ukuran judul lebih besar untuk desktop */
+  margin-bottom: 1.5rem !important;
+  line-height: 1.2;
+}
+
+.paragraf-lead-j3k4l5 {
+  font-size: 1.5rem; /* Ukuran paragraf lebih besar untuk desktop */
+  margin-bottom: 2rem !important;
+  padding: 0 2rem; /* Sedikit padding horizontal untuk estetika */
+}
+
+/* --- Penyesuaian Responsif untuk Layar Sedang (Tablet) --- */
+@media (max-width: 992px) {
+  .judul-besar-f0g1h2 {
+    font-size: 3rem;
+  }
+
+  .paragraf-lead-j3k4l5 {
+    font-size: 1.3rem;
+    padding: 0 1.5rem;
+  }
+}
+
+/* --- Penyesuaian Responsif untuk Layar Kecil (Android/Mobile) --- */
+@media (max-width: 768px) {
+  .sek-hero-8d2x9j {
+    min-height: 85vh;
+  }
+
+  .judul-besar-f0g1h2 {
+    font-size: 2.2rem; /* Ukuran judul lebih besar untuk mobile */
+    margin-bottom: 1.25rem !important;
+    line-height: 1.3;
+  }
+
+  .paragraf-lead-j3k4l5 {
+    font-size: 1.1rem; /* Ukuran paragraf lebih besar untuk mobile */
+    margin-bottom: 1.75rem !important;
+    padding: 0 1rem;
+  }
+
+  .btn-mulai-z6x7c8 {
+    font-size: 0.95rem;
+    padding: 0.8rem 1.8rem !important;
+  }
+
+  .konten-utama-a7b8c9 {
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .sek-hero-8d2x9j {
+    min-height: 80vh;
+  }
+
+  .judul-besar-f0g1h2 {
+    font-size: 1.9rem; /* Ukuran judul untuk layar sangat kecil */
+    margin-bottom: 1rem !important;
+  }
+
+  .paragraf-lead-j3k4l5 {
+    font-size: 1rem; /* Ukuran paragraf untuk layar sangat kecil */
+    margin-bottom: 1.5rem !important;
+    padding: 0 0.75rem;
+  }
+
+  .btn-mulai-z6x7c8 {
+    font-size: 0.85rem;
+    padding: 0.7rem 1.5rem !important;
+  }
+
+  .konten-utama-a7b8c9 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+}

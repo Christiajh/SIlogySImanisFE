@@ -1,0 +1,139 @@
+body {
+  background-color: #f1f3f5;
+  font-family: 'Inter', sans-serif;
+}
+
+.intro-text {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #2b2b2b;
+  animation: fadeIn 1.2s ease;
+}
+
+.highlight {
+  color:  #005fbe;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Container */
+.chatbot-container {
+  background-color: #ffffff;
+  border-radius: 20px;
+  max-width: 100%;
+  width: 100%;
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+/* Messages Area */
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  background-color: #f9fbfe;
+  padding: 15px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  scroll-behavior: smooth;
+}
+
+.messages::-webkit-scrollbar {
+  width: 6px;
+}
+.messages::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1;
+  border-radius: 6px;
+}
+
+/* Bubble */
+.message {
+  margin: 6px 0;
+  display: flex;
+}
+.message.text-right {
+  justify-content: flex-end;
+}
+.message.text-left {
+  justify-content: flex-start;
+}
+.message span {
+  max-width: 80%;
+  padding: 12px 18px;
+  border-radius: 20px;
+  font-size: 1rem;
+  line-height: 1.4;
+  word-wrap: break-word;
+  transition: transform 0.2s;
+}
+.message.text-right span {
+  background: linear-gradient(to bottom right,#3198ff, #021a33);
+  color: white;
+}
+.message.text-left span {
+  background-color: #e5e5ea;
+  color: #111;
+}
+
+/* Input Area */
+.chat-input {
+  display: flex;
+  gap: 10px;
+}
+
+.chat-input input[type="text"] {
+  flex: 1;
+  padding: 10px 14px;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.chat-input input[type="text"]:focus {
+  border-color: #1b8dff;
+}
+
+.chat-input button {
+  padding: 20px 21px;
+  background-color: #005fbe;
+  color: #fff;
+  font-weight: 400;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+.chat-input button:hover {
+  background-color:#2489ee;
+  transform: translateY(-1px);
+}
+.chat-input button:active {
+  transform: scale(0.98);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .chatbot-container {
+    height: 80vh;
+    padding: 15px;
+  }
+
+  .chat-input input[type="text"] {
+    font-size: 0.95rem;
+  }
+
+  .message span {
+    font-size: 0.9rem;
+  }
+
+  .intro-text {
+    font-size: 1.4rem;
+  }
+}

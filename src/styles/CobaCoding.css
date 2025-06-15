@@ -1,0 +1,478 @@
+/* CSS untuk Indonesia - Revisi Pewarnaan dan Responsif */
+
+:root {
+  --primary-green: #28a745;
+  --dark-green: #1e873a;
+  --darker-green: #166534;
+  --text-dark-green: #1a4f3a;
+  --light-green-bg: rgba(40, 167, 69, 0.05);
+  --light-green-border: rgba(40, 167, 69, 0.1);
+  --card-bg-light: rgba(255, 255, 255, 0.1);
+  --card-border-light: rgba(255, 255, 255, 0.2);
+  --text-color-dark: #333;
+  --text-color-medium: #4a5568;
+  --orange-info: #26ff00; 
+  --orange-info-light: #07ff17;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif; /* Or a more suitable font */
+  line-height: 1.6;
+  color: var(--text-color-dark);
+}
+
+.eko-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+}
+
+.eko-header-section {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative; /* Crucial for positioning the info icon relative to the header */
+}
+
+.eko-header-section::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-green), var(--dark-green));
+  border-radius: 2px;
+}
+
+.eko-header-section h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, var(--primary-green), var(--dark-green), var(--darker-green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: var(--text-dark-green);
+  background-clip: text;
+  color: var(--text-dark-green); /* Fallback for browsers not supporting -webkit-text-fill-color */
+}
+
+.eko-header-section p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  color: var(--text-color-dark);
+}
+
+/* New: Info Icon Styling */
+.eko-info-icon {
+  position: absolute; /* Position relative to .eko-header-section */
+  top: 0; /* Adjust as needed to align with h1 */
+  right: 0; /* Align to the right of the header section */
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--orange-info);
+  cursor: pointer;
+  width: 45px;
+  height: 45px;
+  border: 2px solid var(--orange-info);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  background-color: #fff; /* White background for the icon */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.eko-info-icon:hover {
+  background-color: var(--orange-info);
+  color: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* New: Info Notification Styling */
+.eko-info-notification {
+  position: absolute;
+  top: 80px; /* Position below the icon */
+  right: 20px;
+  background: linear-gradient(135deg, var(--orange-info), var(--orange-info-light));
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Ensure it's on top */
+  max-width: 280px;
+  text-align: center;
+  font-size: 0.95rem;
+  animation: fadeOutNotification 3s forwards; /* Animation for 3 seconds */
+}
+
+@keyframes fadeOutNotification {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+    visibility: hidden; /* Hide element after animation */
+  }
+}
+
+
+.eko-stories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.eko-story-card {
+  background: var(--card-bg-light);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border-light);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.eko-story-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-green), var(--darker-green));
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.eko-story-card:hover::before {
+  transform: scaleX(1);
+}
+
+.eko-story-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(40, 167, 69, 0.3);
+  border-color: var(--primary-green);
+}
+
+.eko-story-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.eko-story-title {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--text-dark-green);
+  font-weight: bold;
+}
+
+.eko-story-content {
+  line-height: 1.7;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+  color: var(--text-color-medium);
+}
+
+.eko-story-impact {
+  background: rgba(40, 167, 69, 0.2);
+  padding: 1rem;
+  border-radius: 10px;
+  border-left: 4px solid var(--primary-green);
+  margin-top: 1rem;
+}
+
+.eko-impact-title {
+  font-weight: bold;
+  color: var(--darker-green);
+  margin-bottom: 0.5rem;
+}
+
+.eko-impact-stat {
+  color: var(--text-color-medium);
+}
+
+.eko-stats-section {
+  background: var(--light-green-bg);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-top: 3rem;
+  text-align: center;
+  color: var(--text-color-dark);
+}
+
+.eko-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.eko-stat-item {
+  padding: 1.5rem;
+  background: var(--light-green-border);
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: var(--text-color-dark);
+}
+
+.eko-stat-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(40, 167, 69, 0.15);
+}
+
+.eko-stat-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--primary-green);
+  display: block;
+}
+
+.eko-stat-label {
+  opacity: 0.8;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.eko-floating-elements {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.eko-leaf {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: var(--primary-green);
+  border-radius: 0 100% 0 100%;
+  animation: eko-float 6s ease-in-out infinite;
+  opacity: 0.3;
+}
+
+@keyframes eko-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+/* Positioning leaves randomly */
+.eko-leaf:nth-child(1) {
+  top: 10%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.eko-leaf:nth-child(2) {
+  top: 40%;
+  left: 50%;
+  animation-delay: 2s;
+  width: 25px;
+  height: 25px;
+}
+
+.eko-leaf:nth-child(3) {
+  top: 70%;
+  left: 70%;
+  animation-delay: 4s;
+}
+
+.eko-leaf:nth-child(4) {
+  top: 85%;
+  left: 30%;
+  animation-delay: 6s;
+  width: 18px;
+  height: 18px;
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+/* For screens smaller than 768px (common tablet portrait and larger phones) */
+@media (max-width: 768px) {
+  .eko-container {
+    padding: 1.5rem;
+  }
+
+  .eko-header-section h1 {
+    font-size: 2.2rem;
+  }
+
+  .eko-header-section p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .eko-info-icon {
+    top: 0; /* Adjust positioning for smaller screens */
+    right: 15px; /* Keep it a bit away from the edge */
+    font-size: 1.8rem;
+    width: 40px;
+    height: 40px;
+  }
+
+  .eko-info-notification {
+    top: 70px; /* Adjust position */
+    right: 15px;
+    max-width: 250px;
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .eko-stories-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .eko-story-card {
+    padding: 1.5rem;
+  }
+
+  .eko-story-title {
+    font-size: 1.2rem;
+  }
+
+  .eko-story-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .eko-stats-section {
+    padding: 1.5rem;
+  }
+
+  .eko-stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .eko-stat-number {
+    font-size: 2rem;
+  }
+
+  .eko-stat-label {
+    font-size: 0.85rem;
+  }
+}
+
+/* For screens smaller than 480px (common smartphone sizes) */
+@media (max-width: 480px) {
+  .eko-container {
+    padding: 1rem;
+  }
+
+  .eko-header-section h1 {
+    font-size: 1.8rem;
+  }
+
+  .eko-header-section p {
+    font-size: 0.9rem;
+    padding: 0 0.5rem;
+  }
+
+  .eko-info-icon {
+    top: -5px; /* Further adjust for very small screens */
+    right: 10px;
+    font-size: 1.6rem;
+    width: 35px;
+    height: 35px;
+  }
+
+  .eko-info-notification {
+    top: 60px; /* Further adjust position */
+    right: 10px;
+    max-width: 200px;
+    padding: 0.7rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .eko-stories-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .eko-story-card {
+    padding: 1.2rem;
+  }
+
+  .eko-story-title {
+    font-size: 1.1rem;
+  }
+
+  .eko-story-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+  }
+
+  .eko-story-content, .eko-impact-stat {
+    font-size: 0.9rem;
+  }
+
+  .eko-stats-section {
+    padding: 1.2rem;
+  }
+
+  .eko-stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .eko-stat-number {
+    font-size: 1.8rem;
+  }
+
+  .eko-stat-label {
+    font-size: 0.8rem;
+  }
+
+  /* Adjust floating leaves for smaller screens if they become too prominent */
+  .eko-leaf {
+    width: 15px;
+    height: 15px;
+  }
+  .eko-leaf:nth-child(2) {
+    width: 20px;
+    height: 20px;
+  }
+  .eko-leaf:nth-child(4) {
+    width: 13px;
+    height: 13px;
+  }
+}
