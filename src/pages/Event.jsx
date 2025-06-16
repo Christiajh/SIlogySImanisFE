@@ -441,8 +441,7 @@ const Event = () => {
                             </motion.button>
                             <h3 className="evt-modal-title">Fitur Penambahan Event</h3>
                             <p className="evt-modal-message">
-                                Fitur masuk dan pendaftaran sedang dikembangkan.
-                                Masukkan kode rahasia untuk dapat menambah event.
+                                Ketik 222 untuk konfirmasi dan tambahkan event kamu sekarang juga!
                             </p>
                             <input
                                 type="password"
