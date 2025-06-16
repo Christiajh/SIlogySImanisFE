@@ -2,12 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   FaRecycle, FaTrashAlt, FaTint, FaLeaf, FaLaptopCode, FaLightbulb,
-  FaBrain, FaGlobeAsia, FaHandsHelping, FaCheckCircle, FaExclamationCircle, FaSpinner, FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaComments, FaCalendarAlt // Make sure FaCalendarAlt is imported
+  FaBrain, FaGlobeAsia, FaHandsHelping, FaCheckCircle, FaExclamationCircle, FaSpinner, FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaComments, FaCalendarAlt
 } from 'react-icons/fa';
-import '../styles/BankSampah.css'; // Impor CSS
-
-// Definisikan URL dasar API Anda
-const API_BASE_URL = 'http://localhost:3001/api'; // Pastikan ini sesuai dengan port backend Anda (misal: 3001)
+import '../styles/BankSampah.css'; // Import CSS
+import axiosInstance from '../services/axios'; // Import the configured axios instance
 
 const BankSampah = () => {
   const [formData, setFormData] = useState({
@@ -20,39 +18,32 @@ const BankSampah = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
 
-  // State untuk menyimpan daftar bank sampah/mitra
+  // State to store the list of waste banks/partners
   const [bankSampahList, setBankSampahList] = useState([]);
   const [loadingPartners, setLoadingPartners] = useState(true);
   const [partnersError, setPartnersError] = useState(null);
 
   // Helper function to simulate partner data based on backend response
   const createPartnerDisplayData = (partner) => {
-    // You might want to assign a "type" or "schedule" based on backend logic
-    // For now, we'll keep it simple, assuming newly registered partners
-    // might not have these specific details immediately or could be set to default.
     return {
       id: partner.id,
       name: partner.name,
       address: partner.address || 'Alamat tidak tersedia', // Default if not provided
       contact: partner.phone,
       schedule: 'Jadwal akan dikonfirmasi', // Default schedule for new partners
-      type: 'Berbagai Jenis Sampah',       // Default type for new partners
+      type: 'Berbagai Jenis Sampah', // Default type for new partners
     };
   };
 
-  // --- Effect Hook: Ambil Laporan Mitra saat Komponen Dimuat ---
+  // --- Effect Hook: Fetch Partner Reports when Component Mounts ---
   useEffect(() => {
     const fetchPartners = async () => {
       setLoadingPartners(true);
       setPartnersError(null);
       try {
-        const response = await fetch(`${API_BASE_URL}/partners`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json();
+        const response = await axiosInstance.get('/partners'); // Use axiosInstance for GET request
         // Map data from database to display format
-        const fetchedPartners = data.map(createPartnerDisplayData);
+        const fetchedPartners = response.data.map(createPartnerDisplayData);
         setBankSampahList(fetchedPartners);
       } catch (error) {
         console.error("Failed to fetch partners:", error);
@@ -84,21 +75,8 @@ const BankSampah = () => {
     }
 
     try {
-      const response = await fetch(`${API_BASE_URL}/partners`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData), // Kirim formData langsung
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        console.error('Backend response error:', errorData);
-        throw new Error(errorData.message || 'Gagal mendaftarkan mitra.');
-      }
-
-      const newPartnerFromDb = await response.json();
+      const response = await axiosInstance.post('/partners', formData); // Use axiosInstance for POST request
+      const newPartnerFromDb = response.data; // Axios puts the response data in .data
       const newPartnerDisplayData = createPartnerDisplayData(newPartnerFromDb);
 
       // Add new partner to the beginning of the list to show immediately
@@ -109,14 +87,17 @@ const BankSampah = () => {
 
     } catch (error) {
       console.error('Submission Error Frontend:', error);
+      // Check if the error has a response and data for more specific backend messages
+      const errorMessage = error.response?.data?.message || 'Pendaftaran gagal. Silakan coba lagi.';
       setSubmitStatus('error');
+      alert(errorMessage); // Show alert with specific error if available
     } finally {
       setIsSubmitting(false);
       setTimeout(() => setSubmitStatus(null), 5000); // Hide message after 5 seconds
     }
   };
 
-  // Variants untuk animasi Framer Motion
+  // Variants for Framer Motion animation
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -219,8 +200,6 @@ const BankSampah = () => {
           </motion.h2>
 
           <motion.div className="form-theme-box" variants={itemVariants}>
-            
-         
             <p className="theme-description">
               Ayo, kembangkan solusi digital inovatif yang mendukung pelestarian lingkungan
               dan gaya hidup ramah alam untuk keberlanjutan bumi kita!
