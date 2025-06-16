@@ -38,7 +38,7 @@ const Login = () => {
     try {
       // ⭐ PERBAIKAN: Ubah URL API menjadi yang benar ⭐
       // Dari http://localhost:3001/api/auth/login menjadi http://localhost:3001/api/login
-      const response = await axios.post(`${API_BASE_URL}/login`, { 
+      const response = await axiosInstance.post(`${API_BASE_URL}/login`, { 
         username,
         password
       });
@@ -114,7 +114,7 @@ const Login = () => {
       // dan gunakan login ini jika passwordnya bukan 1945
       const defaultAdminUsername = 'superadmin'; // Username admin yang sebenarnya jika ada
       // ⭐ PERBAIKAN: Ubah URL API menjadi yang benar ⭐
-      const response = await axios.post(`${API_BASE_URL}/login`, {
+      const response = await axiosInstance.post(`${API_BASE_URL}/login`, {
         username: defaultAdminUsername, // Menggunakan username admin yang ada di DB
         password: adminPassword // Password yang dimasukkan di modal
       });
