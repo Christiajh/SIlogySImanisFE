@@ -10,18 +10,20 @@ const axiosInstance = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  withCredentials: true,
+  // ❌ withCredentials: true hanya perlu jika backend pakai cookie auth
+  // Hapus atau beri komentar jika kamu pakai Authorization header (JWT)
+  // withCredentials: true,
 
-  // ⏱ Tambahan: Timeout diperpanjang hingga 30 detik (30000 ms)
+  // ⏱ Timeout diperpanjang hingga 30 detik (30000 ms)
   timeout: 30000,
 });
 
-// Interceptor request: Menambahkan token autentikasi ke setiap permintaan jika tersedia di localStorage.
+// ✅ Interceptor request: Menambahkan token autentikasi ke setiap permintaan jika tersedia di localStorage.
 axiosInstance.interceptors.request.use(
   (config) => {
     const authToken = localStorage.getItem('authToken');
     if (authToken) {
-      config.headers.Authorization = `Bearer ${authToken}`;
+      config.headers['Authorization'] = `Bearer ${authToken}`; // Gunakan cara eksplisit
     }
     return config;
   },
