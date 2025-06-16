@@ -1,6 +1,7 @@
 // frontend/src/page/RelawanHijau.jsx
 import React, { useState, useEffect } from 'react';
 import "../styles/Relawan.css"; // Ensure this path is correct
+import axiosInstance from "../services/axios"; // Import the configured axios instance
 
 const RelawanHijau = () => {
   const [volunteerData, setVolunteerData] = useState([]);
@@ -25,15 +26,11 @@ const RelawanHijau = () => {
   useEffect(() => {
     const fetchVolunteers = async () => {
       try {
-        const response = await fetch('http://localhost:3001/api/volunteers'); // Changed port to 3001
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        setVolunteerData(data);
+        const response = await axiosInstance.get('/volunteers'); // Use axiosInstance.get()
+        setVolunteerData(response.data); // Axios wraps the response in a 'data' property
       } catch (error) {
         console.error("Failed to fetch volunteers:", error);
-        // Optionally, display an error message to the user
+        // Optionally, display a user-friendly error message
       } finally {
         setIsContentLoading(false);
       }
@@ -56,26 +53,8 @@ const RelawanHijau = () => {
     setSubmissionStatus(null); // Reset status on new submission attempt
 
     try {
-      const response = await fetch('http://localhost:3001/api/volunteers', { // Changed port to 3001
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(volunteerFormData),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        // Check for specific duplicate email error from backend
-        if (response.status === 409 && errorData.message === 'Email sudah terdaftar.') {
-          setSubmissionStatus('email_exists');
-          return; // Stop further processing as it's a specific error
-        }
-        throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
-      }
-
-      const newVolunteerFromDb = await response.json();
-      setVolunteerData([...volunteerData, newVolunteerFromDb]); // Add new volunteer from DB response
+      const response = await axiosInstance.post('/volunteers', volunteerFormData); // Use axiosInstance.post()
+      setVolunteerData([...volunteerData, response.data]); // Add new volunteer from DB response
       setSubmissionStatus('success');
       setVolunteerFormData({ // Reset form fields only on success
         nama: '',
@@ -89,7 +68,25 @@ const RelawanHijau = () => {
 
     } catch (error) {
       console.error("Error submitting volunteer form:", error);
-      setSubmissionStatus('error');
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        if (error.response.status === 409 && error.response.data.message === 'Email sudah terdaftar.') {
+          setSubmissionStatus('email_exists');
+        } else {
+          setSubmissionStatus('error');
+          // You might want to show a more specific message from error.response.data.message
+          console.error("Server error data:", error.response.data);
+        }
+      } else if (error.request) {
+        // The request was made but no response was received
+        setSubmissionStatus('error');
+        console.error("No response received:", error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        setSubmissionStatus('error');
+        console.error("Error message:", error.message);
+      }
     }
   };
 

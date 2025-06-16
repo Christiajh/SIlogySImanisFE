@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Eye, EyeOff, Leaf, Globe, Lock, UserCog } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import axiosInstance from "../services/axios"; 
+import axiosInstance from "../services/axios";
 import "../styles/Login.css";
 
 
@@ -35,7 +35,7 @@ const Login = () => {
     try {
       // ⭐ PERBAIKAN: Ubah URL API menjadi yang benar ⭐
       // Dari http://localhost:3001/api/auth/login menjadi http://localhost:3001/api/login
-      const response = await axiosInstance.post('/login', { 
+      const response = await axiosInstance.post('/login', {
         username,
         password
       });
@@ -268,16 +268,30 @@ const Login = () => {
           </button>
         </div>
 
-        <div className="testimonial">
-          <div className="quote-icon">"</div>
-          <p className="quote-text">Bergabung dengan WargaBantuin memberi saya kesempatan untuk berkontribusi langsung pada pelestarian lingkungan di komunitas saya.</p>
-          <div className="user-info">
-            <div className="user-avatar"></div>
-            <div className="user-details">
-              <div className="user-name">Christian Hutahaean</div>
-              <div className="user-role">Anggota sejak 2022</div>
+        {/* Testimonials Section */}
+        <div className="testimonial-section">
+            <div className="testimonial">
+                <div className="quote-icon">"</div>
+                <p className="quote-text">Bergabung dengan WargaBantuin memberi saya kesempatan untuk berkontribusi langsung pada pelestarian lingkungan di komunitas saya.</p>
+                <div className="user-info">
+                    <div className="user-avatar"></div> {/* You might want a different avatar here */}
+                    <div className="user-details">
+                        <div className="user-name">Christian Hutahaean</div>
+                        <div className="user-role">Anggota sejak 2022</div>
+                    </div>
+                </div>
             </div>
-          </div>
+            <div className="testimonial">
+                <div className="quote-icon">"</div>
+                <p className="quote-text">WargaBantuin mengubah cara pandang saya terhadap lingkungan. Dengan setiap aksi kecil, kita menciptakan dampak besar. Saya bangga menjadi bagian dari gerakan ini!</p>
+                <div className="user-info">
+                    <div className="user-avatar"></div> {/* You might want a different avatar here */}
+                    <div className="user-details">
+                        <div className="user-name">Elkana Sitorus</div>
+                        <div className="user-role">Pecinta Lingkungan Aktif</div>
+                    </div>
+                </div>
+            </div>
         </div>
       </div>
 
