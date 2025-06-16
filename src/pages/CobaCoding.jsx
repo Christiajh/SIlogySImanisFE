@@ -146,6 +146,38 @@ const CobaCoding = () => {
           </div>
         </div>
 
+
+        <div className="eko-story-card">
+  <div className="eko-story-icon">🌱</div>
+  <div className="eko-story-title">EcoFertil - Pupuk Organik dari Sampah Pasar</div>
+  <div className="eko-story-content">
+    Sekelompok pemuda di Surabaya memprakarsai pengolahan limbah organik dari pasar tradisional
+    menjadi pupuk cair dan kompos padat. Mereka bekerja sama dengan pedagang dan dinas kebersihan 
+    untuk mengurangi sampah sekaligus meningkatkan pertanian organik lokal.
+  </div>
+  <div className="eko-story-impact">
+    <div className="eko-impact-title">Dampak Positif:</div>
+    Mengolah 2 ton sampah per hari, mengurangi emisi gas metana dan menghasilkan 500 liter pupuk cair 
+    untuk petani lokal setiap bulan.
+  </div>
+</div>
+
+<div className="eko-story-card">
+  <div className="eko-story-icon">🔋</div>
+  <div className="eko-story-title">LiteraListrik - Penerangan dari Sampah Plastik</div>
+  <div className="eko-story-content">
+    Di Nusa Tenggara Timur, guru dan siswa SMA merancang pembangkit listrik sederhana berbasis gasifikasi
+    dari sampah plastik rumah tangga. Listrik yang dihasilkan digunakan untuk menyalakan lampu belajar
+    malam hari di desa yang belum terjangkau PLN.
+  </div>
+  <div className="eko-story-impact">
+    <div className="eko-impact-title">Dampak Positif:</div>
+    Menyediakan penerangan malam untuk 25 rumah dan meningkatkan waktu belajar siswa di desa
+    terpencil selama 3 jam per malam.
+  </div>
+</div>
+
+
         <div className="eko-story-card">
           <div className="eko-story-icon">🌳</div>
           <div className="eko-story-title">GreenSpace - Adopsi Pohon Virtual</div>
