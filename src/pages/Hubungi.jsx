@@ -41,9 +41,9 @@ const Hubungi = () => {
           Mari berkolaborasi menciptakan solusi digital yang berkelanjutan untuk masa depan bumi yang lebih hijau.
         </p>
 
-        <div className="contact-item"><div className="contact-icon">📧</div><div className="contact-details"><h3>Email</h3><p>info@greentechid.com<br />partnership@greentechid.com</p></div></div>
-        <div className="contact-item"><div className="contact-icon">📱</div><div className="contact-details"><h3>Telepon & WhatsApp</h3><p>+62 812-3456-7890<br />+62 811-9876-5432</p></div></div>
-        <div className="contact-item"><div className="contact-icon">📍</div><div className="contact-details"><h3>Alamat</h3><p>Green Tech Hub Jakarta<br />Jl. Lingkungan Hijau No. 88<br />Jakarta Selatan 12560</p></div></div>
+        <div className="contact-item"><div className="contact-icon">📧</div><div className="contact-details"><h3>Email</h3><p>chutahaean372@gmail.com<br />partnership@greentechid.com</p></div></div>
+        <div className="contact-item"><div className="contact-icon">📱</div><div className="contact-details"><h3>Telepon & WhatsApp</h3><p>+62 832-3456-7890<br />+62 811-9876-5432</p></div></div>
+        <div className="contact-item"><div className="contact-icon">📍</div><div className="contact-details"><h3>Alamat</h3><p>Jl Danau singkarak Binjai<br />Jl. Lingkungan Hijau No. 88<br />Jakarta Selatan 12560</p></div></div>
         <div className="contact-item"><div className="contact-icon">⏰</div><div className="contact-details"><h3>Jam Operasional</h3><p>Senin - Jumat: 09:00 - 17:00<br />Sabtu: 09:00 - 15:00</p></div></div>
 
         <div className="social-links">

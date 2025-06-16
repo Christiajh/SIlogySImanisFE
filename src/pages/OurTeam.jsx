@@ -93,7 +93,7 @@ export default function OurTeam() {
               Teknologi yang Digunakan
             </h2>
             <p className="ot-konten-bagian-area">
-              Dalam membangun WargaBantuin, kami menggabungkan teknologi modern untuk memastikan _performa tinggi_, _keamanan data_, dan _pengalaman pengguna yang optimal_.
+              Dalam membangun WargaBantuin, kami menggabungkan teknologi modern untuk memastikan performa tinggi, keamanan data, dan pengalaman pengguna yang optimal.
             </p>
             <ul className="ot-konten-bagian-area">
               <li>⚛️ ReactJS – Antarmuka pengguna interaktif berbasis komponen</li>
@@ -121,7 +121,7 @@ export default function OurTeam() {
             </p>
             <a
               href="https://wa.me/6283821751692"
-              target="_blank"
+              target="blank"
               rel="noopener noreferrer"
               className="ot-tombol-whatsapp-area"
             >

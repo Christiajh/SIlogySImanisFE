@@ -142,12 +142,7 @@ const Warga = () => {
 
       <div className="warga-cta">
         <p className="warga-cta-text">Bergabunglah dengan gerakan ini dan bagikan pengalaman Anda!</p>
-        <button className="warga-cta-button">
-          Bagikan Testimoni Anda
-          <svg className="warga-arrow-icon" viewBox="0 0 24 24">
-            <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" fill="currentColor"/>
-          </svg>
-        </button>
+     
       </div>
     </div>
   );
