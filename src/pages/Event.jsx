@@ -441,7 +441,7 @@ const Event = () => {
                             </motion.button>
                             <h3 className="evt-modal-title">Fitur Penambahan Event</h3>
                             <p className="evt-modal-message">
-                                Ketik 222 untuk konfirmasi dan tambahkan event kamu sekarang juga!
+                               Ketik 222 untuk menambahkan event.
                             </p>
                             <input
                                 type="password"
@@ -497,7 +497,7 @@ const Event = () => {
                             </motion.button>
                             <h3 className="evt-modal-title">Hapus Event</h3>
                             <p className="evt-modal-message">
-                                Untuk menghapus event, masukkan kode rahasia.
+                                Ketik 222 untuk menghapus event.
                             </p>
                             <input
                                 type="password"
