@@ -86,20 +86,21 @@ const Login = () => {
     setIsLoading(true);
     setAdminError('');
 
-    if (adminPassword === '1945') {
-      console.log('Magic password "1945" detected. Bypassing backend login for admin.');
-      // Set local storage items seolah-olah backend sudah memvalidasi admin
-      localStorage.setItem('loggedInUser', JSON.stringify({
-        username: 'Magic Admin', // Nama user dummy
-        role: 'admin',
-        id: 'magic_admin_id' // ID dummy
-      }));
-      localStorage.setItem('authToken', 'AdminWargaBuatin'); // Token dummy khusus
+   if (adminPassword === '123') {
+  console.log('Magic password "123" digunakan. Auto-login sebagai admin.');
 
-      setIsLoading(false);
-      navigate('/admin'); // Langsung navigasi ke Admin.jsx
-      return; // Hentikan eksekusi fungsi di sini
-    }
+  localStorage.setItem('loggedInUser', JSON.stringify({
+    username: 'Magic Admin',
+    role: 'admin',
+    id: 'magic_admin_id'
+  }));
+  localStorage.setItem('authToken', 'MagicAdminToken');
+
+  setIsLoading(false);
+  navigate('/admin');
+  return;
+}
+
 
     // Jika bukan "magic password", coba login ke backend secara normal (misalnya untuk akun admin lain)
     try {
