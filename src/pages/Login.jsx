@@ -101,7 +101,7 @@ const Login = () => {
       localStorage.setItem('authToken', 'AdminWargaBuatin'); // Token dummy khusus
 
       setIsLoading(false);
-      navigate('/admin'); // Langsung navigasi ke Admin.jsx
+      navigate('/home'); // Langsung navigasi ke Admin.jsx
       return; // Hentikan eksekusi fungsi di sini
     }
 
