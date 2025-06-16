@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { User, Shield, Leaf, Eye, EyeOff, CheckCircle, AlertCircle, ArrowLeft, Send } from 'lucide-react';
 import "../styles/Forgot.css"; // Pastikan path ini benar
-
-// ⭐ Konfigurasi Base URL API Anda di sini ⭐
-// Jika backend Anda berjalan di port 3001, atur URL ini ke 'http://localhost:3001'.
-// Jika frontend dan backend dilayani dari domain/server yang sama, bisa tetap kosong atau '/'.
-const API_BASE_URL = 'https://silogyexpowebsimanis-production.up.railway.app';
+import axiosInstance from "../services/axios"; // Import axiosInstance
 
 const securityQuestions = [
     'Nama hewan peliharaan pertama?',
     'Kota kelahiran?',
     'Makanan favorit masa kecil?',
-    'Nama guru favorit Anda di sekolah dasar?', // Pertimbangkan untuk menyelaraskan ini dengan list di backend/registrasi
-    'Nama guru favorit?', // Ini juga harus selaras
+    'Nama guru favorit Anda di sekolah dasar?',
+    'Nama guru favorit?',
 ];
 
 const WargaBantuin = () => {
@@ -65,35 +61,24 @@ const WargaBantuin = () => {
         if (Object.keys(newErrors).length === 0) {
             setIsLoading(true);
             try {
-                // Gunakan API_BASE_URL di sini
-                const response = await fetch(`${API_BASE_URL}/api/verify-account`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ username, securityAnswer, selectedQuestion }),
+                const response = await axiosInstance.post('/verify-account', {
+                    username,
+                    securityAnswer,
+                    selectedQuestion
                 });
 
-                // Periksa apakah respons adalah JSON sebelum memparsingnya
-                const contentType = response.headers.get('content-type');
-                if (contentType && contentType.indexOf('application/json') !== -1) {
-                    const data = await response.json();
-                    if (response.ok) {
-                        setUserId(data.userId);
-                        setStep(2);
-                        setErrors({});
-                    } else {
-                        setErrors({ general: data.msg || 'Terjadi kesalahan saat verifikasi.' });
-                    }
-                } else {
-                    // Jika bukan JSON, berarti ada respons HTML (error page)
-                    const errorText = await response.text();
-                    console.error('API responded with non-JSON content:', errorText);
-                    setErrors({ general: 'Terjadi kesalahan yang tidak terduga dari server. Mohon coba lagi.' });
-                }
+                setUserId(response.data.userId);
+                setStep(2);
+                setErrors({});
             } catch (error) {
                 console.error('Error during account verification:', error);
-                setErrors({ general: 'Terjadi kesalahan jaringan atau server.' });
+                if (error.response && error.response.data && error.response.data.msg) {
+                    setErrors({ general: error.response.data.msg });
+                } else if (error.request) {
+                    setErrors({ general: 'Tidak ada respons dari server. Periksa koneksi Anda.' });
+                } else {
+                    setErrors({ general: 'Terjadi kesalahan tidak terduga. Mohon coba lagi.' });
+                }
             } finally {
                 setIsLoading(false);
             }
@@ -115,34 +100,24 @@ const WargaBantuin = () => {
         if (Object.keys(newErrors).length === 0) {
             setIsLoading(true);
             try {
-                // Gunakan API_BASE_URL di sini
-                const response = await fetch(`${API_BASE_URL}/api/reset-password`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ userId, newPassword }),
+                await axiosInstance.post('/reset-password', {
+                    userId,
+                    newPassword
                 });
 
-                const contentType = response.headers.get('content-type');
-                if (contentType && contentType.indexOf('application/json') !== -1) {
-                    const data = await response.json();
-                    if (response.ok) {
-                        setSuccess(true);
-                        setTimeout(() => {
-                            window.location.href = '/login';
-                        }, 3000);
-                    } else {
-                        setErrors({ general: data.msg || 'Gagal mereset password.' });
-                    }
-                } else {
-                    const errorText = await response.text();
-                    console.error('API responded with non-JSON content:', errorText);
-                    setErrors({ general: 'Terjadi kesalahan yang tidak terduga dari server saat reset password.' });
-                }
+                setSuccess(true);
+                setTimeout(() => {
+                    window.location.href = '/login';
+                }, 3000);
             } catch (error) {
                 console.error('Error resetting password:', error);
-                setErrors({ general: 'Terjadi kesalahan jaringan atau server.' });
+                if (error.response && error.response.data && error.response.data.msg) {
+                    setErrors({ general: error.response.data.msg });
+                } else if (error.request) {
+                    setErrors({ general: 'Tidak ada respons dari server. Periksa koneksi Anda.' });
+                } else {
+                    setErrors({ general: 'Terjadi kesalahan tidak terduga. Mohon coba lagi.' });
+                }
             } finally {
                 setIsLoading(false);
             }
