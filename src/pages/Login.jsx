@@ -258,15 +258,7 @@ const Login = () => {
           </form>
 
           {/* Admin Login Button */}
-          <button
-            type="button"
-            className="admin-login-btn"
-            onClick={handleAdminButtonClick}
-            disabled={isLoading}
-          >
-            <UserCog className="btn-icon" />
-            <span>Login Admin</span>
-          </button>
+         
         </div>
 
         {/* Testimonials Section */}
