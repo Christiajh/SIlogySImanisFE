@@ -7,8 +7,8 @@ import AddEventForm from '../components/AddEventForm.jsx';
 import DeleteEventForm from '../components/DeleteEventForm.jsx';
 import '../styles/Event.css'; // Pastikan path ini benar untuk styling
 
-// PERBAIKAN: Hardcode URL untuk testing. Di produksi, gunakan variabel lingkungan.
-const API_BASE_URL = 'https://silogyexpowebsimanis-production.up.railway.app';
+// IMPORT AXIOS INSTANCE
+import axiosInstance from '../api/axiosInstance'; // Adjust the path as needed, assuming 'axiosInstance.js' is in a 'api' folder
 
 const Event = () => {
     const [events, setEvents] = useState([]);
@@ -48,32 +48,16 @@ const Event = () => {
             setLoading(true);
             setError(null);
 
-            console.log('🔄 Fetching events from:', `${API_BASE_URL}/events`);
+            console.log('🔄 Fetching events from:', `${axiosInstance.defaults.baseURL}/events`);
 
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
-
-            const response = await fetch(`${API_BASE_URL}/events`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                signal: controller.signal
+            const response = await axiosInstance.get('/events', {
+                timeout: 10000 // 10 second timeout
             });
 
-            clearTimeout(timeoutId);
+            console.log('✅ Fetched events:', response.data);
 
-            if (!response.ok) {
-                const errorText = await response.text();
-                console.error('❌ Fetch events error:', errorText);
-                throw new Error(`Server Error ${response.status}: ${errorText}`);
-            }
-
-            const data = await response.json();
-            console.log('✅ Fetched events:', data);
-
-            if (Array.isArray(data)) {
-                const formattedEvents = data.map(event => ({
+            if (Array.isArray(response.data)) {
+                const formattedEvents = response.data.map(event => ({
                     ...event,
                     date: new Date(event.date) // Pastikan ini objek Date
                 }));
@@ -85,10 +69,13 @@ const Event = () => {
 
         } catch (err) {
             console.error('❌ Error fetching events:', err);
-            if (err.name === 'AbortError') {
+            if (err.code === 'ECONNABORTED') {
                 setError('Request timeout - Server tidak merespons');
-            } else if (err.message.includes('Failed to fetch')) {
-                setError('Tidak dapat terhubung ke server. Pastikan backend berjalan di http://localhost:3001');
+            } else if (err.message.includes('Network Error')) {
+                setError('Tidak dapat terhubung ke server. Pastikan backend berjalan dengan benar.');
+            } else if (err.response) {
+                // Server responded with a status other than 2xx
+                setError(`Gagal memuat data kegiatan: ${err.response.status} - ${err.response.data.message || err.response.statusText}`);
             } else {
                 setError(`Gagal memuat data kegiatan: ${err.message}`);
             }
@@ -106,30 +93,32 @@ const Event = () => {
     const testConnection = async () => {
         try {
             console.log('🧪 Testing server connection...');
-            const response = await fetch('http://localhost:3001/', {
-                method: 'GET',
-                headers: { 'Content-Type': 'application/json' }
-            });
+            // Use a direct path if your root ('/') provides a simple status check
+            const response = await axiosInstance.get('/'); 
 
-            if (response.ok) {
-                const data = await response.json();
-                console.log('✅ Server connection test:', data);
+            if (response.status === 200) {
+                console.log('✅ Server connection test:', response.data);
                 setError(null);
                 showNotification('Koneksi server berhasil!', 'success');
                 return true;
             } else {
-                const errorText = await response.text();
-                setError(`Koneksi ke server gagal: Status ${response.status}. Pesan: ${errorText}`);
-                showNotification(`Koneksi server gagal: ${errorText}`, 'error');
+                setError(`Koneksi ke server gagal: Status ${response.status}. Pesan: ${response.data || response.statusText}`);
+                showNotification(`Koneksi server gagal: ${response.data || response.statusText}`, 'error');
                 return false;
             }
         } catch (err) {
-            setError(`Kesalahan jaringan: ${err.message}. Pastikan backend berjalan.`);
-            showNotification(`Kesalahan jaringan: ${err.message}`, 'error');
+            console.error('❌ Error testing connection:', err);
+            let errorMessage = `Kesalahan jaringan: ${err.message}. Pastikan backend berjalan.`;
+            if (err.response) {
+                errorMessage = `Kesalahan server: ${err.response.status} - ${err.response.data.message || err.response.statusText}`;
+            } else if (err.code === 'ECONNABORTED') {
+                errorMessage = 'Koneksi ke server terputus (timeout).';
+            }
+            setError(errorMessage);
+            showNotification(errorMessage, 'error');
             return false;
         }
     };
-
 
     // --- Registration Handlers ---
     const handleRegisterClick = (event) => {
@@ -182,27 +171,18 @@ const Event = () => {
 
     const handleAddEvent = async (newEvent) => {
         try {
-            const response = await fetch(`${API_BASE_URL}/events`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(newEvent),
-            });
+            const response = await axiosInstance.post('/events', newEvent);
 
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.error || `HTTP ${response.status}: Gagal membuat event`);
-            }
-
-            const createdEvent = await response.json();
-            console.log('Event berhasil dibuat:', createdEvent);
+            console.log('Event berhasil dibuat:', response.data);
             await fetchEvents();
             setIsAddEventFormOpen(false);
             setAddCodeError('');
-            showNotification(`Event "${createdEvent.title}" berhasil ditambahkan!`, 'success');
+            showNotification(`Event "${response.data.title}" berhasil ditambahkan!`, 'success');
         } catch (error) {
             console.error('Error menambahkan event:', error);
-            setAddCodeError(error.message || 'Gagal menambahkan event');
-            showNotification(`Gagal menambahkan event: ${error.message}`, 'error');
+            const errorMessage = error.response?.data?.error || error.message || 'Gagal menambahkan event';
+            setAddCodeError(errorMessage);
+            showNotification(`Gagal menambahkan event: ${errorMessage}`, 'error');
         }
     };
 
@@ -238,24 +218,18 @@ const Event = () => {
     const handleDeleteEvent = async (eventId) => {
         try {
             const eventToDelete = events.find(event => event.id === eventId);
-            const response = await fetch(`${API_BASE_URL}/events/${eventId}`, {
-                method: 'DELETE',
-            });
+            const response = await axiosInstance.delete(`/events/${eventId}`);
 
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.error || 'Gagal menghapus event');
-            }
-
-            console.log('Event berhasil dihapus:', await response.json());
+            console.log('Event berhasil dihapus:', response.data);
             await fetchEvents();
             setIsDeleteEventFormOpen(false);
             setDeleteCodeError('');
             showNotification(`Event "${eventToDelete?.title || 'Unknown'}" berhasil dihapus!`, 'success');
         } catch (error) {
             console.error('Error menghapus event:', error);
-            setDeleteCodeError(error.message || 'Gagal menghapus event');
-            showNotification(`Gagal menghapus event: ${error.message}`, 'error');
+            const errorMessage = error.response?.data?.error || error.message || 'Gagal menghapus event';
+            setDeleteCodeError(errorMessage);
+            showNotification(`Gagal menghapus event: ${errorMessage}`, 'error');
         }
     };
 
@@ -288,9 +262,9 @@ const Event = () => {
                     <p className="evt-error-message">{error}</p>
                     <div className="evt-debug-info">
                         <h4>Informasi Debug:</h4>
-                        <p>URL API: {API_BASE_URL}/events</p>
-                        <p>Pastikan backend berjalan di <a href="http://localhost:3001" target="_blank" rel="noopener noreferrer">http://localhost:3001</a></p>
-                        <p>Pastikan variabel lingkungan `DATABASE_URL` di `.env` sudah diatur dengan benar.</p>
+                        <p>URL API: {axiosInstance.defaults.baseURL}/events</p>
+                        <p>Pastikan backend berjalan dan dapat diakses dari frontend.</p>
+                        <p>Pastikan variabel lingkungan `VITE_API_URL` di `.env` (untuk Vite) atau sejenisnya sudah diatur dengan benar.</p>
                     </div>
                     <div className="evt-error-actions">
                         <motion.button
