@@ -1,17 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import axios from '../services/axios'; // sesuaikan path jika file ini bukan di src/pages
+import axios from '../services/axios';
 
 import {
   FaRecycle, FaTrashAlt, FaTint, FaLeaf, FaLaptopCode, FaLightbulb,
-  FaBrain, FaGlobeAsia, FaHandsHelping, FaCheckCircle, FaExclamationCircle, FaSpinner, FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaComments, FaCalendarAlt // Make sure FaCalendarAlt is imported
+  FaBrain, FaGlobeAsia, FaHandsHelping, FaCheckCircle, FaExclamationCircle,
+  FaSpinner, FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaComments, FaCalendarAlt
 } from 'react-icons/fa';
-import '../styles/BankSampah.css'; // Impor CSS
 
-// Definisikan URL dasar API Anda
-const API_BASE_URL = 'https://silogyexpowebsimanis-production.up.railway.app';// Pastikan ini sesuai dengan port backend Anda (misal: 3001)
+import '../styles/BankSampah.css';
 
-// ... [IMPORTS Tetap Sama]
+// ✅ Tambahkan ini untuk animasi halaman
+const containerVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: 'easeOut',
+    },
+  },
+};
 
 const BankSampah = () => {
   const [formData, setFormData] = useState({
@@ -83,7 +93,6 @@ const BankSampah = () => {
       setBankSampahList(prevList => [newPartnerDisplayData, ...prevList]);
       setSubmitStatus('success');
       setFormData({ name: '', email: '', phone: '', address: '', message: '' });
-      console.log('Form Submitted and list updated:', newPartnerFromDb);
     } catch (error) {
       console.error('Submission Error Frontend:', error.response?.data || error.message);
       setSubmitStatus('error');
@@ -93,7 +102,6 @@ const BankSampah = () => {
     }
   };
 
-  // SISA CODE (bagian UI & animasi) tetap seperti yang kamu punya
   return (
     <motion.div
       className="bank-sampah-page-container"
@@ -101,7 +109,51 @@ const BankSampah = () => {
       initial="hidden"
       animate="visible"
     >
-      {/* ... Semua UI dan form tetap seperti sebelumnya */}
+      <h1><FaRecycle /> Daftar Mitra Bank Sampah</h1>
+
+      {loadingPartners ? (
+        <div className="loading"><FaSpinner className="spin" /> Memuat data...</div>
+      ) : partnersError ? (
+        <div className="error"><FaExclamationCircle /> {partnersError}</div>
+      ) : (
+        <ul className="partner-list">
+          {bankSampahList.map(partner => (
+            <li key={partner.id} className="partner-item">
+              <h3>{partner.name}</h3>
+              <p><FaMapMarkerAlt /> {partner.address}</p>
+              <p><FaPhone /> {partner.contact}</p>
+              <p><FaCalendarAlt /> {partner.schedule}</p>
+              <p><FaLeaf /> {partner.type}</p>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <h2><FaHandsHelping /> Daftar Mitra Baru</h2>
+      <form onSubmit={handleSubmit} className="bank-sampah-form">
+        <input type="text" name="name" placeholder="Nama" value={formData.name} onChange={handleChange} required />
+        <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
+        <input type="tel" name="phone" placeholder="Telepon" value={formData.phone} onChange={handleChange} required />
+        <input type="text" name="address" placeholder="Alamat" value={formData.address} onChange={handleChange} />
+        <textarea name="message" placeholder="Pesan (opsional)" value={formData.message} onChange={handleChange}></textarea>
+
+        <button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? <><FaSpinner className="spin" /> Mengirim...</> : <>Kirim</>}
+        </button>
+      </form>
+
+      <AnimatePresence>
+        {submitStatus === 'success' && (
+          <motion.div className="success" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <FaCheckCircle /> Data berhasil dikirim!
+          </motion.div>
+        )}
+        {submitStatus === 'error' && (
+          <motion.div className="error" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <FaExclamationCircle /> Terjadi kesalahan. Silakan coba lagi.
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };
