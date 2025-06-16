@@ -1,6 +1,6 @@
 // frontend/src/components/AdminUserTable.jsx
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axiosInstance from '../services/axios'; // Import the axiosInstance
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
@@ -12,6 +12,16 @@ const AdminUserTable = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
+                // Assuming axiosInstance is configured with an interceptor
+                // to automatically attach the 'x-auth-token' from localStorage.
+                // If not, you'd add it to the instance config (e.g., in services/axios.js)
+                // or keep the manual header config here.
+                
+                // If your axiosInstance is set up to attach the token automatically,
+                // you don't need this manual token check/config here.
+                // However, for robustness, checking for token existence might still be wise
+                // if the interceptor isn't guaranteed to always run or if this path
+                // is specifically meant to fail early without a token.
                 const token = localStorage.getItem('authToken');
                 if (!token) {
                     setError('Autentikasi diperlukan. Silakan login ulang.');
@@ -19,17 +29,16 @@ const AdminUserTable = () => {
                     return;
                 }
 
-                const config = {
-                    headers: {
-                        'x-auth-token': token
-                    }
-                };
-                const res = await axios.get('http://localhost:5000/api/admin/users', config);
+                // Make the GET request using axiosInstance
+                // The base URL and the token header should be handled by axiosInstance
+                const res = await axiosInstance.get('/admin/users');
+                
                 setUsers(res.data);
                 setLoading(false);
             } catch (err) {
                 console.error('Error fetching users:', err.response ? err.response.data : err.message);
-                setError(err.response && err.response.data ? err.response.data.msg : 'Gagal memuat daftar pengguna.');
+                // Adjust error message extraction for Axios response structure
+                setError(err.response && err.response.data && err.response.data.msg ? err.response.data.msg : 'Gagal memuat daftar pengguna.');
                 setLoading(false);
             }
         };
@@ -61,19 +70,19 @@ const AdminUserTable = () => {
                         <thead>
                             <tr>
                                 <th>Username</th>
-                                <th>Daerah</th> {/* Tambah kolom Daerah */}
-                                <th>Umur</th>    {/* Tambah kolom Umur */}
-                                <th>Role</th>    {/* Tambah kolom Role */}
+                                <th>Daerah</th>
+                                <th>Umur</th>
+                                <th>Role</th>
                                 <th>Tanggal Daftar</th>
                             </tr>
                         </thead>
                         <tbody>
                             {users.map(user => (
-                                <tr key={user.id} data-label-username={user.username} data-label-daerah={user.daerah} data-label-umur={user.umur} data-label-role={user.role} data-label-tanggal-daftar={new Date(user.created_at).toLocaleDateString()}> {/* ⭐ Tambah data-label untuk responsive */}
+                                <tr key={user.id} data-label-username={user.username} data-label-daerah={user.daerah} data-label-umur={user.umur} data-label-role={user.role} data-label-tanggal-daftar={new Date(user.created_at).toLocaleDateString()}>
                                     <td data-label="Username">{user.username}</td>
-                                    <td data-label="Daerah">{user.daerah}</td> {/* Tampilkan Daerah */}
-                                    <td data-label="Umur">{user.umur}</td>     {/* Tampilkan Umur */}
-                                    <td data-label="Role"><span className={`user-role-badge user-role-${user.role}`}>{user.role}</span></td> {/* Tampilkan Role */}
+                                    <td data-label="Daerah">{user.daerah}</td>
+                                    <td data-label="Umur">{user.umur}</td>
+                                    <td data-label="Role"><span className={`user-role-badge user-role-${user.role}`}>{user.role}</span></td>
                                     <td data-label="Tanggal Daftar">{new Date(user.created_at).toLocaleDateString()}</td>
                                 </tr>
                             ))}

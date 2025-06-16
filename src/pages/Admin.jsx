@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axiosInstance from '../services/axios';
+import axiosInstance from '../services/axios'; // axiosInstance should handle base URL and tokens
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faChartLine, faUsers, faExclamationTriangle, faCalendarAlt,
@@ -12,11 +12,6 @@ import {
 
 import AdminUserTable from '../components/AdminUserTable';
 import '../styles/Admin.css';
-
-// ⭐ PERBAIKAN PENTING: Definisi URL Backend Railway Anda di sini ⭐
-// Sebaiknya gunakan variabel lingkungan untuk URL ini di aplikasi produksi
-// Contoh: process.env.REACT_APP_API_BASE_URL
-const API_BASE_URL = 'https://silogyexpowebsimanis-production.up.railway.app';
 
 const Admin = () => {
     const navigate = useNavigate();
@@ -56,11 +51,9 @@ const Admin = () => {
             }
             setAdminInfo(user);
 
-            const config = {
-                headers: { 'x-auth-token': token }
-            };
-            // ⭐ PERUBAHAN DI SINI: Menggunakan API_BASE_URL ⭐
-        const statsRes = await axiosInstance.get("/admin/dashboard-stats", config);
+            // ⭐ PERBAIKAN: Gunakan axiosInstance tanpa config manual untuk token ⭐
+            // Asumsi axiosInstance sudah memiliki interceptor untuk menambahkan 'x-auth-token'
+            const statsRes = await axiosInstance.get("/admin/dashboard-stats");
 
             setDashboardStats(statsRes.data);
 
@@ -111,7 +104,7 @@ const Admin = () => {
             <header className="admin-header">
                 <h1><FontAwesomeIcon icon={faChartLine} /> Dashboard Admin</h1>
                 <div className="admin-header-right">
-                    {adminInfo && <span className="admin-welcome"> Halo, WargaBantuin Admin! !</span>}
+                    {adminInfo && <span className="admin-welcome"> Halo, WargaBantuin Admin!</span>}
                     <button onClick={handleLogout} className="admin-logout-btn">
                         <FontAwesomeIcon icon={faSignOutAlt} /> Logout
                     </button>
@@ -162,8 +155,8 @@ const Admin = () => {
 
                 <section className="admin-section user-management-section">
                     <h2><FontAwesomeIcon icon={faUsers} /> Manajemen Pengguna</h2>
-                    {/* Anda perlu memastikan AdminUserTable juga menggunakan API_BASE_URL yang benar */}
-                    <AdminUserTable token={localStorage.getItem('authToken')} apiBaseUrl={API_BASE_URL} />
+                    {/* AdminUserTable should also use axiosInstance and not rely on props for API URL/token */}
+                    <AdminUserTable />
                 </section>
 
                 <section className="admin-section event-management-section">
