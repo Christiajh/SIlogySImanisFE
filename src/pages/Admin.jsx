@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axiosInstance from '../services/axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faChartLine, faUsers, faExclamationTriangle, faCalendarAlt,
@@ -60,7 +60,8 @@ const Admin = () => {
                 headers: { 'x-auth-token': token }
             };
             // ⭐ PERUBAHAN DI SINI: Menggunakan API_BASE_URL ⭐
-            const statsRes = await axios.get(`${API_BASE_URL}/api/admin/dashboard-stats`, config);
+        const statsRes = await axiosInstance.get("/admin/dashboard-stats", config);
+
             setDashboardStats(statsRes.data);
 
         } catch (err) {
