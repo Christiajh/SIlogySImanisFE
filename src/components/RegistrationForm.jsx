@@ -3,9 +3,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaTimes, FaCalendarAlt, FaMapMarkerAlt } from 'react-icons/fa';
 import '../styles/Event.css'; // Path relatif yang benar ke styling
-
-const API_BASE_URL = 'https://silogyexpowebsimanis-production.up.railway.app';
-
+import axiosInstance from "../services/axios"; // Import axiosInstance
 
 const RegistrationForm = ({ event, onClose, onRegistrationSuccess }) => {
     const [name, setName] = useState('');
@@ -28,21 +26,15 @@ const RegistrationForm = ({ event, onClose, onRegistrationSuccess }) => {
 
         try {
             console.log(`Submitting registration for event ${event.id} by ${name} (${email})`);
-            const response = await fetch(`${API_BASE_URL}/events/${event.id}/register`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+            // ⭐ Menggunakan axiosInstance untuk PATCH request ⭐
+            const response = await axiosInstance.patch(`/events/${event.id}/register`, {
                 // Anda bisa mengirim detail pendaftar ke backend jika ingin menyimpannya
-                // body: JSON.stringify({ name, email }),
+                // name,
+                // email,
             });
 
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.error || `HTTP ${response.status}: Gagal mendaftar kegiatan.`);
-            }
+            const result = response.data; // Axios otomatis mem-parsing JSON
 
-            const result = await response.json();
             console.log('Registration API response:', result);
 
             if (result.event && result.event.registered !== undefined) {
@@ -60,7 +52,14 @@ const RegistrationForm = ({ event, onClose, onRegistrationSuccess }) => {
 
         } catch (err) {
             console.error('Error during registration:', err);
-            setError(err.message || 'Terjadi kesalahan saat pendaftaran.');
+            // ⭐ Penanganan error Axios ⭐
+            if (err.response && err.response.data && err.response.data.error) {
+                setError(err.response.data.error);
+            } else if (err.message) {
+                setError(err.message);
+            } else {
+                setError('Terjadi kesalahan saat pendaftaran.');
+            }
         } finally {
             setLoading(false);
         }
@@ -89,20 +88,20 @@ const RegistrationForm = ({ event, onClose, onRegistrationSuccess }) => {
                 >
                     <FaTimes />
                 </motion.button>
-                <h3 className="evt-modal-title">Daftar Kegiatan: {event.title}</h3> 
-                <p className="evt-modal-event-detail"> 
-                    <FaCalendarAlt className="evt-card-icon" /> {new Date(event.date).toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} 
+                <h3 className="evt-modal-title">Daftar Kegiatan: {event.title}</h3>
+                <p className="evt-modal-event-detail">
+                    <FaCalendarAlt className="evt-card-icon" /> {new Date(event.date).toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
                 </p>
-                <p className="evt-modal-event-detail"> 
-                    <FaMapMarkerAlt className="evt-card-icon" /> {event.location} 
+                <p className="evt-modal-event-detail">
+                    <FaMapMarkerAlt className="evt-card-icon" /> {event.location}
                 </p>
-                <p className="evt-modal-event-detail"> 
+                <p className="evt-modal-event-detail">
                     Kuota Tersisa: {event.capacity - event.registered}
                 </p>
 
                 <form onSubmit={handleSubmit}>
-                    <div className="evt-form-group"> 
-                        <label htmlFor="name" className="evt-form-label">Nama Lengkap:</label> 
+                    <div className="evt-form-group">
+                        <label htmlFor="name" className="evt-form-label">Nama Lengkap:</label>
                         <input
                             type="text"
                             id="name"
@@ -112,8 +111,8 @@ const RegistrationForm = ({ event, onClose, onRegistrationSuccess }) => {
                             className="evt-form-input" // Changed
                         />
                     </div>
-                    <div className="evt-form-group"> 
-                        <label htmlFor="email" className="evt-form-label">Email:</label> 
+                    <div className="evt-form-group">
+                        <label htmlFor="email" className="evt-form-label">Email:</label>
                         <input
                             type="email"
                             id="email"
@@ -123,8 +122,8 @@ const RegistrationForm = ({ event, onClose, onRegistrationSuccess }) => {
                             className="evt-form-input" // Changed
                         />
                     </div>
-                    {error && <p className="evt-error-message">{error}</p>} 
-                    {successMessage && <p className="evt-success-message">{successMessage}</p>} 
+                    {error && <p className="evt-error-message">{error}</p>}
+                    {successMessage && <p className="evt-success-message">{successMessage}</p>}
                     <motion.button
                         type="submit"
                         className="evt-submit-button" // Changed
