@@ -10,9 +10,10 @@ const axiosInstance = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  // Penting: Mengirimkan cookies dan header Authorization secara otomatis.
-  // Pastikan backend Anda juga dikonfigurasi untuk mengizinkan kredensial (CORS).
   withCredentials: true,
+
+  // ⏱ Tambahan: Timeout diperpanjang hingga 30 detik (30000 ms)
+  timeout: 30000,
 });
 
 // Interceptor request: Menambahkan token autentikasi ke setiap permintaan jika tersedia di localStorage.
@@ -20,13 +21,11 @@ axiosInstance.interceptors.request.use(
   (config) => {
     const authToken = localStorage.getItem('authToken');
     if (authToken) {
-      // Menambahkan header Authorization dengan format Bearer Token
       config.headers.Authorization = `Bearer ${authToken}`;
     }
     return config;
   },
   (error) => {
-    // Menangani kesalahan pada request
     return Promise.reject(error);
   }
 );
