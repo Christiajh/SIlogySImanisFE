@@ -5,10 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import axiosInstance from "../services/axios"; 
 import "../styles/Login.css";
 
-// ⭐ Konfigurasi Base URL API Anda di sini ⭐
-// Ini harus sesuai dengan port backend Anda (3001)
 
- // ⭐ Ganti dengan URL Railway Anda ⭐ 
 
 const Login = () => {
   const navigate = useNavigate();
@@ -38,7 +35,7 @@ const Login = () => {
     try {
       // ⭐ PERBAIKAN: Ubah URL API menjadi yang benar ⭐
       // Dari http://localhost:3001/api/auth/login menjadi http://localhost:3001/api/login
-      const response = await axiosInstance.post(`${API_BASE_URL}/login`, { 
+      const response = await axiosInstance.post('/login', { 
         username,
         password
       });
@@ -114,7 +111,7 @@ const Login = () => {
       // dan gunakan login ini jika passwordnya bukan 1945
       const defaultAdminUsername = 'superadmin'; // Username admin yang sebenarnya jika ada
       // ⭐ PERBAIKAN: Ubah URL API menjadi yang benar ⭐
-      const response = await axiosInstance.post(`${API_BASE_URL}/login`, {
+      const response = await axiosInstance.post('/login', {
         username: defaultAdminUsername, // Menggunakan username admin yang ada di DB
         password: adminPassword // Password yang dimasukkan di modal
       });
