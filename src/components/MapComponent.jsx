@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+// import axios from 'axios'; // axios tidak digunakan langsung di sini, karena data diterima melalui props
+import { useNavigate } from 'react-router-dom'; // navigate tidak digunakan di sini
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet';
 import L from 'leaflet'; // Ensure Leaflet library is imported directly
 import 'leaflet/dist/leaflet.css'; // Import Leaflet's core CSS
