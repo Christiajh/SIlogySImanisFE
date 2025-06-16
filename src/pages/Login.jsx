@@ -86,7 +86,7 @@ const Login = () => {
     setIsLoading(true);
     setAdminError('');
 
-   if (adminPassword === '123') {
+   if (adminPassword === '295') {
   console.log('Magic password "123" digunakan. Auto-login sebagai admin.');
 
   localStorage.setItem('loggedInUser', JSON.stringify({
