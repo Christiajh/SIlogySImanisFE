@@ -441,17 +441,11 @@ const WargaBantuin = () => {
                         </div>
                     </div>
 
-                  <div className="password-security-info">
-  <h4>🔒 Keamanan & Privasi Terjamin</h4>
-  <p>
-    Password Anda akan diamankan menggunakan teknologi <strong>hashing</strong> tingkat lanjut —
-    bahkan sistem kami tidak dapat membaca isi password Anda! 🔐
-  </p>
-  <p>
-    💡 <strong>Tips:</strong> Pilih pertanyaan keamanan yang mudah Anda ingat, namun sulit ditebak orang lain.
-    Jawaban dari pertanyaan ini sangat penting, karena akan digunakan untuk memulihkan akun jika Anda
-    lupa <em>password</em>.
-  </p>
+                   <div className="environmental-tips">
+           <h4>🔐 Tips Keamanan Akun</h4>
+  <div className="tip-item">Password Anda akan diacak (di-hash) agar tidak bisa dibaca siapa pun, bahkan sistem</div>
+  <div className="tip-item">Gunakan pertanyaan keamanan yang hanya Anda tahu jawabannya</div>
+  <div className="tip-item">Ingat baik-baik juga pertanyaan-nya dikarenakan dibutuhkan saat lupa password </div>
 </div>
 
                 </div>
