@@ -167,15 +167,23 @@ const CaraKerjaPlatform = () => {
 </div>
 
 
-      <div className="video-demonstration-section">
-        <h2 className="content-section-title text-color-white">Lihat Platform Beraksi</h2>
-        <p className="video-intro-paragraph text-color-white">Video panduan lengkap tentang cara menggunakan setiap fitur platform WargaBantuin</p>
-        <div className="video-player-frame" onClick={playVideo}>
-          <div className="video-play-button">▶</div>
-          <h3 className="video-frame-title">Tutorial Interaktif Platform</h3>
-          <p className="video-frame-duration">Durasi: 3 menit 30 detik</p>
-        </div>
-      </div>
+    <div className="video-demonstration-section">
+  <h2 className="content-section-title text-color-white">Lihat Platform Beraksi</h2>
+  <p className="video-intro-paragraph text-color-white">
+    Video panduan lengkap tentang cara menggunakan setiap fitur platform WargaBantuin
+  </p>
+  <a
+    href="https://youtu.be/6P6mpus4tws"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="video-player-frame"
+  >
+    <div className="video-play-button">▶</div>
+    <h3 className="video-frame-title">Tutorial Interaktif Platform</h3>
+    <p className="video-frame-duration">Durasi: 3 menit 30 detik</p>
+  </a>
+</div>
+
 
       {/* New section: Menjaga Lingkungan & Bumi Lebih Sehat */}
       <div className="environmental-vision-section">
