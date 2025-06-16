@@ -56,8 +56,8 @@ const MapView = () => {
         {/* Marker lokasi dari database */}
         {locations.map((loc) => (
           <Marker
-            key={loc._id}
-            position={[Number(loc.latitude), Number(loc.longitude)]}
+            key={loc.id}
+            position={[parseFloat(loc.latitude), parseFloat(loc.longitude)]}
             icon={customIcon}
           >
             <Popup>
