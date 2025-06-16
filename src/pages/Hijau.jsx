@@ -103,10 +103,7 @@ const RelawanHijau = () => {
         ))}
       </div>
 
-      <div className="relawan-cta">
-        <p>Ingin bergabung menjadi Relawan Hijau?</p>
-        <button className="join-button">Daftar Sekarang</button>
-      </div>
+     
     </div>
   );
 };
