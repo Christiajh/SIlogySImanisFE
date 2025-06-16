@@ -3,13 +3,7 @@ import L from "leaflet";
 import { CountUp } from "countup.js";
 import "leaflet/dist/leaflet.css";
 import '../styles/StatsSection.css';
-
-// ⭐ PERBAIKAN PENTING: Ganti dengan URL backend Railway Anda ⭐
-const API_BASE_URL = 'https://silogyexpowebsimanis-production.up.railway.app/'; 
-// Contoh: 'https://nama-aplikasi-anda-1234.up.railway.app'
-// Jika Anda memiliki lingkungan yang berbeda (dev/prod), gunakan variabel lingkungan:
-// const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:3001';
-
+import axiosInstance from "../services/axios"; // Import axiosInstance
 
 // Buat marker icon custom
 const createMarkerIcon = () => {
@@ -23,7 +17,7 @@ const createMarkerIcon = () => {
 
 const DampakAksi = () => {
     const [locations, setLocations] = useState([]);
-    const mapRef = useRef(null); 
+    const mapRef = useRef(null);
     const [markers, setMarkers] = useState([]);
     const [selectedLocation, setSelectedLocation] = useState(null);
 
@@ -39,14 +33,10 @@ const DampakAksi = () => {
     useEffect(() => {
         const fetchLocations = async () => {
             try {
-                // ⭐ Menggunakan API_BASE_URL yang sudah dikonfigurasi ⭐
-                const response = await fetch(`${API_BASE_URL}/api/locations`); 
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const data = await response.json();
+                // Using axiosInstance for GET request to /api/locations
+                const response = await axiosInstance.get('/locations');
                 
-                const parsedData = data.map(loc => ({
+                const parsedData = response.data.map(loc => ({
                     ...loc,
                     latitude: parseFloat(loc.latitude), // Konversi ke number
                     longitude: parseFloat(loc.longitude) // Konversi ke number
@@ -54,6 +44,8 @@ const DampakAksi = () => {
                 setLocations(parsedData);
             } catch (error) {
                 console.error("Gagal mengambil data lokasi:", error);
+                // Optional: Provide user feedback for error
+                alert("Terjadi kesalahan saat memuat lokasi. Silakan coba lagi.");
             }
         };
 
@@ -64,12 +56,9 @@ const DampakAksi = () => {
     useEffect(() => {
         const fetchCounts = async () => {
             try {
-                // ⭐ Menggunakan API_BASE_URL yang sudah dikonfigurasi ⭐
-                const response = await fetch(`${API_BASE_URL}/api/public-stats/counts`); 
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const counts = await response.json();
+                // Using axiosInstance for GET request to /api/public-stats/counts
+                const response = await axiosInstance.get('/public-stats/counts');
+                const counts = response.data;
                 
                 // Update the statsData state with fetched counts
                 setStatsData([
@@ -80,6 +69,8 @@ const DampakAksi = () => {
                 ]);
             } catch (error) {
                 console.error("Gagal mengambil data jumlah:", error);
+                // Optional: Provide user feedback for error
+                alert("Terjadi kesalahan saat memuat statistik. Silakan coba lagi.");
             }
         };
 
@@ -130,7 +121,7 @@ const DampakAksi = () => {
                 attribution: "Peta oleh OpenStreetMap",
             }).addTo(mapInstance);
 
-            mapRef.current = mapInstance; 
+            mapRef.current = mapInstance;
         }
 
         return () => {
@@ -145,7 +136,7 @@ const DampakAksi = () => {
         const map = mapRef.current;
         if (map && locations.length > 0) {
             // Remove existing markers before adding new ones
-            markers.forEach(marker => map.removeLayer(marker)); // Correct way to remove from map
+            markers.forEach(marker => map.removeLayer(marker));
             
             const newMarkers = locations.map(location => {
                 const marker = L.marker([location.latitude, location.longitude], {
@@ -163,7 +154,7 @@ const DampakAksi = () => {
 
             setMarkers(newMarkers);
 
-            // ⭐ Optional: Adjust map view to fit all markers ⭐
+            // Optional: Adjust map view to fit all markers
             if (newMarkers.length > 0) {
                 const group = new L.featureGroup(newMarkers);
                 map.fitBounds(group.getBounds().pad(0.5)); // pad adds some padding
@@ -177,8 +168,8 @@ const DampakAksi = () => {
             map.flyTo([selectedLocation.latitude, selectedLocation.longitude], 15);
             
             // Re-find the marker to ensure it's still on the map (if markers state was reset)
-            const selectedMarker = markers.find(marker => 
-                marker.getLatLng().lat === selectedLocation.latitude && 
+            const selectedMarker = markers.find(marker =>
+                marker.getLatLng().lat === selectedLocation.latitude &&
                 marker.getLatLng().lng === selectedLocation.longitude
             );
             
@@ -222,7 +213,7 @@ const DampakAksi = () => {
                     <h2>Daftar Lokasi Aksi</h2>
                     <div className="location-scroll-container">
                         {locations.map((location) => (
-                            <div 
+                            <div
                                 key={location.id}
                                 className={`location-card ${selectedLocation?.id === location.id ? 'active' : ''}`}
                                 onClick={() => setSelectedLocation(location)}
@@ -230,7 +221,7 @@ const DampakAksi = () => {
                                 <h3>{location.name}</h3>
                                 <p>{location.description}</p>
                                 <div className="location-coords">
-                                    <span>Lat: {location.latitude.toFixed(4)}</span> 
+                                    <span>Lat: {location.latitude.toFixed(4)}</span>
                                     <span>Lng: {location.longitude.toFixed(4)}</span>
                                 </div>
                             </div>
