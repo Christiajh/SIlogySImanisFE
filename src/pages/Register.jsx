@@ -1,12 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
+// import axios from 'axios'; // ⭐ Hapus ini jika Anda hanya akan menggunakan axiosInstance
 import { useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, Leaf, Globe, Users, Shield, CheckCircle, AlertCircle } from 'lucide-react';
 
+// ⭐ PENTING: Impor axiosInstance yang sudah dikonfigurasi
+import axiosInstance from "../services/axios";
+
 import "../styles/Register.css";
 
-// Mengganti placeholder dengan URL Railway yang benar
-const API_BASE_URL = 'https://silogyexpowebsimanis-production.up.railway.app';
+// ⭐ Hapus definisi API_BASE_URL di sini, karena sudah diatur di axiosInstance.js
+// const API_BASE_URL = 'https://silogyexpowebsimanis-production.up.railway.app';
 
 const WargaBantuin = () => {
     const navigate = useNavigate();
@@ -122,17 +125,17 @@ const WargaBantuin = () => {
         }
 
         // Validasi semua bidang tidak boleh kosong atau hanya spasi
-        if (!formData.username.trim() || 
-            !formData.daerah.trim() || 
-            !formData.umur || 
-            !formData.pertanyaan_keamanan.trim() || 
-            !formData.jawaban_keamanan.trim()) 
+        if (!formData.username.trim() ||
+            !formData.daerah.trim() ||
+            !formData.umur ||
+            !formData.pertanyaan_keamanan.trim() ||
+            !formData.jawaban_keamanan.trim())
         {
             setError('Mohon lengkapi semua bidang.');
             setIsLoading(false);
             return;
         }
-        
+
         // Pastikan umur adalah angka valid dan dalam rentang yang sesuai
         const parsedUmur = parseInt(formData.umur);
         if (isNaN(parsedUmur) || parsedUmur < 13 || parsedUmur > 100) {
@@ -142,8 +145,9 @@ const WargaBantuin = () => {
         }
 
         try {
-            // Mengirim formData langsung karena sekarang sudah cocok dengan nama field backend
-            const response = await axios.post(`${API_BASE_URL}/api/register`, formData);
+            // ⭐ PERBAIKAN: Menggunakan axiosInstance.post('/register', formData);
+            // axiosInstance sudah memiliki baseURL yang benar.
+            const response = await axiosInstance.post('/register', formData);
 
             console.log('Registration successful:', response.data);
             setIsSubmitted(true);
