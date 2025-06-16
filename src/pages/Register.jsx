@@ -441,12 +441,19 @@ const WargaBantuin = () => {
                         </div>
                     </div>
 
-                    <div className="environmental-tips">
-                        <h4>💡 Tips Ramah Lingkungan</h4>
-                        <div className="tip-item">Gunakan tas belanja yang dapat digunakan ulang</div>
-                        <div className="tip-item">Hemat penggunaan air dan listrik</div>
-                        <div className="tip-item">Pilih transportasi ramah lingkungan</div>
-                    </div>
+                  <div className="password-security-info">
+  <h4>🔒 Keamanan & Privasi Terjamin</h4>
+  <p>
+    Password Anda akan diamankan menggunakan teknologi <strong>hashing</strong> tingkat lanjut —
+    bahkan sistem kami tidak dapat membaca isi password Anda! 🔐
+  </p>
+  <p>
+    💡 <strong>Tips:</strong> Pilih pertanyaan keamanan yang mudah Anda ingat, namun sulit ditebak orang lain.
+    Jawaban dari pertanyaan ini sangat penting, karena akan digunakan untuk memulihkan akun jika Anda
+    lupa <em>password</em>.
+  </p>
+</div>
+
                 </div>
             </div>
         </div>
