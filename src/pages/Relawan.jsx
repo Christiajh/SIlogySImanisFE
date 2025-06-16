@@ -171,11 +171,7 @@ const RelawanHijau = () => {
                     <p>Bergabung: {volunteer.bergabung}</p>
                   </div>
                 </div>
-                <div className="volunteer-card-bottom-section">
-                  <button className="view-profile-button">
-                    Lihat Profil Lengkap
-                  </button>
-                </div>
+                
               </div>
             ))
           ) : (
