@@ -201,19 +201,19 @@ const CobaCoding = () => {
 
         <div className="eko-stats-grid">
           <div className="eko-stat-item">
-            <span className="eko-stat-number">150+</span>
+            <span className="eko-stat-number">0</span>
             <div className="eko-stat-label">Project Lingkungan Digital</div>
           </div>
           <div className="eko-stat-item">
-            <span className="eko-stat-number">75K+</span>
+            <span className="eko-stat-number">0</span>
             <div className="eko-stat-label">Pengguna Aktif</div>
           </div>
           <div className="eko-stat-item">
-            <span className="eko-stat-number">500</span>
+            <span className="eko-stat-number">0</span>
             <div className="eko-stat-label">Ton CO2 Berkurang</div>
           </div>
           <div className="eko-stat-item">
-            <span className="eko-stat-number">25K+</span>
+            <span className="eko-stat-number">0</span>
             <div className="eko-stat-label">Pohon Ditanam</div>
           </div>
         </div>
