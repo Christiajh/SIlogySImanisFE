@@ -2,15 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   FaRecycle, FaTrashAlt, FaTint, FaLeaf, FaLaptopCode, FaLightbulb,
-  FaBrain, FaGlobeAsia, FaHandsHelping, FaCheckCircle, FaExclamationCircle, FaSpinner, FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaComments, FaCalendarAlt
+  FaBrain, FaGlobeAsia, FaHandsHelping, FaCheckCircle, FaExclamationCircle, FaSpinner, FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaComments, FaCalendarAlt // Make sure FaCalendarAlt is imported
 } from 'react-icons/fa';
 import '../styles/BankSampah.css'; // Impor CSS
 
-// ⭐ PERBAIKAN PENTING DI SINI ⭐
-// Mengambil URL API dari environment variable yang di-expose oleh Vite.
-// Ini akan memastikan aplikasi Anda menggunakan URL backend Railway saat di-deploy di Vercel,
-// dan 'http://localhost:3001/api' sebagai fallback untuk development lokal.
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
+// Definisikan URL dasar API Anda
+const API_BASE_URL = 'http://localhost:3001/api'; // Pastikan ini sesuai dengan port backend Anda (misal: 3001)
 
 const BankSampah = () => {
   const [formData, setFormData] = useState({
@@ -39,7 +36,7 @@ const BankSampah = () => {
       address: partner.address || 'Alamat tidak tersedia', // Default if not provided
       contact: partner.phone,
       schedule: 'Jadwal akan dikonfirmasi', // Default schedule for new partners
-      type: 'Berbagai Jenis Sampah',       // Default type for new partners
+      type: 'Berbagai Jenis Sampah',       // Default type for new partners
     };
   };
 
@@ -49,7 +46,7 @@ const BankSampah = () => {
       setLoadingPartners(true);
       setPartnersError(null);
       try {
-        const response = await fetch(`${API_BASE_URL}/partners`); // Menggunakan API_BASE_URL yang sudah diperbaiki
+        const response = await fetch(`${API_BASE_URL}/partners`);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -81,14 +78,13 @@ const BankSampah = () => {
     // Client-side validation
     if (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim()) {
       setSubmitStatus('error');
-      // Menggunakan console.error atau custom modal, bukan alert()
-      console.error('Nama, Email, dan Nomor Telepon harus diisi.');
+      alert('Nama, Email, dan Nomor Telepon harus diisi.');
       setIsSubmitting(false);
       return;
     }
 
     try {
-      const response = await fetch(`${API_BASE_URL}/partners`, { // Menggunakan API_BASE_URL yang sudah diperbaiki
+      const response = await fetch(`${API_BASE_URL}/partners`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -224,7 +220,7 @@ const BankSampah = () => {
 
           <motion.div className="form-theme-box" variants={itemVariants}>
             
-          
+         
             <p className="theme-description">
               Ayo, kembangkan solusi digital inovatif yang mendukung pelestarian lingkungan
               dan gaya hidup ramah alam untuk keberlanjutan bumi kita!
