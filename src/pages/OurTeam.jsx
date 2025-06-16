@@ -9,7 +9,7 @@ export default function OurTeam() {
       <section className="ot-area-hero">
         <div className="ot-konten-area-hero"> {/* Konten ini sekarang menyatu dengan latar belakang hero */}
           <h1>🌿 Simanis — Digital Hijau</h1>
-          <p className="ot-subjudul-area-hero">Dibuat oleh dua mahasiswa Informatika IT del 2023.</p>
+          <p className="ot-subjudul-area-hero">Dibuat oleh dua mahasiswa Informatika IT del  angkatan 2023.</p>
         </div>
       </section>
 
