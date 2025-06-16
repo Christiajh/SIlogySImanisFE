@@ -180,7 +180,7 @@ const CaraKerjaPlatform = () => {
   >
     <div className="video-play-button">▶</div>
     <h3 className="video-frame-title">Tutorial Interaktif Platform</h3>
-    <p className="video-frame-duration">Durasi: 3 menit 30 detik</p>
+    <p className="video-frame-duration">Durasi: 12 menit 13 detik</p>
   </a>
 </div>
 
