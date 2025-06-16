@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
+import axiosInstance from '../services/axios'; // GUNAKAN yang sudah diatur baseURL-nya
 
 export const useLocations = () => {
   const [locations, setLocations] = useState([]);
@@ -7,7 +7,7 @@ export const useLocations = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get('/api/locations')
+    axiosInstance.get('/locations') // Tanpa /api karena baseURL-nya sudah /api
       .then(res => {
         if (Array.isArray(res.data)) {
           setLocations(res.data);
