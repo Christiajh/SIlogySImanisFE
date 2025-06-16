@@ -1,6 +1,5 @@
 import MapView from "../components/MapView";
 import { useState } from "react";
-import axiosInstance from "../services/axiosInstance";
 import { motion } from "framer-motion";
 import axiosInstance from "../services/axios";
 import { FaPlusCircle, FaMapMarkedAlt, FaSpinner, FaCheckCircle, FaExclamationCircle } from "react-icons/fa";
