@@ -443,9 +443,9 @@ const WargaBantuin = () => {
 
                    <div className="environmental-tips">
            <h4>🔐 Tips Keamanan Akun</h4>
-  <div className="tip-item">Password Anda akan diacak (di-hash) agar tidak bisa dibaca siapa pun, bahkan sistem</div>
-  <div className="tip-item">Gunakan pertanyaan keamanan yang hanya Anda tahu jawabannya</div>
-  <div className="tip-item">Ingat baik-baik juga pertanyaan-nya dikarenakan dibutuhkan saat lupa password </div>
+<div className="tip-item">Password telah diacak (hash) agar tetap aman</div>
+<div className="tip-item">Ingat username, pertanyaan & jawabannya untuk reset password</div>
+
 </div>
 
                 </div>
