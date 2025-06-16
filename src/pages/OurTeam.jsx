@@ -40,9 +40,7 @@ export default function OurTeam() {
                 <p style={{ fontStyle: 'italic', marginTop: '0.5rem' }}>
                   “Teknologi adalah jembatan untuk menjaga bumi. Saya ingin membuat solusi nyata dengan dampak positif.”
                 </p>
-                <a href="https://www.linkedin.com/in/elkana-sitorus" target="_blank" rel="noopener noreferrer" className="ot-tautan-linkedin-tim">
-                  LinkedIn
-                </a>
+              
               </div>
 
               {/* Christian */}
@@ -61,14 +59,7 @@ export default function OurTeam() {
                 <p style={{ fontStyle: 'italic', marginTop: '0.5rem' }}>
                   “Edukasi dan teknologi harus berjalan bersama untuk mendorong perubahan sosial berkelanjutan.”
                 </p>
-                <a
-                  href="https://www.linkedin.com/in/christianhutahaean"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="ot-tautan-linkedin-tim"
-                >
-                  LinkedIn
-                </a>
+               
 
               </div>
             </div>
