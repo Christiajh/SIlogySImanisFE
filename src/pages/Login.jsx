@@ -278,7 +278,7 @@ const Login = () => {
           <div className="user-info">
             <div className="user-avatar"></div>
             <div className="user-details">
-              <div className="user-name">Rizal Sipahutar</div>
+              <div className="user-name">Christian Hutahaean</div>
               <div className="user-role">Anggota sejak 2022</div>
             </div>
           </div>
