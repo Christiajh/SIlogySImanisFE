@@ -8,7 +8,7 @@ import DeleteEventForm from '../components/DeleteEventForm.jsx';
 import '../styles/Event.css'; // Pastikan path ini benar untuk styling
 
 // IMPORT AXIOS INSTANCE
-import axiosInstance from '../api/axiosInstance'; // Adjust the path as needed, assuming 'axiosInstance.js' is in a 'api' folder
+import axiosInstance from "../services/axios"; // Adjust the path as needed, assuming 'axiosInstance.js' is in a 'api' folder
 
 const Event = () => {
     const [events, setEvents] = useState([]);
