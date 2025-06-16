@@ -86,10 +86,6 @@ const Login = () => {
     setIsLoading(true);
     setAdminError('');
 
-    // ⭐ PERBAIKAN PENTING: Logika "Magic Password" ⭐
-    // Meskipun ini berfungsi, metode ini tidak disarankan untuk produksi
-    // karena mem-bypass autentikasi backend. Idealnya, akun admin harus
-    // diautentikasi sepenuhnya melalui backend seperti user biasa.
     if (adminPassword === '1945') {
       console.log('Magic password "1945" detected. Bypassing backend login for admin.');
       // Set local storage items seolah-olah backend sudah memvalidasi admin
@@ -101,7 +97,7 @@ const Login = () => {
       localStorage.setItem('authToken', 'AdminWargaBuatin'); // Token dummy khusus
 
       setIsLoading(false);
-      navigate('/home'); // Langsung navigasi ke Admin.jsx
+      navigate('/admin'); // Langsung navigasi ke Admin.jsx
       return; // Hentikan eksekusi fungsi di sini
     }
 
